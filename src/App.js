@@ -1,22 +1,41 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/navbar";
 import Login from "./pages/user/login";
-import Profile from "./pages/user/profile";
 import Register from "./pages/user/register";
+import { useSelector } from "react-redux";
+import Profile from "./pages/user/profile";
+
+import ChangePassword from "./pages/user/ChangePassword";
+import User from "./pages/home/user";
+
 
 function App() {
+  const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
   return (
-    <>
-      <div className="container-fluid">
-        <Routes>
-          <Route path={""} element={<Login />}></Route>
-          <Route path={"register"} element={<Register />}></Route>
-          <Route path={"profile"} element={<Profile />}></Route>
-          <Route path={"navbar"} element={<Navbar />}></Route>
-        </Routes>
-      </div>
-    </>
+      <>
+        <div className="container-fluid">
+          <Routes>
+            <Route path={""} element={<Login></Login>}></Route>
+            <Route path={"register"} element={<Register></Register>}></Route>
+            {
+              user !== "User not found" || user !== "Wrong password" ?
+                  <>
+
+                    <Route path={"user"} element={<User/>}>
+                      <Route path={":idUser"} element={<Profile/>}></Route>
+
+
+                    </Route>
+                  </>
+                  :
+                  <>
+                    <Route path={"/"} element={<Login></Login>}></Route>
+                  </>
+            }
+          </Routes>
+        </div>
+      </>
   );
 }
 
