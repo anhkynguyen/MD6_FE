@@ -1,11 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
-// import {useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
-import {getProviders} from "../../service/providerService";
+import {getProviders, removeProvider} from "../../service/providerService";
+import swal from "sweetalert";
 
 export default function ListProvider() {
     const dispatch = useDispatch();
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
 
     const posts = useSelector(state => {
@@ -16,7 +17,6 @@ export default function ListProvider() {
 
 
     const user = useSelector(state => {
-        console.log(state.user.currentUser,111)
         if (state.user !== undefined) {
             return state.user.currentUser;
         }
@@ -58,7 +58,34 @@ export default function ListProvider() {
                                                 </h4>
                                                 <ul>
                                                     <li>
-                                                        <i className="fa-regular fa-circle-check"></i>
+                                                        <i className="fa-regular fa-circle-check" onClick={()=>{
+                                                            swal({
+                                                                title: "Are you sure?",
+                                                                text: "!!!",
+                                                                icon: "warning",
+                                                                buttons: true,
+                                                                dangerMode: true,
+                                                            }).then((willDelete) => {
+                                                                if (willDelete) {
+                                                                    dispatch(removeProvider(item.idPost)).then(() => {
+                                                                        dispatch(getProviders()).then(() => {
+                                                                            navigate('/home')
+                                                                        })
+                                                                    })
+                                                                    swal("Xoa thanh cong!", {
+                                                                        icon: "success",
+                                                                    });
+                                                                } else {
+                                                                    swal("Khong xoa thanh cong!");
+                                                                    dispatch(getProviders()).then(() => {
+                                                                        navigate('/home')
+                                                                    })
+                                                                }
+                                                            })
+                                                        }}></i>
+                                                    </li>
+                                                    <li>
+                                                        <a href={`/home/edit-post/${item.idPost}`}><i className="fa fa-download"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>

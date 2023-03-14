@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addProvider, editProvider, getProviders, removeProvider} from "../../service/providerService";
+import {addProvider, editProvider, findByIdProvider, getProviders, removeProvider} from "../../service/providerService";
 
 
 
@@ -15,9 +15,9 @@ const postSlice = createSlice({
         builder.addCase(getProviders.fulfilled,(state,action)=>{
             state.posts = action.payload
         });
-        // builder.addCase(findByIdAlbum.fulfilled,(state,action)=>{
-        //     state.albums = action.payload
-        // });
+        builder.addCase(findByIdProvider.fulfilled,(state,action)=>{
+            state.posts = action.payload
+        });
         builder.addCase(addProvider.fulfilled,(state,action)=>{
             state.posts.push(action.payload)
         });

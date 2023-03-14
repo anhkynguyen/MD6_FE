@@ -29,7 +29,7 @@ export default function Navbar() {
 
                 <ul class="nav">
                   <li>
-                    <a href="index.html" class="active">
+                    <a href="/home" class="active">
                       Home
                     </a>
                   </li>
