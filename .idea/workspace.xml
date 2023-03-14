@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="546915de-ad8d-45ea-9607-1ae7f677e56c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/user/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/userSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/userSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +12,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
@@ -30,7 +30,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="feature/login" />
-                    <option name="lastUsedInstant" value="1678675030" />
+                    <option name="lastUsedInstant" value="1678693014" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="dev" />
@@ -123,7 +123,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/user/register.js</url>
           <line>50</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

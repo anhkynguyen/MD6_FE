@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import swal from "sweetalert";
@@ -90,7 +90,7 @@ export default function Register() {
                     <div class="col-lg-12">
                       <div class="main-profile ">
                         <div class="row">
-                          <h1 style={{ textAlign: "center" }}>Đăng Kí</h1>
+                          <h1 style={{ textAlign: "center" }}>Đăng Ký</h1>
 
                           <div class="col-lg-4">
                             <div
@@ -135,11 +135,11 @@ export default function Register() {
 
                           <div class="col-lg-3 align-self-center">
                             <div class="main-info header-text">
-                              <h5 style={{ color: "white" }}>Họ Tên</h5>
-                              <br></br>
+                              <h5 style={{ color: "white" }}>Họ Tên </h5>
+
                               <Field
                                 type="text"
-                                placeholder="Hãy nhập chiều cao của bạn...."
+                                placeholder="Hãy nhập họ tên của bạn...."
                                 name={"username"}
                                 id="username"
                                 style={{
@@ -151,8 +151,9 @@ export default function Register() {
                                   borderColor: "white",
                                 }}
                               ></Field>
+                              <hr></hr>
                               <h5 style={{ color: "white" }}>Mật khẩu</h5>
-                              <br></br>
+
                               <Field
                                 type="password"
                                 name={"password"}
@@ -167,11 +168,11 @@ export default function Register() {
                                   borderColor: "white",
                                 }}
                               ></Field>
-
+                              <hr></hr>
                               <h5 style={{ color: "white" }}>
                                 Nhập lại mật khẩu
                               </h5>
-                              <br></br>
+
                               <Field
                                 style={{
                                   width: "100%",
@@ -186,6 +187,8 @@ export default function Register() {
                                 id="re-password"
                                 placeholder="Hãy nhập lại mật khẩu của bạn...."
                               ></Field>
+                              <hr></hr>
+                              <hr></hr>
 
                               <div class="main-border-button border-no-active "></div>
                             </div>
@@ -194,7 +197,7 @@ export default function Register() {
                           <div class="col-lg-3 align-self-center">
                             <div class="main-info header-text">
                               <h5 style={{ color: "white" }}>Email</h5>
-                              <br></br>
+
                               <Field
                                 name={"gmail"}
                                 id="gmail"
@@ -209,9 +212,9 @@ export default function Register() {
                                   borderColor: "white",
                                 }}
                               ></Field>
-
+                              <hr></hr>
                               <h5 style={{ color: "white" }}>Ngày sinh</h5>
-                              <br></br>
+
                               <Field
                                 name={"birthday"}
                                 id="birthday"
@@ -226,9 +229,8 @@ export default function Register() {
                                 type="date"
                                 placeholder="Hãy nhập chiều cao của bạn...."
                               ></Field>
-
+                              <hr></hr>
                               <h5 style={{ color: "white" }}>Giới tính</h5>
-                              <br></br>
 
                               <Field
                                 as="select"
@@ -246,13 +248,32 @@ export default function Register() {
                                 <option value="Nữ">Nữ</option>
                                 <option value="Khác">Khác</option>
                               </Field>
+                              <h6>
+                                {" "}
+                                Bạn đã có tài khoản đăng nhập tại đây{" "}
+                                <Link to={"/"} style={{ color: "red" }}>
+                                  {" "}
+                                  Đăng nhập{" "}
+                                </Link>
+                              </h6>
 
                               <div class="main-border-button border-no-active "></div>
                             </div>
                           </div>
                           <div class="col-lg-2 align-self-center">
                             <div class="main-info header-text">
-                              <br></br>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
+                              <hr></hr>
 
                               <button
                                 type="submit"
@@ -267,7 +288,10 @@ export default function Register() {
                               >
                                 Đăng ký
                               </button>
-                              <br></br>
+                              <hr></hr>
+                              <hr></hr>
+
+                              <hr></hr>
                             </div>
                           </div>
                         </div>

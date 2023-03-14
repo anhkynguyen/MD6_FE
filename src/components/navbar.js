@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <>
-      <header class="header-area header-sticky">
+      <div class="header-area header-sticky">
         <div class="container">
           <div class="row">
             <div class="col-12">
@@ -39,10 +43,10 @@ export default function Navbar() {
                     <a href="streams.html">Streams</a>
                   </li>
                   <li>
-                    <a href="profile.html">
-                      Profile{" "}
-                      <img src="assets/images/profile-header.jpg" alt="" />
-                    </a>
+                    <Link to={`/user/${user.idUser}`}>
+                      {user.username}
+                      <img src={user.avatar} alt="" />
+                    </Link>
                   </li>
                 </ul>
                 <a href="/" class="menu-trigger">
@@ -52,7 +56,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </>
   );
 }

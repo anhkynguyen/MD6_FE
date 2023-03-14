@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../service/userService";
 import { useEffect } from "react";
 import swal from "sweetalert";
@@ -12,10 +12,12 @@ export default function Login() {
     await dispatch(login(values)).then((e) => {
       if (e.payload !== "User not found" && e.payload !== "Wrong password") {
         navigate("/home");
-      } else if (e.payload === "User not found") {
-        swal("User not found");
-      } else if (e.payload === "Wrong password") {
-        swal("Wrong password");
+      }
+      if (e.payload === "User not found") {
+        swal("Tài khoản không tồn tại !!!");
+      }
+      if (e.payload === "Wrong password") {
+        swal("Sai mật khẩu! Vui lòng nhập lại mật khẩu !");
       }
     });
   };
@@ -70,7 +72,6 @@ export default function Login() {
                               ></Field>
                               <br />
                               <br />
-
                               <h4 style={{ color: "white" }}>Mật khẩu</h4>
                               <Field
                                 name="password"
@@ -84,7 +85,6 @@ export default function Login() {
                                 }}
                                 type="password"
                               ></Field>
-
                               <div class="main-border-button border-no-active ">
                                 <button
                                   style={{
@@ -99,6 +99,14 @@ export default function Login() {
                                   Đăng nhập
                                 </button>
                               </div>
+                              <h6>
+                                {" "}
+                                Bạn chưa có tài khoản đăng kí tại đây{" "}
+                                <Link to={"register"} style={{ color: "red" }}>
+                                  {" "}
+                                  Đăng ký{" "}
+                                </Link>
+                              </h6>
                             </div>
                           </div>
                         </div>
