@@ -23,7 +23,7 @@ export const editProfile = createAsyncThunk(
 
 export const getProfile = createAsyncThunk("user/getProfile", async (data) => {
   const res = await customAxios.get("/users/showMyProfile/" + data);
-  console.log(res);
+  console.log(666, res);
   return res.data;
 });
 
@@ -39,6 +39,5 @@ export const changePassword = createAsyncThunk(
 );
 export const getUsers = createAsyncThunk("users/getUsers", async () => {
   const res = await customAxios.get("admins");
-  console.log(111, res.data);
   return res.data;
 });

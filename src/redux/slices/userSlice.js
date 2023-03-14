@@ -11,7 +11,7 @@ import {
 const initialState = {
   currentUser: JSON.parse(localStorage.getItem("user")),
   user: [],
-  users: {},
+  users: [],
   profile: [],
   checkPassword: "",
 };
@@ -41,7 +41,6 @@ const userSlice = createSlice({
       state.checkPassword = action.payload;
     });
     builder.addCase(getUsers.fulfilled, (state, action) => {
-      console.log(22222222222222, action.payload);
       state.users = action.payload;
     });
   },

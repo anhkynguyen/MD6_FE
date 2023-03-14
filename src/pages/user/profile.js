@@ -7,8 +7,8 @@ export default function Profile() {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.currentUser);
-  const user1 = useSelector((state) => state.user.profile);
-  console.log(1, user1);
+
+  console.log(1, user);
 
   useEffect(() => {
     dispatch(getProfile(id));
@@ -32,7 +32,7 @@ export default function Profile() {
                       </div>
                       <div class="col-lg-4 align-self-center">
                         <div class="main-info header-text">
-                          <span>{user1.status}</span>
+                          <span>{user.status}</span>
                           <h4>{user.username}</h4>
                           <p>
                             You Haven't Gone Live yet. Go Live By Touching The
@@ -46,16 +46,16 @@ export default function Profile() {
                       <div class="col-lg-4 align-self-center">
                         <ul>
                           <li>
-                            Giới tính <span> {user1.gender}</span>
+                            Giới tính <span> {user.gender}</span>
                           </li>
                           <li>
-                            Ngày sinh <span>{user1.birthday}</span>
+                            Ngày sinh <span>{user.birthday}</span>
                           </li>
                           <li>
-                            Email <span>{user1.gmail}</span>
+                            Email <span>{user.gmail}</span>
                           </li>
                           <li>
-                            Chức vụ <span>{user1.role}</span>
+                            Chức vụ <span>{user.role}</span>
                           </li>
                         </ul>
                       </div>
