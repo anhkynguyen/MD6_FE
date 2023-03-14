@@ -7,6 +7,8 @@ import Profile from "./pages/user/profile";
 import User from "./pages/home/user";
 import Home from "./pages/home/home";
 import ListProvider from "./pages/provider/listProvider";
+import Admin from "./pages/home/admin";
+import ListUser from "./pages/user/listUser";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -32,6 +34,10 @@ function App() {
                 {/* <Route path={"change-password/:idUser"} element={<ChangePassword/>}></Route>
               <Route path={"my-order/:idUser"} element={<MyOrder/>}></Route>
               <Route path={"edit-order/:id"} element={<EditOrder/>}></Route> */}
+              </Route>
+              <Route path="admin" element={<Admin />}>
+                <Route path={""} element={<ListProvider />}></Route>
+                <Route path={"listUser"} element={<ListUser />}></Route>
               </Route>
             </>
           ) : (
