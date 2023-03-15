@@ -37,11 +37,11 @@ const userSlice = createSlice({
     builder.addCase(getProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
     });
-    builder.addCase(changePassword.fulfilled, (state, action) => {
-      state.checkPassword = action.payload;
-    });
     builder.addCase(getUsers.fulfilled, (state, action) => {
       state.users = action.payload;
+    });
+    builder.addCase(changePassword.fulfilled,(state,action)=>{
+      state.checkPassword = action.payload
     });
   },
 });

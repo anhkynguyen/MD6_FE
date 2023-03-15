@@ -27,17 +27,16 @@ export const getProfile = createAsyncThunk("user/getProfile", async (data) => {
   return res.data;
 });
 
-export const changePassword = createAsyncThunk(
-  "user/changePassword",
-  async (data) => {
-    const res = await customAxios.put(
-      "/users/change-password/" + data[1],
-      data[0]
-    );
-    return res.data;
-  }
-);
 export const getUsers = createAsyncThunk("users/getUsers", async () => {
   const res = await customAxios.get("admins");
   return res.data;
 });
+
+export const changePassword = createAsyncThunk(
+    'users/changePassword',
+    async (data)=>{
+        console.log(data)
+        const res = await customAxios.put('users/change-password/' + data[1], data[0]);
+        return res.data;
+    }
+);

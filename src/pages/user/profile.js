@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { getProfile } from "../../service/userService";
 export default function Profile() {
   const id = useParams();
@@ -40,6 +40,9 @@ export default function Profile() {
                           </p>
                           <div class="main-border-button">
                             <a href="/">Trở thành người cung cấp dịch vụ</a>
+                          </div>
+                          <div className="main-border-button">
+                            <a href={'/user/change-password/' + user.idUser}>Thay đổi mật khẩu của bạn</a>
                           </div>
                         </div>
                       </div>
