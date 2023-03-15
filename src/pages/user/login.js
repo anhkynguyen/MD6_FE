@@ -19,6 +19,10 @@ export default function Login() {
       if (e.payload === "Wrong password") {
         swal("Sai mật khẩu! Vui lòng nhập lại mật khẩu !");
       }
+      if (e.payload === "your account has been locked") {
+        swal("Tài khoản chưa kích hoạt! Vui lòng liên hệ quản trị viên !");
+        navigate("/");
+      }
     });
   };
 
