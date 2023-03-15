@@ -34,8 +34,12 @@ export const removeProvider = createAsyncThunk(
 export const editProvider = createAsyncThunk(
     'post/editPost',
     async (data)=>{
-        await customAxios.put('post/edit/' + data[1], data[0]);
+
+        // let id = Number(data[1])
+        // console.log(11111111111111,data,id)
+        await customAxios.put('post/edit/' + data[1] , data[0]);
         const res = await customAxios.get('post');
+        console.log(9999999999999,res.data)
         return res.data
 
     }
