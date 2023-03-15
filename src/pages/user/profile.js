@@ -35,8 +35,8 @@ export default function Profile() {
                           <span>{user.status}</span>
                           <h4>{user.username}</h4>
                           <p>
-                            You Haven't Gone Live yet. Go Live By Touching The
-                            Button Below.
+                            Chọn người bạn muốn ghép đôi hoặc trở thành người
+                            cung cấp dịch vụ ngay bây giờ
                           </p>
                           <div class="main-border-button">
                             <a href="/">Trở thành người cung cấp dịch vụ</a>
