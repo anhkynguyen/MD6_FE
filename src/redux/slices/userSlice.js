@@ -3,6 +3,7 @@ import {
   changePassword,
   editProfile,
   getProfile,
+  getUsers,
   login,
   register,
 } from "../../service/userService";
@@ -10,6 +11,7 @@ import {
 const initialState = {
   currentUser: JSON.parse(localStorage.getItem("user")),
   user: [],
+  users: [],
   profile: [],
   checkPassword: "",
 };
@@ -37,6 +39,9 @@ const userSlice = createSlice({
     });
     builder.addCase(changePassword.fulfilled, (state, action) => {
       state.checkPassword = action.payload;
+    });
+    builder.addCase(getUsers.fulfilled, (state, action) => {
+      state.users = action.payload;
     });
   },
 });
