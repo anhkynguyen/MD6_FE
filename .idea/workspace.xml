@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="546915de-ad8d-45ea-9607-1ae7f677e56c" name="Changes" comment="&quot;feature/loginform&quot;" />
+    <list default="true" id="546915de-ad8d-45ea-9607-1ae7f677e56c" name="Changes" comment="&quot;feature/loginform&quot;">
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +75,7 @@
       <workItem from="1678673441717" duration="1840000" />
       <workItem from="1678690338977" duration="274000" />
       <workItem from="1678756438819" duration="223000" />
+      <workItem from="1678855982480" duration="188000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;feature/loginform&quot;">
       <created>1678675153635</created>

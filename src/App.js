@@ -10,6 +10,7 @@ import ListProvider from "./pages/provider/listProvider";
 import Admin from "./pages/home/admin";
 import ListUser from "./pages/user/listUser";
 import ChangePassword from "./pages/user/changePassword";
+import EditProvider from "./pages/provider/editProvider";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -25,11 +26,9 @@ function App() {
             <>
               <Route path={"home"} element={<Home />}>
                 <Route path={""} element={<ListProvider />}></Route>
-                {/* <Route path={"create-home"} element={<CreateHome/>}/>
-              <Route path={"edit-home/:id"} element={<EditHome/>}/>
-              <Route path={"rent-home/:id"} element={<RentHome/>}/>
-              <Route path={"home-detail/:id"} element={<HomeDetail/>}/>
-              <Route path={"my-home/:id"} element={<MyHome/>}/> */}
+                {/*<Route path={"create-home"} element={<CreateHome/>}/>*/}
+              <Route path={"edit-post/:id"} element={<EditProvider/>}/>
+
               </Route>
               <Route path={"user"} element={<User />}>
                 <Route path={":idUser"} element={<Profile />}></Route>
