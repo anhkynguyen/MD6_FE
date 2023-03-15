@@ -2,7 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import customAxios from "./api";
 
 export const getProviders = createAsyncThunk("post/getPosts", async () => {
-  console.log(44);
   const res = await customAxios.get("post");
   return res.data;
 });

@@ -4,20 +4,17 @@ import { getProviders } from "../../service/providerService";
 export default function ListProvider() {
   const dispatch = useDispatch();
   const posts = useSelector((state) => {
-    console.log(1, state);
     if (state.post !== undefined) {
       return state.post.posts;
     }
   });
   const user = useSelector((state) => {
     if (state.user !== undefined) {
-      console.log(4, state.user.user);
       return state.user.user;
     }
   });
 
   useEffect(() => {
-    console.log(2);
     dispatch(getProviders());
   }, []);
   return (

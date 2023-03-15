@@ -12,7 +12,6 @@ import ListUser from "./pages/user/listUser";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
-  console.log(3333, user);
 
   return (
     <>
