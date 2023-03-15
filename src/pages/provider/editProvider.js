@@ -19,7 +19,15 @@ export default function EditProvider() {
     const posts = useSelector(state => {
         console.log(state.post.posts[0],11)
         if (state.post !== undefined){
-            return state.post.posts
+            return state.post.posts[0]
+        }else {
+                namePost: '',
+                description: '',
+                image: '',
+                price: '',
+                height: '',
+                weight: '',
+                measurement: '',
         }
     })
 
@@ -82,13 +90,7 @@ export default function EditProvider() {
         <>
             <Formik
                 initialValues={{
-                    namePost: posts.namePost,
-                    description: posts.description,
-                    image: posts.image,
-                    price: posts.price,
-                    height: posts.height,
-                    weight: posts.weight,
-                    measurement: posts.measurement,
+
                 }}
                 onSubmit={(values) => {
                     console.log(values,22)
