@@ -11,7 +11,7 @@ export const getProviders = createAsyncThunk(
 export const findByIdProvider = createAsyncThunk(
     'post/findByIdPost',
     async (data)=>{
-        const res = await customAxios.get('post/findById/'+data);
+        const res = await customAxios.get('post/'+data);
         return res.data;
     }
 )

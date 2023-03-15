@@ -5,6 +5,7 @@ import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage";
 import {storage} from "../../upload/firebaseConfig";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import swal from "sweetalert";
 
 export default function EditProvider() {
     const {id} = useParams();
@@ -13,14 +14,15 @@ export default function EditProvider() {
     const [images, setImages] = useState([]);
     const [urls, setUrls] = useState([]);
     const [progress, setProgress] = useState(0);
-    const user = useSelector(state => {
-        return state.user.currentUser;
-    })
+
+    // const user = useSelector(state => {
+    //     return state.user.currentUser;
+    // })
     const posts = useSelector(state => {
-        console.log(state.post.posts[0],11)
-        if (state.post !== undefined){
+        if (state.post.posts[0] !== undefined) {
             return state.post.posts[0]
-        }else {
+        } else {
+            return {
                 namePost: '',
                 description: '',
                 image: '',
@@ -28,6 +30,7 @@ export default function EditProvider() {
                 height: '',
                 weight: '',
                 measurement: '',
+            }
         }
     })
 
@@ -60,7 +63,7 @@ export default function EditProvider() {
                     },
                     async () => {
                         await getDownloadURL(uploadTask.snapshot.ref).then((downloadURLs) => {
-                            setUrls(prevState => [...prevState, downloadURLs])
+                            setUrls(downloadURLs)
                             console.log("File available at", downloadURLs);
                         });
                     }
@@ -72,15 +75,31 @@ export default function EditProvider() {
             .catch((err) => console.log(err));
     };
 
-    useEffect(()=>{
-        dispatch(findByIdProvider(id)).then((value)=> {
-            setUrls([value.payload.image])
+    useEffect(() => {
+        dispatch(findByIdProvider(id)).then((value) => {
+            setUrls([value.payload[0].image])
         })
-    },[])
+    }, [])
 
     const handleEdit = (values) => {
-        let data = [{...values}, id];
-        dispatch(editProvider(data)).then(() => {
+        let data = [{...values, image: urls}, id];
+        console.log(values, 454)
+        data[0] = {
+            idPost: data[0].idPost,
+            namePost: data[0].namePost,
+            image: data[0].image,
+            description: data[0].description,
+            price: data[0].price,
+            height: data[0].height,
+            weight: data[0].weight,
+            measurement: data[0].measurement,
+            date: data[0].date
+
+        }
+        console.log(urls)
+        dispatch(editProvider(data)).then((values) => {
+
+            swal("Edit Success !!!");
             navigate('/home');
         })
 
@@ -89,13 +108,10 @@ export default function EditProvider() {
     return (
         <>
             <Formik
-                initialValues={{
-
-                }}
+                initialValues={posts}
                 onSubmit={(values) => {
-                    console.log(values,22)
                     values.image = urls[1];
-                    values.idUser = user.idUser;
+                    // values.idUser = user.idUser;
                     handleEdit(values);
                 }}
                 enableReinitialize={true}
@@ -117,8 +133,8 @@ export default function EditProvider() {
                                                         >
                                                             <img
                                                                 className="position-relative rounded w-300 h-300"
-                                                                src={posts.image}
-                                                                alt={urls[1]}
+                                                                src={urls}
+                                                                alt={urls}
                                                                 style={{
                                                                     borderRadius: "23px",
                                                                     height: "300px",
@@ -128,9 +144,10 @@ export default function EditProvider() {
                                                         </div>
 
                                                         <br></br>
-                                                        <Field
-                                                            name={'image'}
+                                                        <input
+
                                                             id="image"
+                                                            name={'image'}
                                                             style={{
                                                                 width: "100%",
                                                                 height: "40px",
@@ -141,7 +158,7 @@ export default function EditProvider() {
                                                             }}
                                                             type="file"
                                                             onChange={handleChange}
-                                                        ></Field>
+                                                        />
                                                         <button
                                                             type="button"
                                                             className="btn btn-secondary w-100 py-3"
@@ -165,7 +182,7 @@ export default function EditProvider() {
                                                                     color: "white",
                                                                     borderColor: "white",
                                                                 }}
-                                                            ></Field>
+                                                            />
 
                                                             <hr></hr>
                                                             <h5 style={{color: "white"}}>Sở thích</h5>
@@ -181,7 +198,7 @@ export default function EditProvider() {
                                                                     color: "white",
                                                                     borderColor: "white",
                                                                 }}
-                                                            ></Field>
+                                                            />
                                                             <hr></hr>
                                                             <h5 style={{color: "white"}}>
                                                                 Giá
@@ -198,7 +215,7 @@ export default function EditProvider() {
                                                                 type="number"
                                                                 name={'price'}
                                                                 id="price"
-                                                            ></Field>
+                                                            />
 
                                                             <div className="main-border-button border-no-active "></div>
                                                         </div>
@@ -219,7 +236,7 @@ export default function EditProvider() {
                                                                     color: "white",
                                                                     borderColor: "white",
                                                                 }}
-                                                            ></Field>
+                                                            />
                                                             <hr></hr>
                                                             <h5 style={{color: "white"}}>Cân nặng</h5>
 
@@ -235,7 +252,7 @@ export default function EditProvider() {
                                                                     borderColor: "white",
                                                                 }}
                                                                 type="number"
-                                                            ></Field>
+                                                            />
                                                             <hr></hr>
                                                             <h5 style={{color: "white"}}>Số đo 3 vòng</h5>
                                                             <Field
@@ -250,7 +267,7 @@ export default function EditProvider() {
                                                                     borderColor: "white",
                                                                 }}
                                                                 type="text"
-                                                            ></Field>
+                                                            />
 
                                                             <div className="main-border-button border-no-active "></div>
                                                         </div>
