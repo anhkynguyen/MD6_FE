@@ -23,7 +23,6 @@ export const editProfile = createAsyncThunk(
 
 export const getProfile = createAsyncThunk("user/getProfile", async (data) => {
   const res = await customAxios.get("/users/showMyProfile/" + data);
-  console.log(666, res);
   return res.data;
 });
 
@@ -41,3 +40,27 @@ export const getUsers = createAsyncThunk("users/getUsers", async () => {
   const res = await customAxios.get("admins");
   return res.data;
 });
+export const getUsersRequest = createAsyncThunk(
+  "user/getUsersRequest",
+  async () => {
+    const res = await customAxios.get("admins/checkAsk");
+    console.log(333, res);
+    return res.data;
+  }
+);
+
+export const requestProvider = createAsyncThunk(
+  "user/getRequestProviders",
+  async (data) => {
+    const res = await customAxios.get("/users/userRequest/" + data);
+    return data;
+  }
+);
+export const acceptRequestProvider = createAsyncThunk(
+  "user/getAcceptRequestProvider",
+  async (data) => {
+    console.log(11111, data);
+    const res = await customAxios.get("/admins/changeRole/" + data);
+    return data;
+  }
+);
