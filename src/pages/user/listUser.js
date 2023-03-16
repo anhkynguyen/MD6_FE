@@ -34,12 +34,15 @@ export default function ListUser() {
                 <div class="col-lg-6">
                   <div class="top-streamers">
                     <div class="heading-section">
-                      <h4>
-                        <h4 style={{ textAlign: "center" }}>
-                          {" "}
-                          Thành Viên Cung Cấp Dịch Vụ{" "}
-                        </h4>
-                      </h4>
+                      <h5
+                        style={{
+                          textAlign: "center",
+                          color: "rgb(236,96,144)",
+                        }}
+                      >
+                        {" "}
+                        Duyệt Thành Viên Cung Cấp Dịch Vụ{" "}
+                      </h5>
                     </div>
                     {usersRequest !== undefined &&
                       usersRequest.map((item, key) => {
@@ -61,7 +64,24 @@ export default function ListUser() {
                                 <h6>
                                   <i class="fa fa-check"></i> {item.username}
                                 </h6>
-                                <div class="main-border-button">
+                                <button
+                                  style={{
+                                    float: "right",
+
+                                    width: "79.08px",
+                                    height: "37px",
+                                    backgroundColor: "#e75e8d",
+                                    display: "inline-block",
+                                    borderRadius: "25px",
+                                    fontWeight: "400",
+                                    textTransform: "capitalize",
+                                    letterSpacing: " 0.5px",
+                                    transition: "all .3s",
+                                    position: "relative",
+                                    overflow: "hidden",
+                                    color: "white",
+                                  }}
+                                >
                                   <strong
                                     style={{
                                       borderRadius: "30px",
@@ -95,9 +115,9 @@ export default function ListUser() {
                                       });
                                     }}
                                   >
-                                    <a style={{ color: "white" }}>Duyệt</a>
+                                    Duyệt
                                   </strong>
-                                </div>
+                                </button>
                               </li>
                             </ul>
                           </div>
@@ -108,11 +128,14 @@ export default function ListUser() {
                 <div class="col-lg-6">
                   <div class="top-streamers">
                     <div class="heading-section">
-                      <h4>
-                        <h4 style={{ textAlign: "center" }}>
-                          Thành Viên Đăng Ký
-                        </h4>
-                      </h4>
+                      <h5
+                        style={{
+                          textAlign: "center",
+                          color: "rgb(236,96,144)",
+                        }}
+                      >
+                        Duyệt Thành Viên Đăng Ký Tài Khoản
+                      </h5>
                     </div>
                     {usersRequest !== undefined &&
                       usersRequest.map((item, key) => {
