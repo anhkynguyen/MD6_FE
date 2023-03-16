@@ -4,8 +4,14 @@ import customAxios from "./api";
 export const getProviders = createAsyncThunk(
     'post/getPosts',
     async ()=>{
-        const res = await customAxios.get('post');
-        return res.data
+        try {
+            const res = await customAxios.get('post');
+            console.log(res.data)
+            return res.data
+        } catch (e) {
+            console.log(e)
+        }
+
     }
 );
 export const findByIdProvider = createAsyncThunk(

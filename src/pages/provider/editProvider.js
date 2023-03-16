@@ -15,9 +15,9 @@ export default function EditProvider() {
     const [urls, setUrls] = useState([]);
     const [progress, setProgress] = useState(0);
 
-    // const user = useSelector(state => {
-    //     return state.user.currentUser;
-    // })
+    const user = useSelector(state => {
+        return state.user.currentUser;
+    })
     const posts = useSelector(state => {
         if (state.post.posts[0] !== undefined) {
             return state.post.posts[0]
@@ -111,7 +111,7 @@ export default function EditProvider() {
                 initialValues={posts}
                 onSubmit={(values) => {
                     values.image = urls[1];
-                    // values.idUser = user.idUser;
+                    values.idUser = user.idUser;
                     handleEdit(values);
                 }}
                 enableReinitialize={true}
@@ -301,7 +301,7 @@ export default function EditProvider() {
                                                                     borderColor: "white",
                                                                 }}
                                                             >
-                                                                Đăng bài
+                                                                Sửa bài
                                                             </button>
                                                             <hr></hr>
                                                             <hr></hr>

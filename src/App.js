@@ -27,17 +27,9 @@ function App() {
                 <Route path={""} element={<ListProvider />}></Route>
                   <Route path={"add-post"} element={<AddProvider/>}></Route>
                   <Route path={"edit-post/:id"} element={<EditProvider/>}/>
-                {/* <Route path={"create-home"} element={<CreateHome/>}/>
-              <Route path={"edit-home/:id"} element={<EditHome/>}/>
-              <Route path={"rent-home/:id"} element={<RentHome/>}/>
-              <Route path={"home-detail/:id"} element={<HomeDetail/>}/>
-              <Route path={"my-home/:id"} element={<MyHome/>}/> */}
               </Route>
               <Route path={"user"} element={<User />}>
                 <Route path={":idUser"} element={<Profile />}></Route>
-                {/* <Route path={"change-password/:idUser"} element={<ChangePassword/>}></Route>
-              <Route path={"my-order/:idUser"} element={<MyOrder/>}></Route>
-              <Route path={"edit-order/:id"} element={<EditOrder/>}></Route> */}
               </Route>
               <Route path="admin" element={<Admin />}>
                 <Route path={""} element={<ListProvider />}></Route>

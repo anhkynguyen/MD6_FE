@@ -10,9 +10,10 @@ export default function ListProvider() {
 
 
   const posts = useSelector(state => {
-    if (state.post !== undefined) {
+    console.log(state.post.posts, 222)
+    // if (state.post.posts !== undefined) {
       return state.post.posts;
-    }
+
   })
 
 
