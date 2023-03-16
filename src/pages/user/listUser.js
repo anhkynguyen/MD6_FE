@@ -34,12 +34,12 @@ export default function ListUser() {
                 <div class="col-lg-6">
                   <div class="top-streamers">
                     <div class="heading-section">
-                      <h4>
+                      <h5>
                         <h4 style={{ textAlign: "center" }}>
                           {" "}
-                          Thành Viên Cung Cấp Dịch Vụ{" "}
+                          Duyệt Thành Viên Cung Cấp Dịch Vụ{" "}
                         </h4>
-                      </h4>
+                      </h5>
                     </div>
                     {usersRequest !== undefined &&
                       usersRequest.map((item, key) => {
@@ -61,43 +61,50 @@ export default function ListUser() {
                                 <h6>
                                   <i class="fa fa-check"></i> {item.username}
                                 </h6>
-                                <div class="main-border-button">
-                                  <strong
-                                    style={{
-                                      borderRadius: "30px",
-                                      height: "50px",
-                                      width: "300px",
-                                    }}
-                                    onClick={() => {
-                                      swal({
-                                        title:
-                                          "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
-                                        text: "",
-                                        icon: "warning",
-                                        buttons: true,
-                                        dangerMode: true,
-                                      }).then((willDelete) => {
-                                        if (willDelete) {
-                                          dispatch(
-                                            acceptRequestProvider(item.idUser)
-                                          ).then(() => {
-                                            navigate("/admin/listUser");
-                                          });
-                                          swal(
-                                            "Bạn đã gửi yêu cầu thành công !",
-                                            {
-                                              icon: "Thành công ",
-                                            }
-                                          );
-                                        } else {
-                                          swal("Bạn đã hủy yêu cầu !");
-                                        }
-                                      });
-                                    }}
-                                  >
-                                    <a style={{ color: "white" }}>Duyệt</a>
-                                  </strong>
-                                </div>
+
+                                <button
+                                  style={{
+                                    borderRadius: "30px",
+                                    height: "37px",
+                                    width: "79.08px",
+                                    float: "right",
+                                    backgroundColor: "rgb(231,94,141)",
+                                    color: "white",
+                                    padding: "8px 20px",
+                                    fontSize: "14px",
+                                    textAlign: "center",
+                                    lineHeight: "100%",
+                                    borderColor: "rgb(231,94,141)",
+                                  }}
+                                  onClick={() => {
+                                    swal({
+                                      title:
+                                        "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                                      text: "",
+                                      icon: "warning",
+                                      buttons: true,
+                                      dangerMode: true,
+                                    }).then((willDelete) => {
+                                      if (willDelete) {
+                                        dispatch(
+                                          acceptRequestProvider(item.idUser)
+                                        ).then(() => {
+                                          navigate("/admin/listUser");
+                                        });
+                                        swal(
+                                          "Bạn đã gửi yêu cầu thành công !",
+                                          {
+                                            icon: "Thành công ",
+                                          }
+                                        );
+                                      } else {
+                                        swal("Bạn đã hủy yêu cầu !");
+                                      }
+                                    });
+                                  }}
+                                >
+                                  Duyệt
+                                </button>
                               </li>
                             </ul>
                           </div>
@@ -110,7 +117,7 @@ export default function ListUser() {
                     <div class="heading-section">
                       <h4>
                         <h4 style={{ textAlign: "center" }}>
-                          Thành Viên Đăng Ký
+                          Duyệt Thành Viên Đăng Ký Tài Khoản
                         </h4>
                       </h4>
                     </div>
