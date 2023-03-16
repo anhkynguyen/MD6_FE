@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="546915de-ad8d-45ea-9607-1ae7f677e56c" name="Changes" comment="">
+    <list default="true" id="546915de-ad8d-45ea-9607-1ae7f677e56c" name="Changes" comment="&quot;feature/loginform&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/provider/editProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/editProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/providerService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/providerService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/usermanager" />
+        <entry key="$PROJECT_DIR$" value="feature/changePassword" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -27,16 +36,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feature/usermanager" />
-                    <option name="lastUsedInstant" value="1678843060" />
+                    <option name="branchName" value="feature/login" />
+                    <option name="lastUsedInstant" value="1678693014" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="dev" />
-                    <option name="lastUsedInstant" value="1678843002" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="feature/login" />
-                    <option name="lastUsedInstant" value="1678693014" />
+                    <option name="lastUsedInstant" value="1678673694" />
                   </RecentBranch>
                 </list>
               </option>
@@ -78,8 +83,10 @@
       <updated>1678673439561</updated>
       <workItem from="1678673441717" duration="1840000" />
       <workItem from="1678690338977" duration="274000" />
-      <workItem from="1678756438819" duration="223000" />
-      <workItem from="1678842811589" duration="308000" />
+      <workItem from="1678761139074" duration="1034000" />
+      <workItem from="1678762205884" duration="204000" />
+      <workItem from="1678762785254" duration="21081000" />
+      <workItem from="1678799201504" duration="2856000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;feature/loginform&quot;">
       <created>1678675153635</created>
@@ -100,6 +107,11 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -120,16 +132,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;feature/loginform&quot;" />
     <option name="LAST_COMMIT_MESSAGE" value="&quot;feature/loginform&quot;" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/user/register.js</url>
-          <line>50</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

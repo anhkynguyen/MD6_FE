@@ -26,9 +26,6 @@ export default function Login() {
     });
   };
 
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
   return (
     <>
       <Formik
