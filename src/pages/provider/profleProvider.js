@@ -27,17 +27,18 @@ export default function ProfileProvider() {
                         <img
                           src={user.avatar}
                           alt=""
-                          style={{ borderRadius: "23PX" }}
+                          style={{
+                            borderRadius: "23PX",
+                            width: "356px",
+                            height: "340px",
+                          }}
                         />
                       </div>
                       <div class="col-lg-4 align-self-center">
                         <div class="main-info header-text">
                           <span>{user.status}</span>
                           <h4>{user.username}</h4>
-                          <p>
-                            Chọn người bạn muốn ghép đôi hoặc trở thành người
-                            cung cấp dịch vụ ngay bây giờ
-                          </p>
+                          <p>Người cung cấp dịch vụ</p>
                           <div class="main-border-button"></div>
                         </div>
                       </div>

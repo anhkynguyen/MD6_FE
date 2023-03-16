@@ -30,7 +30,11 @@ export default function Profile() {
                           <img
                             src={user.avatar}
                             alt=""
-                            style={{ borderRadius: "23PX" }}
+                            style={{
+                              borderRadius: "23PX",
+                              width: "356px",
+                              height: "340px",
+                            }}
                           />
                         </div>
                         <div class="col-lg-4 align-self-center">

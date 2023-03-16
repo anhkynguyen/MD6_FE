@@ -55,7 +55,7 @@ const userSlice = createSlice({
       state.user = action.payload;
     });
     builder.addCase(acceptRequestProvider.fulfilled, (state, action) => {
-      console.log(11, action.payload);
+      console.log(1234, action.payload);
       state.user = action.payload;
     });
   },

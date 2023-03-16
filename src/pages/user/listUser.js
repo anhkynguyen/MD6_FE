@@ -11,12 +11,10 @@ export default function ListUser() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const users = useSelector((state) => {
-    console.log(222, state);
     return state.user.users;
   });
 
   const usersRequest = useSelector((state) => {
-    console.log(44, state.user.usersRequest);
     return state.user.usersRequest;
   });
   useEffect(() => {
@@ -101,6 +99,7 @@ export default function ListUser() {
                                           dispatch(
                                             acceptRequestProvider(item.idUser)
                                           ).then(() => {
+                                            navigate("/admin/listUser");
                                             navigate("/admin/listUser");
                                           });
                                           swal(

@@ -44,7 +44,7 @@ export const getUsersRequest = createAsyncThunk(
   "user/getUsersRequest",
   async () => {
     const res = await customAxios.get("admins/checkAsk");
-    console.log(333, res);
+
     return res.data;
   }
 );
@@ -59,7 +59,7 @@ export const requestProvider = createAsyncThunk(
 export const acceptRequestProvider = createAsyncThunk(
   "user/getAcceptRequestProvider",
   async (data) => {
-    console.log(11111, data);
+    console.log(123, data);
     const res = await customAxios.get("/admins/changeRole/" + data);
     return data;
   }
