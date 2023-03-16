@@ -244,7 +244,9 @@ export default function Register() {
                                   borderColor: "white",
                                 }}
                               >
-                                <option value="Nam">Nam</option>
+                                <option value={"Nam"} selected>
+                                  Nam
+                                </option>
                                 <option value="Nữ">Nữ</option>
                                 <option value="Khác">Khác</option>
                               </Field>
