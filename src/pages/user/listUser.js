@@ -34,11 +34,22 @@ export default function ListUser() {
                 <div class="col-lg-6">
                   <div class="top-streamers">
                     <div class="heading-section">
+<<<<<<< HEAD
                       <h5>
                         <h4 style={{ textAlign: "center" }}>
                           {" "}
                           Duyệt Thành Viên Cung Cấp Dịch Vụ{" "}
                         </h4>
+=======
+                      <h5
+                        style={{
+                          textAlign: "center",
+                          color: "rgb(236,96,144)",
+                        }}
+                      >
+                        {" "}
+                        Duyệt Thành Viên Cung Cấp Dịch Vụ{" "}
+>>>>>>> feature/usermanager
                       </h5>
                     </div>
                     {usersRequest !== undefined &&
@@ -61,6 +72,7 @@ export default function ListUser() {
                                 <h6>
                                   <i class="fa fa-check"></i> {item.username}
                                 </h6>
+<<<<<<< HEAD
 
                                 <button
                                   style={{
@@ -104,6 +116,61 @@ export default function ListUser() {
                                   }}
                                 >
                                   Duyệt
+=======
+                                <button
+                                  style={{
+                                    float: "right",
+
+                                    width: "79.08px",
+                                    height: "37px",
+                                    backgroundColor: "#e75e8d",
+                                    display: "inline-block",
+                                    borderRadius: "25px",
+                                    fontWeight: "400",
+                                    textTransform: "capitalize",
+                                    letterSpacing: " 0.5px",
+                                    transition: "all .3s",
+                                    position: "relative",
+                                    overflow: "hidden",
+                                    color: "white",
+                                  }}
+                                >
+                                  <strong
+                                    style={{
+                                      borderRadius: "30px",
+                                      height: "50px",
+                                      width: "300px",
+                                    }}
+                                    onClick={() => {
+                                      swal({
+                                        title:
+                                          "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                                        text: "",
+                                        icon: "warning",
+                                        buttons: true,
+                                        dangerMode: true,
+                                      }).then((willDelete) => {
+                                        if (willDelete) {
+                                          dispatch(
+                                            acceptRequestProvider(item.idUser)
+                                          ).then(() => {
+                                            navigate("/admin/listUser");
+                                          });
+                                          swal(
+                                            "Bạn đã gửi yêu cầu thành công !",
+                                            {
+                                              icon: "Thành công ",
+                                            }
+                                          );
+                                        } else {
+                                          swal("Bạn đã hủy yêu cầu !");
+                                        }
+                                      });
+                                    }}
+                                  >
+                                    Duyệt
+                                  </strong>
+>>>>>>> feature/usermanager
                                 </button>
                               </li>
                             </ul>
@@ -115,11 +182,22 @@ export default function ListUser() {
                 <div class="col-lg-6">
                   <div class="top-streamers">
                     <div class="heading-section">
+<<<<<<< HEAD
                       <h4>
                         <h4 style={{ textAlign: "center" }}>
                           Duyệt Thành Viên Đăng Ký Tài Khoản
                         </h4>
                       </h4>
+=======
+                      <h5
+                        style={{
+                          textAlign: "center",
+                          color: "rgb(236,96,144)",
+                        }}
+                      >
+                        Duyệt Thành Viên Đăng Ký Tài Khoản
+                      </h5>
+>>>>>>> feature/usermanager
                     </div>
                     {usersRequest !== undefined &&
                       usersRequest.map((item, key) => {
