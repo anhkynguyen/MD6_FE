@@ -84,7 +84,8 @@ export default function EditProvider() {
 
   const handleEdit = (values) => {
     let data = [{ ...values, image: urls }, id];
-    console.log(values, 454);
+    console.log(data, 44);
+
     data[0] = {
       idPost: data[0].idPost,
       namePost: data[0].namePost,

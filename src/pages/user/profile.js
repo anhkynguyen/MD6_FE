@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getProfile, requestProvider } from "../../service/userService";
 import swal from "sweetalert";
 import ProfileProvider from "../provider/profleProvider";
+import { Link } from "react-router-dom";
 export default function Profile() {
   const id = useParams();
 
@@ -102,12 +103,14 @@ export default function Profile() {
                               Chức vụ <span>{user.role}</span>
                             </li>
                             <li>
-                              <button
-                                type="submit"
-                                class="btn btn-primary btn-block logn-btn"
-                              >
-                                Đổi mật khẩu
-                              </button>{" "}
+                              <Link to={"/user/change-password/" + user.idUser}>
+                                <button
+                                  type="submit"
+                                  class="btn btn-primary btn-block logn-btn"
+                                >
+                                  Đổi mật khẩu
+                                </button>{" "}
+                              </Link>
                             </li>
                           </ul>
                         </div>

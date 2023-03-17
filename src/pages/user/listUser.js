@@ -7,6 +7,7 @@ import {
   getUsers,
   acceptRequestProvider,
   acceptUsersRegister,
+  lockUser,
 } from "../../service/userService";
 import swal from "sweetalert";
 export default function ListUser() {
@@ -230,13 +231,58 @@ export default function ListUser() {
                       <img src={item.avatar} alt="" class="templatemo-item" />
                       <h4>{item.username}</h4>
                       <span>{item.role}</span>
+
                       <ul>
                         <li>
-                          <i class="fa fa-star"></i> 4.8
+                          <label class="switch">
+                            <input
+                              type="checkbox"
+                              value={"off"}
+                              onClick={() => {
+                                dispatch(lockUser(item.idUser));
+                                console.log(111111, item.idUser);
+                              }}
+                            />
+                            <span class="slider round"></span>
+                          </label>
                         </li>
-                        <li>
-                          <i class="fa fa-download"></i> 2.3M
-                        </li>
+                        {/* <button
+                          style={{
+                            float: "right",
+                            position: "relative",
+                            bottom: "30px",
+                          }}
+                          type="submit"
+                          class="btn btn-primary btn-block logn-btn"
+                          onClick={() => {
+                            swal({
+                              title:
+                                "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                              text: "",
+                              icon: "warning",
+                              buttons: true,
+                              dangerMode: true,
+                            }).then((willDelete) => {
+                              if (willDelete) {
+                                dispatch(lockUser(item.idUser))
+                                  .then(() => {
+                                    navigate("/home");
+                                  })
+                                  .then(() => {
+                                    navigate("/home");
+                                  });
+
+                                swal("Bạn đã gửi yêu cầu thành công !", {
+                                  icon: "Thành công ",
+                                });
+                              } else {
+                                swal("Bạn đã hủy yêu cầu !");
+                              }
+                            });
+                          }}
+                        >
+                          Duyệt
+                        </button>{" "} */}
                       </ul>
                     </div>
                   </div>

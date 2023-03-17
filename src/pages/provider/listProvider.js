@@ -9,7 +9,6 @@ export default function ListProvider() {
   const navigate = useNavigate();
 
   const posts = useSelector((state) => {
-    console.log(state.post.posts, 222);
     if (state.post !== undefined) {
       return state.post.posts;
     }

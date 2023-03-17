@@ -11,6 +11,7 @@ import {
   acceptRequestProvider,
   acceptUsersRegister,
   getUsersRegister,
+  lockUser,
 } from "../../service/userService";
 
 const initialState = {
@@ -65,7 +66,9 @@ const userSlice = createSlice({
       state.usersRegister = action.payload;
     });
     builder.addCase(acceptUsersRegister.fulfilled, (state, action) => {
-      console.log(1234, action.payload);
+      state.user = action.payload;
+    });
+    builder.addCase(lockUser.fulfilled, (state, action) => {
       state.user = action.payload;
     });
   },
