@@ -4,7 +4,6 @@ import NavbarAdmin from "./navbarAdmin";
 
 export default function Navbar() {
   const user = useSelector((state) => state.user.currentUser);
-  console.log(888, user);
 
   return (
     <>
@@ -33,12 +32,12 @@ export default function Navbar() {
 
                   <ul class="nav">
                     <li>
-                      <a href="index.html" class="active">
+                      <a href="/home" class="active">
                         Home
                       </a>
                     </li>
                     <li>
-                      <a href="/home/add-post">Add</a>
+                      <a href="/home/add-post">Đăng Bài</a>
                     </li>
                     <li>
                       <a href="details.html">Details</a>

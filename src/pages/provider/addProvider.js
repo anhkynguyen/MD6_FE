@@ -13,8 +13,6 @@ export default function AddProvider() {
     const [images, setImages] = useState([]);
     const [urls, setUrls] = useState([]);
     const [progress, setProgress] = useState(0);
-    console.log(2, urls)
-    console.log(3,setUrls)
     const user = useSelector(state => {
         return state.user.currentUser;
     })
@@ -95,7 +93,8 @@ export default function AddProvider() {
                                             <div class="main-profile ">
                                                 <div class="row">
                                                     <h1 style={{textAlign: "center"}}>Đăng thông tin của bạn</h1>
-                                                    <div className="col-lg-4">
+
+                                                    <div className="col-lg-5 ">
                                                         <div
                                                             className="col-md-4 wow fadeInUp"
                                                             data-wow-delay="0.1s"
@@ -106,8 +105,8 @@ export default function AddProvider() {
                                                                 alt={urls[0]}
                                                                 style={{
                                                                     borderRadius: "23px",
-                                                                    height: "300px",
-                                                                    width: "300px",
+                                                                    height: "200px",
+                                                                    width: "200px",
                                                                 }}
                                                             />
                                                         </div>
@@ -129,7 +128,7 @@ export default function AddProvider() {
                                                         ></Field>
                                                         <button
                                                             type="button"
-                                                            className="btn btn-secondary w-100 py-3"
+                                                            className="btn btn-secondary w-50 py-3"
                                                             onClick={() => dispatch(handleUpload)}
                                                         >
                                                             Upload
@@ -245,33 +244,18 @@ export default function AddProvider() {
                                                             <div className="main-border-button border-no-active "></div>
                                                         </div>
                                                     </div>
-                                                    <div className="col-lg-2 align-self-center">
-                                                        <div className="main-info header-text">
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-                                                            <hr></hr>
-
-
+                                                    <div >
+                                                        <div className="main-info header-text" style={{textAlign:"center"}}>
                                                             <button
                                                                 type="submit"
                                                                 style={{
-                                                                    width: "70%",
+                                                                    width: "20%",
                                                                     height: "40px",
                                                                     borderRadius: "15px",
                                                                     backgroundColor: "#1F2122",
                                                                     color: "white",
                                                                     borderColor: "white",
+
                                                                 }}
                                                             >
                                                                 Đăng bài

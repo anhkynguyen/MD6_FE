@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { getProfile, requestProvider } from "../../service/userService";
 import swal from "sweetalert";
 import ProfileProvider from "../provider/profleProvider";
@@ -9,7 +9,6 @@ export default function Profile() {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.currentUser);
-  console.log(33333, user);
 
   useEffect(() => {
     dispatch(getProfile(id));
@@ -102,12 +101,12 @@ export default function Profile() {
                               Chức vụ <span>{user.role}</span>
                             </li>
                             <li>
-                              <button
+                              <Link to={"/user/change-password/"+ user.idUser}><button
                                 type="submit"
                                 class="btn btn-primary btn-block logn-btn"
                               >
                                 Đổi mật khẩu
-                              </button>{" "}
+                              </button>{" "}</Link>
                             </li>
                           </ul>
                         </div>
