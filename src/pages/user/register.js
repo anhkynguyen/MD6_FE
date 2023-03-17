@@ -1,60 +1,14 @@
 import { Formik, Form, Field } from "formik";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import swal from "sweetalert";
-import { storage } from "../../upload/firebaseConfig";
-import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
+
 import { register } from "../../service/userService";
-
-export default function Register() {
-  const navigate = useNavigate();
+export default function RegisterTest() {
   const dispatch = useDispatch();
-  const [images, setImages] = useState([]);
-  const [urls, setUrls] = useState([]);
-  const [progress, setProgress] = useState(0);
-  const handleChange = (e) => {
-    for (let i = 0; i < e.target.files.length; i++) {
-      const newImage = e.target.files[i];
-      newImage["id"] = Math.random();
-      setImages((prevState) => [...prevState, newImage]);
-    }
-  };
-  const handleUpload = () => {
-    const promises = [];
-    if (images.length > 0) {
-      images.map((image) => {
-        const storageRef = ref(storage, `images/${image.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, image);
-        promises.push(uploadTask);
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress = Math.round(
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            setProgress(progress);
-          },
-          (error) => {
-            console.log(error);
-          },
-          async () => {
-            await getDownloadURL(uploadTask.snapshot.ref).then(
-              (downloadURLs) => {
-                setUrls((prevState) => [...prevState, downloadURLs]);
-              }
-            );
-          }
-        );
-      });
-    }
-    Promise.all(promises)
-      .then(() => swal("All images uploaded"))
-      .catch((err) => console.log(err));
-  };
-
+  const navigate = useNavigate();
   const handleRegister = (values) => {
-    let data = { ...values, avatar: urls[0] };
+    let data = { ...values };
     console.log(2, data);
     dispatch(register(data)).then((value) => {
       if (value.payload === "Username already registered") {
@@ -68,6 +22,7 @@ export default function Register() {
   };
   return (
     <>
+      <header class="top-header"></header>
       <Formik
         initialValues={{
           username: "",
@@ -75,227 +30,136 @@ export default function Register() {
           gmail: "",
           birthday: "",
           gender: "",
-          avatar: "",
         }}
         onSubmit={(values) => {
           handleRegister(values);
         }}
       >
         <Form>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="page-content">
+          <div id="mainCoantiner">
+            <div class="main-header"></div>
+
+            <div>
+              <div class="starsec"></div>
+              <div class="starthird"></div>
+              <div class="starfourth"></div>
+              <div class="starfifth"></div>
+            </div>
+
+            <div class="container text-center text-dark mt-5">
+              <div class="row">
+                <div class="col-lg-4 d-block mx-auto mt-4">
                   <div class="row">
-                    <div class="col-lg-12">
-                      <div class="main-profile ">
-                        <div class="row">
-                          <h1 style={{ textAlign: "center" }}>Đăng Ký</h1>
-                          <strong style={{ color: "white", fontSize: "Large" }}>
-                            Vui lòng chọn ảnh đại diện của bạn
-                          </strong>
-                          <div class="col-lg-4">
-                            <div
-                              class="col-md-4 wow fadeInUp"
-                              data-wow-delay="0.1s"
-                            >
-                              <img
-                                className="position-relative rounded w-300 h-300"
-                                src={urls[0]}
-                                alt={urls[0]}
-                                style={{
-                                  borderRadius: "23px",
-                                  height: "300px",
-                                  width: "300px",
-                                }}
-                              />
-                            </div>
+                    <div class="col-xl-12 col-md-12 col-md-12">
+                      <div class="card">
+                        <div class="card-body wow-bg" id="formBg">
+                          <h3 style={{ color: "pink" }}>Đăng Ký</h3>
 
-                            <br></br>
+                          <p style={{ color: "pink" }}>
+                            Đăng ký tài khoản của bạn
+                          </p>
+                          <p style={{ color: "white", float: "left" }}>
+                            Họ tên
+                          </p>
+                          <div class="input-group mb-2">
+                            {" "}
                             <Field
-                              name={"avatar"}
-                              id="avatar"
-                              style={{
-                                width: "100%",
-                                height: "40px",
-                                borderRadius: "15px",
-                                backgroundColor: "#1F2122",
-                                color: "white",
-                                borderColor: "white",
-                              }}
-                              type="file"
-                              onChange={handleChange}
-                            ></Field>
-                            <button
-                              type="button"
-                              className="btn btn-secondary w-100 py-3"
-                              onClick={() => dispatch(handleUpload)}
+                              type="text"
+                              name={"username"}
+                              id="username"
+                              class="form-control textbox-dg"
+                              placeholder="Nhập họ tên đầy đủ của bạn"
+                              style={{ color: "white" }}
+                            />{" "}
+                          </div>
+                          <p style={{ color: "white", float: "left" }}>
+                            Mật khẩu
+                          </p>
+                          <div class="input-group mb-1">
+                            {" "}
+                            <Field
+                              name={"password"}
+                              id="password"
+                              type="password"
+                              class="form-control textbox-dg"
+                              placeholder="Nhập mật khẩu bạn chọn"
+                              style={{ color: "white" }}
+                            />{" "}
+                          </div>
+                          <p style={{ color: "white", float: "left" }}>
+                            Nhập lại mật khẩu
+                          </p>
+                          <div class="input-group mb-0">
+                            {" "}
+                            <Field
+                              name={"re-password"}
+                              id="re-password"
+                              type="password"
+                              class="form-control textbox-dg"
+                              placeholder="Nhập lại mật khẩu vừa chọn"
+                              style={{ color: "white" }}
+                            />{" "}
+                          </div>
+                          <p style={{ color: "white", float: "left" }}>
+                            Ngày sinh
+                          </p>
+                          <div class="input-group mb-0">
+                            {" "}
+                            <Field
+                              name={"birthday"}
+                              id="birthday"
+                              type="date"
+                              class="form-control textbox-dg"
+                              style={{ color: "white" }}
+                            />{" "}
+                          </div>
+                          <p style={{ color: "white", float: "left" }}>Email</p>
+                          <div class="input-group mb-0">
+                            {" "}
+                            <Field
+                              name={"gmail"}
+                              id="gmail"
+                              type="email"
+                              class="form-control textbox-dg"
+                              placeholder="Nhập email của bạn"
+                              style={{ color: "white" }}
+                            />{" "}
+                          </div>
+                          <p style={{ color: "white", float: "left" }}>
+                            Giới tính
+                          </p>
+                          <div class="input-group mb-0">
+                            {" "}
+                            <Field
+                              name={"gender"}
+                              id="gender"
+                              as="select"
+                              type="password"
+                              class="form-control textbox-dg"
+                              placeholder="Hãy chọn giới tính của bạn"
+                              style={{ color: "white" }}
                             >
-                              Upload
-                            </button>
+                              <option value={"Nam"} selected>
+                                Nam
+                              </option>
+                              <option value="Nữ">Nữ</option>
+                              <option value="Khác">Khác</option>
+                            </Field>
                           </div>
 
-                          <div class="col-lg-3 align-self-center">
-                            <div class="main-info header-text">
-                              <h5 style={{ color: "white" }}>Họ Tên </h5>
-
-                              <Field
-                                type="text"
-                                placeholder="Hãy nhập họ tên của bạn...."
-                                name={"username"}
-                                id="username"
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                              ></Field>
-                              <hr></hr>
-                              <h5 style={{ color: "white" }}>Mật khẩu</h5>
-
-                              <Field
-                                type="password"
-                                name={"password"}
-                                id="password"
-                                placeholder="Hãy nhập mật khẩu của bạn...."
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                              ></Field>
-                              <hr></hr>
-                              <h5 style={{ color: "white" }}>
-                                Nhập lại mật khẩu
-                              </h5>
-
-                              <Field
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                                type="password"
-                                name={"re-password"}
-                                id="re-password"
-                                placeholder="Hãy nhập lại mật khẩu của bạn...."
-                              ></Field>
-                              <hr></hr>
-                              <hr></hr>
-
-                              <div class="main-border-button border-no-active "></div>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-3 align-self-center">
-                            <div class="main-info header-text">
-                              <h5 style={{ color: "white" }}>Email</h5>
-
-                              <Field
-                                name={"gmail"}
-                                id="gmail"
-                                type="email"
-                                placeholder="Hãy nhập email của bạn...."
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                              ></Field>
-                              <hr></hr>
-                              <h5 style={{ color: "white" }}>Ngày sinh</h5>
-
-                              <Field
-                                name={"birthday"}
-                                id="birthday"
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                                type="date"
-                                placeholder="Hãy nhập chiều cao của bạn...."
-                              ></Field>
-                              <hr></hr>
-                              <h5 style={{ color: "white" }}>Giới tính</h5>
-
-                              <Field
-                                as="select"
-                                name="gender"
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                              >
-                                <option value={"Nam"} selected>
-                                  Nam
-                                </option>
-                                <option value="Nữ">Nữ</option>
-                                <option value="Khác">Khác</option>
-                              </Field>
-                              <h6>
-                                {" "}
-                                Bạn đã có tài khoản đăng nhập tại đây{" "}
-                                <Link to={"/"} style={{ color: "red" }}>
-                                  {" "}
-                                  Đăng nhập{" "}
-                                </Link>
-                              </h6>
-
-                              <div class="main-border-button border-no-active "></div>
-                            </div>
-                          </div>
-                          <div class="col-lg-2 align-self-center">
-                            <div class="main-info header-text">
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-
+                          <div class="row">
+                            <div class="col-12">
+                              {" "}
                               <button
                                 type="submit"
-                                style={{
-                                  width: "70%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
+                                class="btn btn-primary btn-block logn-btn"
                               >
                                 Đăng ký
-                              </button>
-                              <hr></hr>
-                              <hr></hr>
-
-                              <hr></hr>
+                              </button>{" "}
+                            </div>
+                            <div class="col-12">
+                              <p>Bạn đã có tài khoản đăng nhập</p>{" "}
+                              <a href="forgot-password.html">tại đây</a>{" "}
                             </div>
                           </div>
                         </div>

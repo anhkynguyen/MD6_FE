@@ -9,6 +9,8 @@ import {
   register,
   requestProvider,
   acceptRequestProvider,
+  acceptUsersRegister,
+  getUsersRegister,
 } from "../../service/userService";
 
 const initialState = {
@@ -16,6 +18,8 @@ const initialState = {
   user: [],
   users: [],
   usersRequest: [],
+  usersRegister: [],
+
   profile: [],
   checkPassword: "",
 };
@@ -51,10 +55,16 @@ const userSlice = createSlice({
       state.usersRequest = action.payload;
     });
     builder.addCase(requestProvider.fulfilled, (state, action) => {
-      console.log(11, action.payload);
       state.user = action.payload;
     });
     builder.addCase(acceptRequestProvider.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+    builder.addCase(getUsersRegister.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.usersRegister = action.payload;
+    });
+    builder.addCase(acceptUsersRegister.fulfilled, (state, action) => {
       console.log(1234, action.payload);
       state.user = action.payload;
     });

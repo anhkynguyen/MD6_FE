@@ -12,7 +12,7 @@ import ListUser from "./pages/user/listUser";
 import ChangePassword from "./pages/user/changePassword";
 import EditProvider from "./pages/provider/editProvider";
 import AddProvider from "./pages/provider/addProvider";
-import RegisterTest from "./pages/user/registertest";
+import RegisterTest from "./pages/user/register";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);

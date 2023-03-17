@@ -25,7 +25,6 @@ export const addProvider = createAsyncThunk("post/addPost", async (data) => {
 export const removeProvider = createAsyncThunk(
   "post/removePost",
   async (data) => {
-    console.log(5555, data);
     const res = await customAxios.delete("post/remove/" + data);
     return data;
   }

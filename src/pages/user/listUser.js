@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   getUsersRequest,
+  getUsersRegister,
   getUsers,
   acceptRequestProvider,
+  acceptUsersRegister,
 } from "../../service/userService";
 import swal from "sweetalert";
 export default function ListUser() {
@@ -17,9 +19,13 @@ export default function ListUser() {
   const usersRequest = useSelector((state) => {
     return state.user.usersRequest;
   });
+  const usersRegister = useSelector((state) => {
+    return state.user.usersRegister;
+  });
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getUsersRequest());
+    dispatch(getUsersRegister());
   }, []);
 
   return (
@@ -70,70 +76,51 @@ export default function ListUser() {
                                 />
                                 <h6>
                                   <i class="fa fa-check"></i> {item.username}
-                                </h6>
+                                </h6>{" "}
                                 <button
                                   style={{
                                     float: "right",
-
-                                    width: "79.08px",
-                                    height: "37px",
-                                    backgroundColor: "#e75e8d",
-                                    display: "inline-block",
-                                    borderRadius: "25px",
-                                    fontWeight: "400",
-                                    textTransform: "capitalize",
-                                    letterSpacing: " 0.5px",
-                                    transition: "all .3s",
                                     position: "relative",
-                                    overflow: "hidden",
-                                    color: "white",
+                                    bottom: "30px",
+                                  }}
+                                  type="submit"
+                                  class="btn btn-primary btn-block logn-btn"
+                                  onClick={() => {
+                                    swal({
+                                      title:
+                                        "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                                      text: "",
+                                      icon: "warning",
+                                      buttons: true,
+                                      dangerMode: true,
+                                    }).then((willDelete) => {
+                                      if (willDelete) {
+                                        dispatch(
+                                          acceptRequestProvider(item.idUser)
+                                        )
+                                          .then(() => {
+                                            console.log(19);
+                                            navigate("/home");
+                                          })
+                                          .then(() => {
+                                            console.log(20);
+                                            navigate("/home");
+                                          });
+
+                                        swal(
+                                          "Bạn đã gửi yêu cầu thành công !",
+                                          {
+                                            icon: "Thành công ",
+                                          }
+                                        );
+                                      } else {
+                                        swal("Bạn đã hủy yêu cầu !");
+                                      }
+                                    });
                                   }}
                                 >
-                                  <strong
-                                    style={{
-                                      borderRadius: "30px",
-                                      height: "50px",
-                                      width: "300px",
-                                    }}
-                                    onClick={() => {
-                                      swal({
-                                        title:
-                                          "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
-                                        text: "",
-                                        icon: "warning",
-                                        buttons: true,
-                                        dangerMode: true,
-                                      }).then((willDelete) => {
-                                        if (willDelete) {
-                                          dispatch(
-                                            acceptRequestProvider(item.idUser)
-                                          )
-                                            .then(() => {
-                                              console.log(19);
-                                              navigate("/home");
-                                            })
-                                            .then(() => {
-                                              console.log(20);
-                                              navigate("/home");
-                                            });
-
-                                          swal(
-                                            "Bạn đã gửi yêu cầu thành công !",
-                                            {
-                                              icon: "Thành công ",
-                                            }
-                                          );
-                                        } else {
-                                          swal("Bạn đã hủy yêu cầu !");
-                                        }
-                                      });
-                                    }}
-                                  >
-                                    Duyệt
-                                  </strong>
-                                </button>
-                                <br />
-                                <br />
+                                  Duyệt
+                                </button>{" "}
                               </li>
                             </ul>
                           </div>
@@ -150,11 +137,13 @@ export default function ListUser() {
                           color: "rgb(236,96,144)",
                         }}
                       >
-                        Duyệt Thành Viên Đăng Ký Tài Khoản
+                        {" "}
+                        Duyệt Thành Viên Đăng Ký Tài Khoản{" "}
                       </h5>
+                      <br />
                     </div>
-                    {usersRequest !== undefined &&
-                      usersRequest.map((item, key) => {
+                    {usersRegister !== undefined &&
+                      usersRegister.map((item, key) => {
                         return (
                           <div>
                             {" "}
@@ -162,20 +151,61 @@ export default function ListUser() {
                               <li>
                                 <span>{key + 1}</span>
                                 <img
-                                  src="/assets/images/avatar-01.jpg"
+                                  src={item.avatar}
                                   alt=""
                                   style={{
-                                    maxWidth: "46px",
+                                    maxWidth: "45px",
+                                    maxHeight: "45px",
+
                                     borderRadius: "50%",
                                     marginRight: "15px",
                                   }}
                                 />
                                 <h6>
                                   <i class="fa fa-check"></i> {item.username}
-                                </h6>
-                                <div class="main-button">
-                                  <a href="/">Duyệt</a>
-                                </div>
+                                </h6>{" "}
+                                <button
+                                  style={{
+                                    float: "right",
+                                    position: "relative",
+                                    bottom: "30px",
+                                  }}
+                                  type="submit"
+                                  class="btn btn-primary btn-block logn-btn"
+                                  onClick={() => {
+                                    swal({
+                                      title:
+                                        "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                                      text: "",
+                                      icon: "warning",
+                                      buttons: true,
+                                      dangerMode: true,
+                                    }).then((willDelete) => {
+                                      if (willDelete) {
+                                        dispatch(
+                                          acceptUsersRegister(item.idUser)
+                                        )
+                                          .then(() => {
+                                            navigate("/home");
+                                          })
+                                          .then(() => {
+                                            navigate("/home");
+                                          });
+
+                                        swal(
+                                          "Bạn đã gửi yêu cầu thành công !",
+                                          {
+                                            icon: "Thành công ",
+                                          }
+                                        );
+                                      } else {
+                                        swal("Bạn đã hủy yêu cầu !");
+                                      }
+                                    });
+                                  }}
+                                >
+                                  Duyệt
+                                </button>{" "}
                               </li>
                             </ul>
                           </div>
@@ -184,75 +214,34 @@ export default function ListUser() {
                   </div>
                 </div>
               </div>
-
-              <div class="live-stream">
-                <div class="col-lg-12">
-                  <div class="heading-section">
-                    <h4 style={{ textAlign: "center" }}>Quản Lý Thành Viên</h4>
-                  </div>
-                </div>
-
-                <div class="row">
-                  {users.map((item, key) => {
-                    return (
-                      <div class="col-lg-3 col-sm-6">
-                        <div class="item">
-                          <div class="thumb">
-                            <img
-                              style={{ width: "100%", height: "250px" }}
-                              src={item.avatar}
-                              alt=""
-                            />
-                            <div class="hover-effect">
-                              <div class="content">
-                                <div class="live">
-                                  <a href="/">{item.status}</a>
-                                </div>
-                                <ul>
-                                  <li>
-                                    <a href="/">
-                                      <i class="fa fa-eye"></i> 1.2K
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="/">
-                                      <i class="fa fa-gamepad"></i> {item.role}
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                              col-8
-                            </div>
-                          </div>
-                          <div class="down-content">
-                            <div class="avatar">
-                              <img
-                                src="assets/images/avatar-01.jpg"
-                                alt=""
-                                style={{
-                                  maxWidth: "46px",
-                                  borderRadius: "50%",
-                                  float: "left",
-                                }}
-                              />
-                            </div>
-                            <span>
-                              <i class="fa fa-check"></i> {item.username}
-                            </span>
-                            <h4></h4>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-
-                  <div class="col-lg-12">
-                    <div class="main-button">
-                      <a href="streams.html">Load More Streams</a>
-                    </div>
-                  </div>
+            </div>
+          </div>
+          <div class="other-games">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4>Quản lý thành viên</h4>
                 </div>
               </div>
+              {users.map((item, key) => {
+                return (
+                  <div class="col-lg-6">
+                    <div class="item">
+                      <img src={item.avatar} alt="" class="templatemo-item" />
+                      <h4>{item.username}</h4>
+                      <span>{item.role}</span>
+                      <ul>
+                        <li>
+                          <i class="fa fa-star"></i> 4.8
+                        </li>
+                        <li>
+                          <i class="fa fa-download"></i> 2.3M
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
