@@ -25,6 +25,10 @@ export const getProfile = createAsyncThunk("user/getProfile", async (data) => {
   const res = await customAxios.get("/users/showMyProfile/" + data);
   return res.data;
 });
+export const getSellerProfile = createAsyncThunk("user/getSellerProfile", async (data) => {
+  const res = await customAxios.get("/users/showSellerProfile/" + data);
+  return res.data;
+});
 
 export const changePassword = createAsyncThunk(
   "users/changePassword",

@@ -1,9 +1,9 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {findByIdProvider} from "../../service/providerService";
+import {getSellerProfile} from "../../service/userService";
 
-export default function ProfilePost() {
+export default function SellerProfile() {
     const id = useParams();
 
     const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export default function ProfilePost() {
     const post = useSelector((state) => state.post.posts)
 
     useEffect(() => {
-        dispatch(findByIdProvider(id));
+        dispatch(getSellerProfile(id));
     }, []);
     return (
         <>

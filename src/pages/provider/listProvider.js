@@ -49,7 +49,7 @@ export default function ListProvider() {
                       <div className="item">
                         <img src={item.image} height={200} width={300} alt="" />
                         <h4>
-                          <Link to={"/user/" + item.idPost}>{item.namePost}</Link>
+                          <Link to={"/home/showSellerProfile/" + item.idPost}>{item.namePost}</Link>
                           <br />
                           <span style={{ color: "white" }}>
                             Giá: {item.price}/h

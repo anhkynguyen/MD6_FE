@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="546915de-ad8d-45ea-9607-1ae7f677e56c" name="Changes" comment="&quot;pull dev&quot;">
-      <change afterPath="$PROJECT_DIR$/src/pages/provider/profilePost.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/addProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/addProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/provider/listProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/listProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/provider/profilePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/sellerProfile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/user/changePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/changePassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/slices/userSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/userSlice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/userService.js" afterDir="false" />
     </list>
@@ -92,7 +89,8 @@
       <workItem from="1678690338977" duration="274000" />
       <workItem from="1678756438819" duration="223000" />
       <workItem from="1678855982480" duration="188000" />
-      <workItem from="1679026838578" duration="351000" />
+      <workItem from="1679026838578" duration="1894000" />
+      <workItem from="1679034716041" duration="4375000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;feature/loginform&quot;">
       <created>1678675153635</created>
