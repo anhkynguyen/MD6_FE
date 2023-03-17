@@ -8,7 +8,10 @@ import {
   login,
   register,
   requestProvider,
-  acceptRequestProvider, getSellerProfile,
+  acceptRequestProvider,
+  acceptUsersRegister,
+  getUsersRegister,
+  lockUser,
 } from "../../service/userService";
 
 const initialState = {
@@ -16,6 +19,8 @@ const initialState = {
   user: [],
   users: [],
   usersRequest: [],
+  usersRegister: [],
+
   profile: [],
   checkPassword: "",
 };
@@ -41,9 +46,6 @@ const userSlice = createSlice({
     builder.addCase(getProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
     });
-    builder.addCase(getSellerProfile.fulfilled, (state, action) => {
-      state.profile = action.payload;
-    });
     builder.addCase(changePassword.fulfilled, (state, action) => {
       state.checkPassword = action.payload;
     });
@@ -57,6 +59,16 @@ const userSlice = createSlice({
       state.user = action.payload;
     });
     builder.addCase(acceptRequestProvider.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+    builder.addCase(getUsersRegister.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.usersRegister = action.payload;
+    });
+    builder.addCase(acceptUsersRegister.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+    builder.addCase(lockUser.fulfilled, (state, action) => {
       state.user = action.payload;
     });
   },

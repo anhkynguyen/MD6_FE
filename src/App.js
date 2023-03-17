@@ -12,8 +12,7 @@ import ListUser from "./pages/user/listUser";
 import ChangePassword from "./pages/user/changePassword";
 import EditProvider from "./pages/provider/editProvider";
 import AddProvider from "./pages/provider/addProvider";
-import RegisterTest from "./pages/user/registertest";
-import SellerProfile from "./pages/provider/sellerProfile";
+import RegisterTest from "./pages/user/register";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -31,7 +30,6 @@ function App() {
             <>
               <Route path={"home"} element={<Home />}>
                 <Route path={""} element={<ListProvider />}></Route>
-                <Route path={"showSellerProfile/:id"} element={<SellerProfile />}></Route>
                 <Route path={"add-post"} element={<AddProvider />} />
                 <Route path={"edit-post/:id"} element={<EditProvider />} />
               </Route>

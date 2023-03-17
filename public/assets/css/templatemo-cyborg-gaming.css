@@ -197,7 +197,7 @@ body {
 body .page-content {
   margin-top: 110px;
 
-  padding: 60px;
+  padding: 0px;
   border-radius: 23px;
 }
 
@@ -1526,8 +1526,8 @@ Top Streamers Style
   border-radius: 23px;
   background-color: #1f2122;
   padding: 30px;
-  max-height: 567px;
-  min-height: 567px;
+  max-height: 450px;
+  min-height: 450px;
 }
 
 .top-streamers ul li {

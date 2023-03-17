@@ -25,23 +25,7 @@ export const getProfile = createAsyncThunk("user/getProfile", async (data) => {
   const res = await customAxios.get("/users/showMyProfile/" + data);
   return res.data;
 });
-export const getSellerProfile = createAsyncThunk("user/getSellerProfile", async (data) => {
-  const res = await customAxios.get("/users/showSellerProfile/" + data);
-  return res.data;
-});
 
-export const changePassword = createAsyncThunk(
-  "users/changePassword",
-  async (data) => {
-      console.log(data)
-    const res = await customAxios.put(
-      'users/change-password/' + data[1],
-      data[0]
-    );
-      console.log(11, res.data)
-    return res.data;
-  }
-);
 export const getUsers = createAsyncThunk("users/getUsers", async () => {
   const res = await customAxios.get("admins");
   return res.data;
@@ -50,6 +34,14 @@ export const getUsersRequest = createAsyncThunk(
   "user/getUsersRequest",
   async () => {
     const res = await customAxios.get("admins/checkAsk");
+
+    return res.data;
+  }
+);
+export const getUsersRegister = createAsyncThunk(
+  "user/getUsersRegister",
+  async () => {
+    const res = await customAxios.get("admins/AddUser");
 
     return res.data;
   }
@@ -65,7 +57,32 @@ export const requestProvider = createAsyncThunk(
 export const acceptRequestProvider = createAsyncThunk(
   "user/getAcceptRequestProvider",
   async (data) => {
+    
     const res = await customAxios.get("/admins/changeRole/" + data);
     return data;
   }
 );
+export const acceptUsersRegister = createAsyncThunk(
+  "user/getAcceptUserRegister",
+  async (data) => {
+    console.log(123, data);
+    const res = await customAxios.get("admins/changeCategory/" + data);
+    return data;
+  }
+);
+export const changePassword = createAsyncThunk(
+  "users/changePassword",
+  async (data) => {
+    console.log(data);
+    const res = await customAxios.put(
+      "users/change-password/" + data[1],
+      data[0]
+    );
+    return res.data;
+  }
+);
+export const lockUser = createAsyncThunk("user/getLockUser", async (data) => {
+  console.log(123, data);
+  const res = await customAxios.get("admins/lock/" + data);
+  return data;
+});
