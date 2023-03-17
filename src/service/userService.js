@@ -23,20 +23,44 @@ export const editProfile = createAsyncThunk(
 
 export const getProfile = createAsyncThunk("user/getProfile", async (data) => {
   const res = await customAxios.get("/users/showMyProfile/" + data);
-  console.log(666, res);
-  return res.data;
-});
-
-export const getUsers = createAsyncThunk("users/getUsers", async () => {
-  const res = await customAxios.get("admins");
   return res.data;
 });
 
 export const changePassword = createAsyncThunk(
-    'users/changePassword',
-    async (data)=>{
-        console.log(data)
-        const res = await customAxios.put('users/change-password/' + data[1], data[0]);
-        return res.data;
-    }
+  "user/changePassword",
+  async (data) => {
+    const res = await customAxios.put(
+      "/users/change-password/" + data[1],
+      data[0]
+    );
+    return res.data;
+  }
+);
+export const getUsers = createAsyncThunk("users/getUsers", async () => {
+  const res = await customAxios.get("admins");
+  return res.data;
+});
+export const getUsersRequest = createAsyncThunk(
+  "user/getUsersRequest",
+  async () => {
+    const res = await customAxios.get("admins/checkAsk");
+
+    return res.data;
+  }
+);
+
+export const requestProvider = createAsyncThunk(
+  "user/getRequestProviders",
+  async (data) => {
+    const res = await customAxios.get("/users/userRequest/" + data);
+    return data;
+  }
+);
+export const acceptRequestProvider = createAsyncThunk(
+  "user/getAcceptRequestProvider",
+  async (data) => {
+    console.log(123, data);
+    const res = await customAxios.get("/admins/changeRole/" + data);
+    return data;
+  }
 );

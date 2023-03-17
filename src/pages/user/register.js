@@ -91,7 +91,9 @@ export default function Register() {
                       <div class="main-profile ">
                         <div class="row">
                           <h1 style={{ textAlign: "center" }}>Đăng Ký</h1>
-
+                          <strong style={{ color: "white", fontSize: "Large" }}>
+                            Vui lòng chọn ảnh đại diện của bạn
+                          </strong>
                           <div class="col-lg-4">
                             <div
                               class="col-md-4 wow fadeInUp"
@@ -244,7 +246,9 @@ export default function Register() {
                                   borderColor: "white",
                                 }}
                               >
-                                <option value="Nam">Nam</option>
+                                <option value={"Nam"} selected>
+                                  Nam
+                                </option>
                                 <option value="Nữ">Nữ</option>
                                 <option value="Khác">Khác</option>
                               </Field>

@@ -44,7 +44,11 @@ export default function NavbarAdmin() {
                 <li>
                   <Link to={`/user/${user.idUser}`}>
                     {user.username}
-                    <img src={user.avatar} alt="" />
+                    <img
+                      style={{ width: "30px", height: "30px" }}
+                      src={user.avatar}
+                      alt=""
+                    />
                   </Link>
                 </li>
               </ul>

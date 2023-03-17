@@ -1,32 +1,160 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../service/userService";
+import { useNavigate } from "react-router-dom";
+import {
+  getUsersRequest,
+  getUsers,
+  acceptRequestProvider,
+} from "../../service/userService";
+import swal from "sweetalert";
 export default function ListUser() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const users = useSelector((state) => {
     return state.user.users;
   });
+
+  const usersRequest = useSelector((state) => {
+    return state.user.usersRequest;
+  });
   useEffect(() => {
     dispatch(getUsers());
+    dispatch(getUsersRequest());
   }, []);
+
   return (
     <div>
       <div class="container">
+        <div>
+          <div class="starsec"></div>
+          <div class="starthird"></div>
+          <div class="starfourth"></div>
+          <div class="starfifth"></div>
+        </div>
         <div class="row">
           <div class="col-lg-12">
             <div class="page-content">
               <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                   <div class="top-streamers">
                     <div class="heading-section">
-                      <h4>
-                        <h4 style={{ textAlign: "center" }}>
-                          Thành viên chờ xét duyệt
-                        </h4>
-                      </h4>
+                      <h5
+                        style={{
+                          textAlign: "center",
+                          color: "rgb(236,96,144)",
+                        }}
+                      >
+                        {" "}
+                        Duyệt Thành Viên Cung Cấp Dịch Vụ{" "}
+                      </h5>
+                      <br />
                     </div>
-                    {users !== undefined &&
-                      users.map((item, key) => {
+                    {usersRequest !== undefined &&
+                      usersRequest.map((item, key) => {
+                        return (
+                          <div>
+                            {" "}
+                            <ul>
+                              <li>
+                                <span>{key + 1}</span>
+                                <img
+                                  src={item.avatar}
+                                  alt=""
+                                  style={{
+                                    maxWidth: "45px",
+                                    maxHeight: "45px",
+
+                                    borderRadius: "50%",
+                                    marginRight: "15px",
+                                  }}
+                                />
+                                <h6>
+                                  <i class="fa fa-check"></i> {item.username}
+                                </h6>
+                                <button
+                                  style={{
+                                    float: "right",
+
+                                    width: "79.08px",
+                                    height: "37px",
+                                    backgroundColor: "#e75e8d",
+                                    display: "inline-block",
+                                    borderRadius: "25px",
+                                    fontWeight: "400",
+                                    textTransform: "capitalize",
+                                    letterSpacing: " 0.5px",
+                                    transition: "all .3s",
+                                    position: "relative",
+                                    overflow: "hidden",
+                                    color: "white",
+                                  }}
+                                >
+                                  <strong
+                                    style={{
+                                      borderRadius: "30px",
+                                      height: "50px",
+                                      width: "300px",
+                                    }}
+                                    onClick={() => {
+                                      swal({
+                                        title:
+                                          "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                                        text: "",
+                                        icon: "warning",
+                                        buttons: true,
+                                        dangerMode: true,
+                                      }).then((willDelete) => {
+                                        if (willDelete) {
+                                          dispatch(
+                                            acceptRequestProvider(item.idUser)
+                                          )
+                                            .then(() => {
+                                              console.log(19);
+                                              navigate("/home");
+                                            })
+                                            .then(() => {
+                                              console.log(20);
+                                              navigate("/home");
+                                            });
+
+                                          swal(
+                                            "Bạn đã gửi yêu cầu thành công !",
+                                            {
+                                              icon: "Thành công ",
+                                            }
+                                          );
+                                        } else {
+                                          swal("Bạn đã hủy yêu cầu !");
+                                        }
+                                      });
+                                    }}
+                                  >
+                                    Duyệt
+                                  </strong>
+                                </button>
+                                <br />
+                                <br />
+                              </li>
+                            </ul>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="top-streamers">
+                    <div class="heading-section">
+                      <h5
+                        style={{
+                          textAlign: "center",
+                          color: "rgb(236,96,144)",
+                        }}
+                      >
+                        Duyệt Thành Viên Đăng Ký Tài Khoản
+                      </h5>
+                    </div>
+                    {usersRequest !== undefined &&
+                      usersRequest.map((item, key) => {
                         return (
                           <div>
                             {" "}

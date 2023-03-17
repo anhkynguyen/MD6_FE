@@ -3,15 +3,19 @@ import {
   changePassword,
   editProfile,
   getProfile,
+  getUsersRequest,
   getUsers,
   login,
   register,
+  requestProvider,
+  acceptRequestProvider,
 } from "../../service/userService";
 
 const initialState = {
   currentUser: JSON.parse(localStorage.getItem("user")),
   user: [],
   users: [],
+  usersRequest: [],
   profile: [],
   checkPassword: "",
 };
@@ -37,11 +41,22 @@ const userSlice = createSlice({
     builder.addCase(getProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
     });
+    builder.addCase(changePassword.fulfilled, (state, action) => {
+      state.checkPassword = action.payload;
+    });
     builder.addCase(getUsers.fulfilled, (state, action) => {
       state.users = action.payload;
     });
-    builder.addCase(changePassword.fulfilled,(state,action)=>{
-      state.checkPassword = action.payload
+    builder.addCase(getUsersRequest.fulfilled, (state, action) => {
+      state.usersRequest = action.payload;
+    });
+    builder.addCase(requestProvider.fulfilled, (state, action) => {
+      console.log(11, action.payload);
+      state.user = action.payload;
+    });
+    builder.addCase(acceptRequestProvider.fulfilled, (state, action) => {
+      console.log(1234, action.payload);
+      state.user = action.payload;
     });
   },
 });

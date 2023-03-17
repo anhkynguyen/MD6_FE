@@ -68,9 +68,7 @@ export default function Footer() {
                     id="form5Example21"
                     class="form-control"
                   />
-                  <label class="form-label" for="form5Example21">
-                    Email address
-                  </label>
+                  <label class="form-label" for="form5Example21"></label>
                 </div>
               </div>
 
@@ -82,21 +80,16 @@ export default function Footer() {
             </div>
           </form>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
-            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
-          </p>
+          <p>Bạn chưa tìm được một nửa của mình hãy đến với chúng tôi </p>
         </div>
 
         <div
           class="text-center p-1"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
-          © 2020 Copyright:
+          © 2023 -
           <a class="text-white" href="https://mdbootstrap.com/">
-            MDBootstrap.com
+            TLK
           </a>
         </div>
       </footer>
