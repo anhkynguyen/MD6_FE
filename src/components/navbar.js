@@ -38,7 +38,7 @@ export default function Navbar() {
                       </a>
                     </li>
                     <li>
-                      <a href="browse.html">Browse</a>
+                      <a href="/home/add-post">Add</a>
                     </li>
                     <li>
                       <a href="details.html">Details</a>
@@ -60,7 +60,7 @@ export default function Navbar() {
                     <img
                       style={{ width: "40px", height: "40px" }}
                       src="https://cdn3.iconfinder.com/data/icons/UltimateGnome/256x256/actions/gnome-session-logout.png"
-                      alt=""
+                      alt="logout"
                     />
                   </Link>
                   <a href="/" class="menu-trigger">

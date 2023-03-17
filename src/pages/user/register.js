@@ -91,7 +91,9 @@ export default function Register() {
                       <div class="main-profile ">
                         <div class="row">
                           <h1 style={{ textAlign: "center" }}>Đăng Ký</h1>
-
+                          <strong style={{ color: "white", fontSize: "Large" }}>
+                            Vui lòng chọn ảnh đại diện của bạn
+                          </strong>
                           <div class="col-lg-4">
                             <div
                               class="col-md-4 wow fadeInUp"

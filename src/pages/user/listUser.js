@@ -25,6 +25,12 @@ export default function ListUser() {
   return (
     <div>
       <div class="container">
+        <div>
+          <div class="starsec"></div>
+          <div class="starthird"></div>
+          <div class="starfourth"></div>
+          <div class="starfifth"></div>
+        </div>
         <div class="row">
           <div class="col-lg-12">
             <div class="page-content">
@@ -41,6 +47,7 @@ export default function ListUser() {
                         {" "}
                         Duyệt Thành Viên Cung Cấp Dịch Vụ{" "}
                       </h5>
+                      <br />
                     </div>
                     {usersRequest !== undefined &&
                       usersRequest.map((item, key) => {
@@ -51,10 +58,12 @@ export default function ListUser() {
                               <li>
                                 <span>{key + 1}</span>
                                 <img
-                                  src="/assets/images/avatar-01.jpg"
+                                  src={item.avatar}
                                   alt=""
                                   style={{
-                                    maxWidth: "46px",
+                                    maxWidth: "45px",
+                                    maxHeight: "45px",
+
                                     borderRadius: "50%",
                                     marginRight: "15px",
                                   }}
@@ -98,10 +107,16 @@ export default function ListUser() {
                                         if (willDelete) {
                                           dispatch(
                                             acceptRequestProvider(item.idUser)
-                                          ).then(() => {
-                                            navigate("/admin/listUser");
-                                            navigate("/admin/listUser");
-                                          });
+                                          )
+                                            .then(() => {
+                                              console.log(19);
+                                              navigate("/home");
+                                            })
+                                            .then(() => {
+                                              console.log(20);
+                                              navigate("/home");
+                                            });
+
                                           swal(
                                             "Bạn đã gửi yêu cầu thành công !",
                                             {
@@ -117,6 +132,8 @@ export default function ListUser() {
                                     Duyệt
                                   </strong>
                                 </button>
+                                <br />
+                                <br />
                               </li>
                             </ul>
                           </div>

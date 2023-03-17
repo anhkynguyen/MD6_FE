@@ -19,6 +19,12 @@ export default function Profile() {
       {" "}
       {user.ask !== "Yes" || user.role !== "seller" ? (
         <div class="container">
+          <div>
+            <div class="starsec"></div>
+            <div class="starthird"></div>
+            <div class="starfourth"></div>
+            <div class="starfifth"></div>
+          </div>
           <div class="row">
             <div class="col-lg-12">
               <div class="page-content">
@@ -47,12 +53,9 @@ export default function Profile() {
                               cung cấp dịch vụ ngay bây giờ
                             </p>
                             <div class="main-border-button">
-                              <strong
-                                style={{
-                                  borderRadius: "30px",
-                                  height: "50px",
-                                  width: "300px",
-                                }}
+                              <button
+                                type="submit"
+                                class="btn btn-primary btn-block logn-btn"
                                 onClick={() => {
                                   swal({
                                     title:
@@ -79,10 +82,8 @@ export default function Profile() {
                                   });
                                 }}
                               >
-                                <a style={{ color: "white" }}>
-                                  Trở thành người cung cấp dịch vụ
-                                </a>
-                              </strong>
+                                Trở thành nhà cung cấp dịch vụ
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -99,6 +100,14 @@ export default function Profile() {
                             </li>
                             <li>
                               Chức vụ <span>{user.role}</span>
+                            </li>
+                            <li>
+                              <button
+                                type="submit"
+                                class="btn btn-primary btn-block logn-btn"
+                              >
+                                Đổi mật khẩu
+                              </button>{" "}
                             </li>
                           </ul>
                         </div>
