@@ -10,7 +10,7 @@ import ListProvider from "./pages/provider/listProvider";
 import Admin from "./pages/home/admin";
 import ListUser from "./pages/user/listUser";
 import ChangePassword from "./pages/user/changePassword";
-import EditProvider from "./pages/provider/editProvider2";
+import EditProvider from "./pages/provider/editProvider";
 import AddProvider from "./pages/provider/addProvider";
 
 function App() {

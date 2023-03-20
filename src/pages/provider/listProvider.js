@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getProviders, removeProvider } from "../../service/providerService";
 import swal from "sweetalert";
@@ -48,51 +48,59 @@ export default function ListProvider() {
                       <div className="item">
                         <img src={item.image} height={200} width={300} alt="" />
                         <h4>
-                          {item.namePost}
+                          <Link to={"/home/showSellerProfile/" + item.idPost}>
+                            {item.namePost}
+                          </Link>
                           <br />
                           <span style={{ color: "white" }}>
-                            Giá: {item.price}/h
+                            Số đo: {item.measurement}
                           </span>
                         </h4>
-                        <ul>
-                          <li>
-                            <i
-                              className="fa-solid fa-trash"
-                              onClick={() => {
-                                swal({
-                                  title: "Are you sure?",
-                                  text: "!!!",
-                                  icon: "warning",
-                                  buttons: true,
-                                  dangerMode: true,
-                                }).then((willDelete) => {
-                                  if (willDelete) {
-                                    dispatch(removeProvider(item.idPost)).then(
-                                      () => {
+                        {user.idUser === item.idUser ? (
+                          <ul>
+                            <li>
+                              <a>
+                                <i
+                                  className="fa-solid fa-trash"
+                                  onClick={() => {
+                                    swal({
+                                      title: "Are you sure?",
+                                      text: "!!!",
+                                      icon: "warning",
+                                      buttons: true,
+                                      dangerMode: true,
+                                    }).then((willDelete) => {
+                                      if (willDelete) {
+                                        dispatch(
+                                          removeProvider(item.idPost)
+                                        ).then(() => {
+                                          dispatch(getProviders()).then(() => {
+                                            navigate("/home");
+                                          });
+                                        });
+                                        swal("Xoa thanh cong!", {
+                                          icon: "success",
+                                        });
+                                      } else {
+                                        swal("Khong xoa thanh cong!");
                                         dispatch(getProviders()).then(() => {
                                           navigate("/home");
                                         });
                                       }
-                                    );
-                                    swal("Xoa thanh cong!", {
-                                      icon: "success",
                                     });
-                                  } else {
-                                    swal("Khong xoa thanh cong!");
-                                    dispatch(getProviders()).then(() => {
-                                      navigate("/home");
-                                    });
-                                  }
-                                });
-                              }}
-                            ></i>
-                          </li>
-                          <li>
-                            <a href={`/home/edit-post/${item.idPost}`}>
-                              <i className="fa-solid fa-pen-to-square"></i>
-                            </a>
-                          </li>
-                        </ul>
+                                  }}
+                                ></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href={`/home/edit-post/${item.idPost}`}>
+                                <i className="fa-solid fa-pen-to-square"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        ) : (
+                          <></>
+                        )}
                       </div>
                     </div>
                   );
