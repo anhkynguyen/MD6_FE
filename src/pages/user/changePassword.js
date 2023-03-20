@@ -13,15 +13,11 @@ export default function ChangePassword() {
     let data = [value, idUser];
     console.log(data, 2);
     dispatch(changePassword(data)).then((e) => {
-      if (e.payload === "User not found") {
-        swal("User not found");
-      } else if (e.payload === "Old password does not match") {
-        swal("Old password does not match");
-      } else if (e.payload === "New password is match with old password") {
-        swal("New password is match with old password");
-      } else {
-        swal("Change Password success");
-        // navigate("/");
+      if (e.payload === "Old password not true") {
+        swal("Mật khẩu cũ không đúng");
+      } else if (e.payload === "Success") {
+        swal("Đổi mật khẩu thành công");
+        navigate("/");
       }
     });
   };
@@ -112,79 +108,6 @@ export default function ChangePassword() {
               </div>
             </div>
           </>
-          {/*<div className="container">*/}
-          {/*    <div className="row">*/}
-          {/*        <div className="col-lg-12">*/}
-          {/*            <div className="page-content">*/}
-          {/*                <div className="row">*/}
-          {/*                    <div className="col-lg-12">*/}
-          {/*                        <div className="main-profile ">*/}
-          {/*                            <div className="row">*/}
-          {/*                                <div className="col-lg-4">*/}
-          {/*                                    <img*/}
-          {/*                                        src={user.avatar}*/}
-          {/*                                        alt=""*/}
-          {/*                                        style={{borderRadius: "23PX"}}*/}
-          {/*                                    />*/}
-          {/*                                </div>*/}
-          {/*                                <div className="col-lg-4 align-self-center">*/}
-          {/*                                    <div className="main-info header-text">*/}
-          {/*                                        <span>{user.status}</span>*/}
-          {/*                                        <h4>{user.username}</h4>*/}
-          {/*                                        <p>*/}
-          {/*                                            Chọn người bạn muốn ghép đôi hoặc trở thành người*/}
-          {/*                                            cung cấp dịch vụ ngay bây giờ*/}
-          {/*                                        </p>*/}
-          {/*                                        <div className="main-border-button">*/}
-          {/*                                            <a href="/">Trở thành người cung cấp dịch vụ</a>*/}
-          {/*                                        </div>*/}
-          {/*                                    </div>*/}
-          {/*                                </div>*/}
-          {/*                                <div className="col-lg-4 align-self-center">*/}
-          {/*                                    <ul>*/}
-          {/*                                        <li>*/}
-          {/*                                            Mật khẩu hiện tại: <Field style={{*/}
-          {/*                                            width: "100%",*/}
-          {/*                                            height: "40px",*/}
-          {/*                                            borderRadius: "15px",*/}
-          {/*                                            backgroundColor: "#1F2122",*/}
-          {/*                                            color: "white",*/}
-          {/*                                            borderColor: "white",*/}
-          {/*                                        }} type="password" name={"oldPassword"}/>*/}
-          {/*                                        </li>*/}
-          {/*                                        <li>*/}
-          {/*                                            Mật khẩu mới: <Field style={{*/}
-          {/*                                            width: "100%",*/}
-          {/*                                            height: "40px",*/}
-          {/*                                            borderRadius: "15px",*/}
-          {/*                                            backgroundColor: "#1F2122",*/}
-          {/*                                            color: "white",*/}
-          {/*                                            borderColor: "white",*/}
-          {/*                                        }} type="password" name={"newPassword"}/>*/}
-          {/*                                        </li>*/}
-          {/*                                        <li>*/}
-          {/*                                            <button style={{*/}
-          {/*                                            width: "100%",*/}
-          {/*                                            height: "40px",*/}
-          {/*                                            borderRadius: "15px",*/}
-          {/*                                            backgroundColor: "#1F2122",*/}
-          {/*                                            color: "white",*/}
-          {/*                                            borderColor: "white",*/}
-          {/*                                            }} type="submit">Thay đổi</button>*/}
-          {/*                                        </li>*/}
-
-          {/*                                    </ul>*/}
-          {/*                                </div>*/}
-          {/*                            </div>*/}
-          {/*                            <div className="row"></div>*/}
-          {/*                        </div>*/}
-          {/*                    </div>*/}
-          {/*                </div>*/}
-          {/*                /*/}
-          {/*            </div>*/}
-          {/*        </div>*/}
-          {/*    </div>*/}
-          {/*</div>*/}
         </Form>
       </Formik>
     </>

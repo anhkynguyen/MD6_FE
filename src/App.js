@@ -24,7 +24,7 @@ function App() {
           <Route path={""} element={<Login></Login>}></Route>
           <Route
             path={"register"}
-            element={<RegisterTest></RegisterTest>}
+            element={<Register></Register>}
           ></Route>
           {user !== "User not found" || user !== "Wrong password" ? (
             <>
