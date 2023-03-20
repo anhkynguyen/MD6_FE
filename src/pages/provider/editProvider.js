@@ -6,8 +6,7 @@ import { storage } from "../../upload/firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
-
-export default function EditProvider() {
+export default function EditProvider2() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -117,195 +116,155 @@ export default function EditProvider() {
       >
         <Form>
           <div class="container">
+            <div>
+              <div class="starsec"></div>
+              <div class="starthird"></div>
+              <div class="starfourth"></div>
+              <div class="starfifth"></div>
+            </div>
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col-12">
                 <div class="page-content">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="main-profile ">
-                        <div class="row">
-                          <h1 style={{ textAlign: "center" }}>
-                            Sửa thông tin của bạn
-                          </h1>
-                          <div className="col-lg-4">
-                            <div
-                              className="col-md-4 wow fadeInUp"
-                              data-wow-delay="0.1s"
-                            >
-                              <img
-                                className="position-relative rounded w-300 h-300"
-                                src={urls}
-                                alt={urls}
-                                style={{
-                                  borderRadius: "23px",
-                                  height: "300px",
-                                  width: "300px",
-                                }}
-                              />
-                            </div>
+                  <div class="main-profile">
+                    <div class="inner">
+                      <div style={{ backgroundColor: "rgb(31,33,34)" }}>
+                        <div className="col-lg-9">
+                          <img
+                            src={urls}
+                            alt={urls}
+                            style={{
+                              borderRadius: "23px",
+                            }}
+                          />
+                          <input
+                            style={{ borderRadius: "15px" }}
+                            id="image"
+                            name={"image"}
+                            type="file"
+                            onChange={handleChange}
+                          />
+                        </div>
+                        <button
+                          type="button"
+                          class="btn btn-primary btn-block logn-btn"
+                          onClick={() => dispatch(handleUpload)}
+                        >
+                          Upload
+                        </button>
+                      </div>
 
+                      <div
+                        class="form-content"
+                        style={{ backgroundColor: "rgb(31,33,34)" }}
+                      >
+                        <div class="form-header">
+                          <h2>Cập nhật thông tin</h2>
+                          <br></br>
+                          <br></br>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-holder">
+                            <h5 style={{ color: "#e75e8d" }}>Tên bài đăng</h5>
                             <br></br>
-                            <input
-                              id="image"
-                              name={"image"}
+                            <Field
+                              type="text"
+                              name={"namePost"}
+                              id="namePost"
+                              placeholder="Tên bài đăng"
+                              class="form-control"
                               style={{
-                                width: "100%",
-                                height: "40px",
-                                borderRadius: "15px",
-                                backgroundColor: "#1F2122",
+                                backgroundColor: "rgb(22,22,36)",
                                 color: "white",
-                                borderColor: "white",
                               }}
-                              type="file"
-                              onChange={handleChange}
                             />
-                            <button
-                              type="button"
-                              className="btn btn-secondary w-100 py-3"
-                              onClick={() => dispatch(handleUpload)}
-                            >
-                              Upload
-                            </button>
                           </div>
-                          <div className="col-lg-3 align-self-center">
-                            <div className="main-info header-text">
-                              <h5 style={{ color: "white" }}>Tên </h5>
-                              <Field
-                                type="text"
-                                name={"namePost"}
-                                id="namePost"
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                              />
-
-                              <hr></hr>
-                              <h5 style={{ color: "white" }}>Sở thích</h5>
-                              <Field
-                                type="text"
-                                name={"description"}
-                                id="description"
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                              />
-                              <hr></hr>
-                              <h5 style={{ color: "white" }}>Giá</h5>
-                              <Field
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                                type="number"
-                                name={"price"}
-                                id="price"
-                              />
-
-                              <div className="main-border-button border-no-active "></div>
-                            </div>
+                          <div class="form-holder">
+                            <h5 style={{ color: "#e75e8d" }}>Chiều cao</h5>
+                            <br></br>
+                            <Field
+                              type="text"
+                              name={"height"}
+                              id="height"
+                              placeholder="Chiều cao"
+                              class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
+                            />
                           </div>
-                          <div className="col-lg-3 align-self-center">
-                            <div className="main-info header-text">
-                              <h5 style={{ color: "white" }}>Chiều cao</h5>
-
-                              <Field
-                                name={"height"}
-                                id="height"
-                                type="number"
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                              />
-                              <hr></hr>
-                              <h5 style={{ color: "white" }}>Cân nặng</h5>
-
-                              <Field
-                                name={"weight"}
-                                id="weight"
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                                type="number"
-                              />
-                              <hr></hr>
-                              <h5 style={{ color: "white" }}>Số đo 3 vòng</h5>
-                              <Field
-                                name={"measurement"}
-                                id="measurement"
-                                style={{
-                                  width: "100%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                                type="text"
-                              />
-
-                              <div className="main-border-button border-no-active "></div>
-                            </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-holder">
+                            <h5 style={{ color: "#e75e8d" }}>Cân nặng</h5>
+                            <br></br>
+                            <Field
+                              type="text"
+                              name={"weight"}
+                              id="weight"
+                              placeholder="Cân nặng"
+                              class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
+                            />
                           </div>
-                          <div className="col-lg-2 align-self-center">
-                            <div className="main-info header-text">
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-                              <hr></hr>
-
-                              <button
-                                type="submit"
-                                style={{
-                                  width: "70%",
-                                  height: "40px",
-                                  borderRadius: "15px",
-                                  backgroundColor: "#1F2122",
-                                  color: "white",
-                                  borderColor: "white",
-                                }}
-                              >
-                                Sửa bài
-                              </button>
-                              <hr></hr>
-                              <hr></hr>
-
-                              <hr></hr>
-                            </div>
+                          <div class="form-holder">
+                            <h5 style={{ color: "#e75e8d" }}>Số đo ba vòng</h5>
+                            <br></br>
+                            <Field
+                              name="measurement"
+                              type="text"
+                              placeholder="Số đo ba vòng"
+                              class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
+                            />
                           </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-holder">
+                            <h5 style={{ color: "#e75e8d" }}>Giá thuê</h5>
+                            <br></br>
+                            <Field
+                              name={"price"}
+                              id="price"
+                              type="text"
+                              placeholder="Giá thuê"
+                              class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
+                            />
+                          </div>
+                          <div class="form-holder">
+                            <h5 style={{ color: "#e75e8d" }}>Sở thích</h5>
+                            <br></br>
+                            <Field
+                              name={"description"}
+                              id="description"
+                              type="text"
+                              placeholder="Age"
+                              class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
+                            />
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <button
+                            style={{ width: "100%", height: "40px" }}
+                            type="submit"
+                            class="btn btn-primary btn-block logn-btn"
+                          >
+                            Sửa thông tin người cung cấp dịch vụ
+                          </button>{" "}
                         </div>
                       </div>
                     </div>

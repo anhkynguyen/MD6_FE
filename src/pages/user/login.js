@@ -118,8 +118,8 @@ export default function Login() {
                             </div>
                             <div class="col-12">
                               {" "}
-                              <p>Bạn chưa có tài khoản</p>
-                              <Link to={"register"}>Đăng ký</Link>{" "}
+                              <p>Bạn chưa có tài khoản đăng kí</p>
+                              <Link to={"register"}>tại đây</Link>{" "}
                             </div>
                           </div>
                         </div>
