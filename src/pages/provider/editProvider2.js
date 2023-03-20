@@ -170,8 +170,12 @@ export default function EditProvider2() {
                               type="text"
                               name={"namePost"}
                               id="namePost"
-                              placeholder="First Name"
+                              placeholder="Tên bài đăng"
                               class="form-control"
+                              style={{
+                                backgroundColor: "rgb(22,22,36)",
+                                color: "white",
+                              }}
                             />
                           </div>
                           <div class="form-holder">
@@ -179,10 +183,14 @@ export default function EditProvider2() {
                             <br></br>
                             <Field
                               type="text"
-                              name={"description"}
-                              id="description"
-                              placeholder=""
+                              name={"height"}
+                              id="height"
+                              placeholder="Chiều cao"
                               class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
                             />
                           </div>
                         </div>
@@ -192,10 +200,14 @@ export default function EditProvider2() {
                             <br></br>
                             <Field
                               type="text"
-                              name={"price"}
-                              id="price"
-                              placeholder=""
+                              name={"weight"}
+                              id="weight"
+                              placeholder="Cân nặng"
                               class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
                             />
                           </div>
                           <div class="form-holder">
@@ -204,8 +216,12 @@ export default function EditProvider2() {
                             <Field
                               name="measurement"
                               type="text"
-                              placeholder="Phone Number"
+                              placeholder="Số đo ba vòng"
                               class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
                             />
                           </div>
                         </div>
@@ -214,22 +230,30 @@ export default function EditProvider2() {
                             <h5 style={{ color: "#e75e8d" }}>Giá thuê</h5>
                             <br></br>
                             <Field
-                              name={"height"}
-                              id="height"
+                              name={"price"}
+                              id="price"
                               type="text"
-                              placeholder="Age"
+                              placeholder="Giá thuê"
                               class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
                             />
                           </div>
                           <div class="form-holder">
                             <h5 style={{ color: "#e75e8d" }}>Sở thích</h5>
                             <br></br>
                             <Field
-                              name={"height"}
-                              id="height"
+                              name={"description"}
+                              id="description"
                               type="text"
                               placeholder="Age"
                               class="form-control"
+                              style={{
+                                backgroundColor: "rgb(28,31,47)",
+                                color: "white",
+                              }}
                             />
                           </div>
                         </div>
