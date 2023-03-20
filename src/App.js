@@ -10,7 +10,7 @@ import ListProvider from "./pages/provider/listProvider";
 import Admin from "./pages/home/admin";
 import ListUser from "./pages/user/listUser";
 import ChangePassword from "./pages/user/changePassword";
-import EditProvider2 from "./pages/provider/editProvider2";
+import EditProvider from "./pages/provider/editProvider2";
 import AddProvider from "./pages/provider/addProvider";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
               <Route path={"home"} element={<Home />}>
                 <Route path={""} element={<ListProvider />}></Route>
                 <Route path={"add-post"} element={<AddProvider />} />
-                <Route path={"edit-post/:id"} element={<EditProvider2 />} />
+                <Route path={"edit-post/:id"} element={<EditProvider />} />
               </Route>
               <Route path={"user"} element={<User />}>
                 <Route path={":idUser"} element={<Profile />}></Route>
