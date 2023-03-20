@@ -12,6 +12,7 @@ import {
   acceptUsersRegister,
   getUsersRegister,
   lockUser,
+  changeStatus,
 } from "../../service/userService";
 
 const initialState = {
@@ -69,6 +70,9 @@ const userSlice = createSlice({
       state.user = action.payload;
     });
     builder.addCase(lockUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+    builder.addCase(changeStatus.fulfilled, (state, action) => {
       state.user = action.payload;
     });
   },

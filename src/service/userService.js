@@ -84,3 +84,11 @@ export const lockUser = createAsyncThunk("user/getLockUser", async (data) => {
   const res = await customAxios.get("admins/lock/" + data);
   return data;
 });
+export const changeStatus = createAsyncThunk(
+  "user/getChangeStatus",
+  async (data) => {
+    console.log(12345, data);
+    const res = await customAxios.get("users/off/" + data);
+    return data;
+  }
+);

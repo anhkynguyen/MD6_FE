@@ -1,12 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getProfile, requestProvider } from "../../service/userService";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  changeStatus,
+  getProfile,
+  requestProvider,
+} from "../../service/userService";
 import swal from "sweetalert";
 import ProfileProvider from "../provider/profleProvider";
 import { Link } from "react-router-dom";
+import StatusSwitch from "../../components/switch/statusSwitch";
 export default function Profile() {
   const id = useParams();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.currentUser);
@@ -49,6 +55,18 @@ export default function Profile() {
                             <span>{user.status}</span>
 
                             <h4>{user.username}</h4>
+
+                            <label
+                              onClick={dispatch(changeStatus(user.idUser)).then(
+                                () => {
+                                  navigate("");
+                                }
+                              )}
+                            >
+                              {" "}
+                              <StatusSwitch />
+                            </label>
+
                             <p>
                               Chọn người bạn muốn ghép đôi hoặc trở thành người
                               cung cấp dịch vụ ngay bây giờ
