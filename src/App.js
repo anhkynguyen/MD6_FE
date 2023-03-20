@@ -10,9 +10,8 @@ import ListProvider from "./pages/provider/listProvider";
 import Admin from "./pages/home/admin";
 import ListUser from "./pages/user/listUser";
 import ChangePassword from "./pages/user/changePassword";
-import EditProvider from "./pages/provider/editProvider";
+import EditProvider2 from "./pages/provider/editProvider2";
 import AddProvider from "./pages/provider/addProvider";
-import RegisterTest from "./pages/user/register";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -22,16 +21,13 @@ function App() {
       <div className="container-fluid">
         <Routes>
           <Route path={""} element={<Login></Login>}></Route>
-          <Route
-            path={"register"}
-            element={<Register></Register>}
-          ></Route>
+          <Route path={"register"} element={<Register></Register>}></Route>
           {user !== "User not found" || user !== "Wrong password" ? (
             <>
               <Route path={"home"} element={<Home />}>
                 <Route path={""} element={<ListProvider />}></Route>
                 <Route path={"add-post"} element={<AddProvider />} />
-                <Route path={"edit-post/:id"} element={<EditProvider />} />
+                <Route path={"edit-post/:id"} element={<EditProvider2 />} />
               </Route>
               <Route path={"user"} element={<User />}>
                 <Route path={":idUser"} element={<Profile />}></Route>
