@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   posts: [],
-  post: {},
+  post: [],
 };
 const postSlice = createSlice({
   name: "post",

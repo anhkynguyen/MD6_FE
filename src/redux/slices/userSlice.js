@@ -12,6 +12,7 @@ import {
   acceptUsersRegister,
   getUsersRegister,
   lockUser,
+  getSellerProfile,
   changeStatus,
 } from "../../service/userService";
 
@@ -21,7 +22,7 @@ const initialState = {
   users: [],
   usersRequest: [],
   usersRegister: [],
-  profile: [],
+  profile: {},
   checkPassword: "",
 };
 
@@ -74,6 +75,9 @@ const userSlice = createSlice({
     });
     builder.addCase(changeStatus.fulfilled, (state, action) => {
       state.user = action.payload;
+    });
+    builder.addCase(getSellerProfile.fulfilled, (state, action) => {
+      state.profile = action.payload[0];
     });
   },
 });

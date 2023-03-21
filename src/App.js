@@ -12,7 +12,8 @@ import ListUser from "./pages/user/listUser";
 import ChangePassword from "./pages/user/changePassword";
 import EditProvider from "./pages/provider/editProvider";
 import AddProvider from "./pages/provider/addProvider";
-import RentProvider from "./pages/provider/rentProvider";
+import RentProvider from "./pages/provider/sellerProvider";
+import SellerProfile from "./pages/provider/sellerProvider";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -32,6 +33,11 @@ function App() {
               </Route>
               <Route path={"user"} element={<User />}>
                 <Route path={":idUser"} element={<Profile />}></Route>
+                <Route
+                  path={"showSellerProfile/:idUser"}
+                  element={<SellerProfile />}
+                ></Route>
+
                 <Route
                   path={"change-password/:idUser"}
                   element={<ChangePassword />}
