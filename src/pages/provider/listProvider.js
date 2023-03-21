@@ -27,6 +27,12 @@ export default function ListProvider() {
   return (
     <>
       <div class="most-popular">
+        <div>
+          <div class="starsec"></div>
+          <div class="starthird"></div>
+          <div class="starfourth"></div>
+          <div class="starfifth"></div>
+        </div>
         <div class="row">
           <div class="col-lg-12">
             <div class="heading-section">
