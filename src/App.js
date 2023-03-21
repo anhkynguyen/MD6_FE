@@ -12,9 +12,8 @@ import ListUser from "./pages/user/listUser";
 import ChangePassword from "./pages/user/changePassword";
 import EditProvider from "./pages/provider/editProvider";
 import AddProvider from "./pages/provider/addProvider";
-import Test from "./pages/provider/test";
-import SellerProfile from "./pages/provider/sellerProfile";
-
+import RentProvider from "./pages/provider/sellerProvider";
+import SellerProfile from "./pages/provider/sellerProvider";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -35,11 +34,18 @@ function App() {
               <Route path={"user"} element={<User />}>
                 <Route path={":idUser"} element={<Profile />}></Route>
                 <Route
+                  path={"showSellerProfile/:idUser"}
+                  element={<SellerProfile />}
+                ></Route>
+
+                <Route
                   path={"change-password/:idUser"}
                   element={<ChangePassword />}
                 ></Route>
-                  <Route path={"seller-provider/:idUser"} element={<SellerProfile />}></Route>
-                {/*<Route path={"my-order/:idUser"} element={<MyOrder/>}></Route>*/}
+                <Route
+                  path={"my-order/:idUser"}
+                  element={<RentProvider />}
+                ></Route>
                 {/*<Route path={"edit-order/:id"} element={<EditOrder/>}></Route> *!/*/}
               </Route>
               <Route path="admin" element={<Admin />}>

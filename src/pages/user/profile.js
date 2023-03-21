@@ -1,19 +1,28 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getProfile, requestProvider } from "../../service/userService";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  changeStatus,
+  getProfile,
+  requestProvider,
+} from "../../service/userService";
 import swal from "sweetalert";
 import ProfileProvider from "../provider/profleProvider";
 import { Link } from "react-router-dom";
+
 export default function Profile() {
-  const id = useParams();
-
+  const { idUser } = useParams();
+  console.log(idUser, 9999);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.currentUser);
-  console.log(33333, user);
-
+  // const user = useSelector((state) => state.user.profile);
+  const user = useSelector((state) => {
+    if (state.user !== undefined) {
+      return state.user.profile;
+    }
+  });
   useEffect(() => {
-    dispatch(getProfile(id));
+    dispatch(getProfile(idUser));
   }, []);
   return (
     <>
@@ -45,10 +54,57 @@ export default function Profile() {
                           />
                         </div>
                         <div class="col-lg-4 align-self-center">
-                          <div class="main-info header-text">
-                            <span>{user.status}</span>
+                          <div class="main-border-button">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-block logn-btn"
+                              onClick={() => {
+                                swal({
+                                  title:
+                                    "Bạn có muốn thay đổi trạng thái không ?",
+                                  text: "",
+                                  icon: "warning",
+                                  buttons: true,
+                                  dangerMode: true,
+                                }).then((willDelete) => {
+                                  if (willDelete) {
+                                    dispatch(changeStatus(user.idUser)).then(
+                                      () => {
+                                        dispatch(getProfile(idUser)).then(
+                                          () => {
+                                            // navigate("/home");
+                                          }
+                                        );
+                                      }
+                                    );
+                                    swal("Bạn đã đổi trạng thái thành công !", {
+                                      icon: "success",
+                                    });
+                                  } else {
+                                    swal("Bạn đã hủy yêu cầu !");
+                                  }
+                                });
+                              }}
+                            >
+                              Thay đổi trạng thái
+                            </button>
+                          </div>
+                          <br></br>
 
-                            <h4>{user.username}</h4>
+                          <div class="main-info header-text">
+                            <span>{user.status} </span>
+                            <h4>{user.username} </h4>
+                            {/* <label
+                              onClick={dispatch(changeStatus(user.idUser)).then(
+                                () => {
+                                  navigate("");
+                                }
+                              )}
+                            >
+                              {" "}
+                              <StatusSwitch />
+                            </label> */}
+
                             <p>
                               Chọn người bạn muốn ghép đôi hoặc trở thành người
                               cung cấp dịch vụ ngay bây giờ
@@ -88,6 +144,7 @@ export default function Profile() {
                             </div>
                           </div>
                         </div>
+
                         <div class="col-lg-4 align-self-center">
                           <ul>
                             <li>

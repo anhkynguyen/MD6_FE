@@ -71,9 +71,10 @@ export default function Register() {
                       <div class="card">
                         <div class="card-body wow-bg" id="formBg">
                           <h3 style={{ color: "pink" }}>Đăng Ký</h3>
-                          <p style={{ color: "pink" }}>
+                          <h5 style={{ color: "pink" }}>
                             Đăng ký tài khoản của bạn
-                          </p>
+                          </h5>
+                          <br></br>
                           <p style={{ color: "white", float: "left" }}>
                             Họ tên
                           </p>
@@ -114,21 +115,6 @@ export default function Register() {
                               style={{ color: "white" }}
                             />{" "}
                           </div>
-                          {/* <p style={{ color: "white", float: "left" }}>
-                            Nhập lại mật khẩu
-                          </p>
-                          <div class="input-group mb-0">
-                            {" "}
-                            
-                            <Field
-                              name={"re-password"}
-                              id="re-password"
-                              type="password"
-                              class="form-control textbox-dg"
-                              placeholder="Nhập lại mật khẩu vừa chọn"
-                              style={{ color: "white" }}
-                            />{" "}
-                          </div> */}
                           <p style={{ color: "white", float: "left" }}>
                             Ngày sinh
                           </p>{" "}

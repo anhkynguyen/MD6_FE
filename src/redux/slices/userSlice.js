@@ -11,7 +11,9 @@ import {
   acceptRequestProvider,
   acceptUsersRegister,
   getUsersRegister,
-  lockUser, getSellerProfile,
+  lockUser,
+  getSellerProfile,
+  changeStatus,
 } from "../../service/userService";
 
 const initialState = {
@@ -20,8 +22,7 @@ const initialState = {
   users: [],
   usersRequest: [],
   usersRegister: [],
-
-  profile: [],
+  profile: {},
   checkPassword: "",
 };
 
@@ -44,9 +45,6 @@ const userSlice = createSlice({
       localStorage.setItem("access-token", action.payload.token);
     });
     builder.addCase(getProfile.fulfilled, (state, action) => {
-      state.profile = action.payload;
-    });
-    builder.addCase(getSellerProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
     });
     builder.addCase(changePassword.fulfilled, (state, action) => {
@@ -73,6 +71,12 @@ const userSlice = createSlice({
     });
     builder.addCase(lockUser.fulfilled, (state, action) => {
       state.user = action.payload;
+    });
+    builder.addCase(changeStatus.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+    builder.addCase(getSellerProfile.fulfilled, (state, action) => {
+      state.profile = action.payload[0];
     });
   },
 });

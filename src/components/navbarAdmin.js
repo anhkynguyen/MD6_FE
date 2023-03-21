@@ -28,19 +28,14 @@ export default function NavbarAdmin() {
 
               <ul class="nav">
                 <li>
-                  <a href="index.html" class="active">
+                  <a href="/home" class="active">
                     Home
                   </a>
                 </li>
                 <li>
                   <Link to={"/admin/listUser"}>Quản lý hội viên</Link>
                 </li>
-                <li>
-                  <a href="details.html">Details</a>
-                </li>
-                <li>
-                  <a href="streams.html">aa</a>
-                </li>
+
                 <li>
                   <Link to={`/user/${user.idUser}`}>
                     {user.username}

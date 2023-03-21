@@ -231,9 +231,10 @@ export default function ListUser() {
                       <img src={item.avatar} alt="" class="templatemo-item" />
                       <h4>{item.username}</h4>
                       <span>{item.role}</span>
+                      <h4>{item.status}</h4>
 
                       <ul>
-                        <li>
+                        {/* <li>
                           <label class="switch">
                             <input
                               type="checkbox"
@@ -245,8 +246,8 @@ export default function ListUser() {
                             />
                             <span class="slider round"></span>
                           </label>
-                        </li>
-                        {/* <button
+                        </li> */}
+                        <button
                           style={{
                             float: "right",
                             position: "relative",
@@ -256,8 +257,7 @@ export default function ListUser() {
                           class="btn btn-primary btn-block logn-btn"
                           onClick={() => {
                             swal({
-                              title:
-                                "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                              title: "Bạn có muốn mở khóa thành viên  không ?",
                               text: "",
                               icon: "warning",
                               buttons: true,
@@ -272,8 +272,8 @@ export default function ListUser() {
                                     navigate("/home");
                                   });
 
-                                swal("Bạn đã gửi yêu cầu thành công !", {
-                                  icon: "Thành công ",
+                                swal("Bạn đã mở khóa thành công !", {
+                                  icon: "Success ",
                                 });
                               } else {
                                 swal("Bạn đã hủy yêu cầu !");
@@ -281,8 +281,44 @@ export default function ListUser() {
                             });
                           }}
                         >
-                          Duyệt
-                        </button>{" "} */}
+                          Mở khóa
+                        </button>{" "}
+                        <button
+                          style={{
+                            float: "right",
+                            position: "relative",
+                            bottom: "30px",
+                          }}
+                          type="submit"
+                          class="btn btn-primary btn-block logn-btn"
+                          onClick={() => {
+                            swal({
+                              title: "Bạn có khóa thành viên không ?",
+                              text: "",
+                              icon: "warning",
+                              buttons: true,
+                              dangerMode: true,
+                            }).then((willDelete) => {
+                              if (willDelete) {
+                                dispatch(lockUser(item.idUser))
+                                  .then(() => {
+                                    navigate("/home");
+                                  })
+                                  .then(() => {
+                                    navigate("/home");
+                                  });
+
+                                swal("Bạn đã khóa thành công !", {
+                                  icon: "Success ",
+                                });
+                              } else {
+                                swal("Bạn đã hủy yêu cầu !");
+                              }
+                            });
+                          }}
+                        >
+                          Khoá
+                        </button>{" "}
                       </ul>
                     </div>
                   </div>

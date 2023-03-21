@@ -72,9 +72,10 @@ export default function Login() {
                       <div class="card">
                         <div class="card-body wow-bg" id="formBg">
                           <h3 style={{ color: "pink" }}>Đăng nhập</h3>
-                          <p style={{ color: "pink" }}>
+                          <h5 style={{ color: "pink" }}>
                             Đăng nhập bằng tài khoản của bạn
-                          </p>
+                          </h5>
+                          <br></br>
                           <alert
                             className="text-danger"
                             style={{ float: "left" }}
