@@ -12,6 +12,7 @@ import ListUser from "./pages/user/listUser";
 import ChangePassword from "./pages/user/changePassword";
 import EditProvider from "./pages/provider/editProvider";
 import AddProvider from "./pages/provider/addProvider";
+import RentProvider from "./pages/provider/rentProvider";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -35,7 +36,10 @@ function App() {
                   path={"change-password/:idUser"}
                   element={<ChangePassword />}
                 ></Route>
-                {/*<Route path={"my-order/:idUser"} element={<MyOrder/>}></Route>*/}
+                <Route
+                  path={"my-order/:idUser"}
+                  element={<RentProvider />}
+                ></Route>
                 {/*<Route path={"edit-order/:id"} element={<EditOrder/>}></Route> *!/*/}
               </Route>
               <Route path="admin" element={<Admin />}>

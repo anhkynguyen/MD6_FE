@@ -21,7 +21,6 @@ const initialState = {
   users: [],
   usersRequest: [],
   usersRegister: [],
-
   profile: [],
   checkPassword: "",
 };
@@ -45,6 +44,7 @@ const userSlice = createSlice({
       localStorage.setItem("access-token", action.payload.token);
     });
     builder.addCase(getProfile.fulfilled, (state, action) => {
+      console.log(action.payload, 2222);
       state.profile = action.payload;
     });
     builder.addCase(changePassword.fulfilled, (state, action) => {

@@ -6,8 +6,9 @@ import { storage } from "../../upload/firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
-export default function EditProvider2() {
+export default function EditProvider() {
   const { id } = useParams();
+  console.log(id, 88);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
@@ -18,6 +19,7 @@ export default function EditProvider2() {
     return state.user.currentUser;
   });
   const posts = useSelector((state) => {
+    console.log(state, 777);
     if (state.post.posts[0] !== undefined) {
       return state.post.posts[0];
     } else {
@@ -96,7 +98,7 @@ export default function EditProvider2() {
       measurement: data[0].measurement,
       date: data[0].date,
     };
-    console.log(urls);
+    console.log(urls, 222);
     dispatch(editProvider(data)).then((values) => {
       swal("Edit Success !!!");
       navigate("/home");

@@ -39,9 +39,6 @@ export default function Navbar() {
                     <li>
                       <a href="/home/add-post">Add</a>
                     </li>
-                    <li>
-                      <a href="details.html">Details</a>
-                    </li>
 
                     <li>
                       <Link to={`/user/${user.idUser}`}>

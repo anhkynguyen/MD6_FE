@@ -22,7 +22,8 @@ export const editProfile = createAsyncThunk(
 );
 
 export const getProfile = createAsyncThunk("user/getProfile", async (data) => {
-  const res = await customAxios.get("/users/showMyProfile/" + data);
+  const res = await customAxios.get("users/showMyProfile/" + data);
+  console.log(res.data, 999);
   return res.data;
 });
 
@@ -80,14 +81,14 @@ export const changePassword = createAsyncThunk(
   }
 );
 export const lockUser = createAsyncThunk("user/getLockUser", async (data) => {
-  console.log(123, data);
+ 
   const res = await customAxios.get("admins/lock/" + data);
   return data;
 });
 export const changeStatus = createAsyncThunk(
   "user/getChangeStatus",
   async (data) => {
-    console.log(12345, data);
+  
     const res = await customAxios.get("users/off/" + data);
     return data;
   }
