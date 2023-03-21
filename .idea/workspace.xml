@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="546915de-ad8d-45ea-9607-1ae7f677e56c" name="Changes" comment="&quot;pull dev&quot;">
-      <change afterPath="$PROJECT_DIR$/public/images/arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/provider/test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/provider/top.js" afterDir="false" />
+    <list default="true" id="5e1660a4-83d1-414a-8a9d-ac826fbe9810" name="Changes" comment="&quot;pull dev&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/templatemo-cyborg-gaming.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/templatemo-cyborg-gaming.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/addProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/addProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/editProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/editProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/listProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/listProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/newAddProvider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/sellerProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/sellerProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/slices/providerSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/providerSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/userSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/userSlice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/providerService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/providerService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/userService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
