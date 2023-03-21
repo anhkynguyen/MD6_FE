@@ -2,8 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import customAxios from "./api";
 
 export const login = createAsyncThunk("user/login", async (data) => {
+    console.log(333333333,data)
   const res = await customAxios.post("users/login", data);
-
+    console.log(44444444444,res.data)
   return res.data;
 });
 
@@ -24,6 +25,13 @@ export const editProfile = createAsyncThunk(
 export const getProfile = createAsyncThunk("user/getProfile", async (data) => {
   const res = await customAxios.get("/users/showMyProfile/" + data);
   return res.data;
+});
+
+export const getSellerProfile = createAsyncThunk("user/getSellerProfile", async (data) => {
+    console.log(data,33)
+    const res = await customAxios.get("/users/showSellerProfile/" + data);
+    console.log(res.data, 22)
+    return res.data;
 });
 
 export const getUsers = createAsyncThunk("users/getUsers", async () => {

@@ -3,6 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import {getProviders, removeProvider} from "../../service/providerService";
 import swal from "sweetalert";
+import Top from "./top";
 
 export default function ListProvider() {
     const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export default function ListProvider() {
                             </div>
                             <br></br>
                         </div>
-
+                        <Top></Top>
                         <div className="row">
                             {user !== undefined &&
                                 posts &&
@@ -49,7 +50,7 @@ export default function ListProvider() {
                                                 <img src={item.image} height={200} width={300} alt=""/>
                                                 <h4>
                                                     <Link
-                                                        to={"/user/seller-provider/" + item.idPost}>{item.namePost}</Link>
+                                                        to={"/home/showSellerProfile/" + item.idPost}>{item.namePost}</Link>
                                                     <br/>
                                                     <span style={{color: "white"}}>Số đo: {item.measurement}</span>
                                                 </h4>

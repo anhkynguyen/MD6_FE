@@ -6,7 +6,8 @@ import { storage } from "../../upload/firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
-export default function EditProvider2() {
+
+export default function EditProvider() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -134,6 +135,8 @@ export default function EditProvider2() {
                             alt={urls}
                             style={{
                               borderRadius: "23px",
+                              width: "100%",
+                              height: "430px"
                             }}
                           />
                           <input

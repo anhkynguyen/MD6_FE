@@ -7,7 +7,6 @@ export default function User() {
     <div className="row">
       <div className="col-12">
         <Navbar></Navbar>
-        <hr />
         <Outlet></Outlet>
         <Footer></Footer>
       </div>

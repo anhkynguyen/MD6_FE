@@ -3,7 +3,7 @@ import {
   addProvider,
   editProvider,
   findByIdProvider,
-  getProviders,
+  getProviders, getTopProviders,
   removeProvider,
 } from "../../service/providerService";
 
@@ -17,6 +17,9 @@ const postSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getProviders.fulfilled, (state, action) => {
+      state.posts = action.payload;
+    });
+    builder.addCase(getTopProviders.fulfilled, (state, action) => {
       state.posts = action.payload;
     });
     builder.addCase(findByIdProvider.fulfilled, (state, action) => {

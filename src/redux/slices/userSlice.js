@@ -11,7 +11,7 @@ import {
   acceptRequestProvider,
   acceptUsersRegister,
   getUsersRegister,
-  lockUser,
+  lockUser, getSellerProfile,
 } from "../../service/userService";
 
 const initialState = {
@@ -44,6 +44,9 @@ const userSlice = createSlice({
       localStorage.setItem("access-token", action.payload.token);
     });
     builder.addCase(getProfile.fulfilled, (state, action) => {
+      state.profile = action.payload;
+    });
+    builder.addCase(getSellerProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
     });
     builder.addCase(changePassword.fulfilled, (state, action) => {

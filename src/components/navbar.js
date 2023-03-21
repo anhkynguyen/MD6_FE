@@ -37,7 +37,7 @@ export default function Navbar() {
                       </a>
                     </li>
                     <li>
-                      <a href="/home/newAdd-post">Đăng Bài</a>
+                      <a href="/home/add-post">Đăng Bài</a>
                     </li>
                     <li>
                       <a href="details.html">Details</a>
