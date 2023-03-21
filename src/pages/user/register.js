@@ -31,7 +31,8 @@ export default function Register() {
         swal("Username already registered");
         navigate("/register");
       } else {
-        swal("Register successfully");
+        swal({ title: "Đănng kí thành công !", icon: "success" });
+
         navigate("/");
       }
     });

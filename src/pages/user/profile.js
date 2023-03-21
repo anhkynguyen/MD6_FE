@@ -70,11 +70,7 @@ export default function Profile() {
                                   if (willDelete) {
                                     dispatch(changeStatus(user.idUser)).then(
                                       () => {
-                                        dispatch(getProfile(idUser)).then(
-                                          () => {
-                                            // navigate("/home");
-                                          }
-                                        );
+                                        dispatch(getProfile(idUser));
                                       }
                                     );
                                     swal("Bạn đã đổi trạng thái thành công !", {

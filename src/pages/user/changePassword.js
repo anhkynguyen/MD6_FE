@@ -16,7 +16,7 @@ export default function ChangePassword() {
       if (e.payload === "Old password not true") {
         swal("Mật khẩu cũ không đúng");
       } else if (e.payload === "Success") {
-        swal("Đổi mật khẩu thành công");
+        swal({ title: "Đănng nhập thành công !", icon: "success" });
         navigate("/");
       }
     });

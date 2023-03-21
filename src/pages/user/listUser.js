@@ -89,7 +89,7 @@ export default function ListUser() {
                                   onClick={() => {
                                     swal({
                                       title:
-                                        "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                                        "Bạn có muốn duyệt thành viên này không ?",
                                       text: "",
                                       icon: "warning",
                                       buttons: true,
@@ -108,14 +108,12 @@ export default function ListUser() {
                                             navigate("/home");
                                           });
 
-                                        swal(
-                                          "Bạn đã gửi yêu cầu thành công !",
-                                          {
-                                            icon: "Thành công ",
-                                          }
-                                        );
+                                        swal({
+                                          title: "Bạn đã duyệt thành công !",
+                                          icon: "success ",
+                                        });
                                       } else {
-                                        swal("Bạn đã hủy yêu cầu !");
+                                        swal("Bạn đã hủy thao tác duyệt !");
                                       }
                                     });
                                   }}
@@ -176,7 +174,7 @@ export default function ListUser() {
                                   onClick={() => {
                                     swal({
                                       title:
-                                        "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                                        "Bạn có muốn duyệt thành viên này không ?",
                                       text: "",
                                       icon: "warning",
                                       buttons: true,
@@ -193,14 +191,12 @@ export default function ListUser() {
                                             navigate("/home");
                                           });
 
-                                        swal(
-                                          "Bạn đã gửi yêu cầu thành công !",
-                                          {
-                                            icon: "Thành công ",
-                                          }
-                                        );
+                                        swal({
+                                          title: "Bạn đã duyệt thành công !",
+                                          icon: "success",
+                                        });
                                       } else {
-                                        swal("Bạn đã hủy yêu cầu !");
+                                        swal("Bạn đã hủy thao tác duyệt !");
                                       }
                                     });
                                   }}
@@ -229,7 +225,7 @@ export default function ListUser() {
                   <div class="col-lg-6">
                     <div class="item">
                       <img src={item.avatar} alt="" class="templatemo-item" />
-                      <h4>{item.username}</h4>
+                      <h4> {item.username}</h4>
                       <span>{item.role}</span>
                       <h4>{item.status}</h4>
 
@@ -266,17 +262,19 @@ export default function ListUser() {
                               if (willDelete) {
                                 dispatch(lockUser(item.idUser))
                                   .then(() => {
-                                    navigate("/home");
+                                    dispatch(getUsers());
+                                    dispatch(getUsersRequest());
+                                    dispatch(getUsersRegister());
                                   })
                                   .then(() => {
-                                    navigate("/home");
+                                    // navigate("/home");
                                   });
 
                                 swal("Bạn đã mở khóa thành công !", {
-                                  icon: "Success ",
+                                  icon: "success",
                                 });
                               } else {
-                                swal("Bạn đã hủy yêu cầu !");
+                                swal("Bạn đã hủy thao tác mở khóa !");
                               }
                             });
                           }}
@@ -293,7 +291,7 @@ export default function ListUser() {
                           class="btn btn-primary btn-block logn-btn"
                           onClick={() => {
                             swal({
-                              title: "Bạn có khóa thành viên không ?",
+                              title: "Bạn có khóa thành viên này không ?",
                               text: "",
                               icon: "warning",
                               buttons: true,
@@ -302,17 +300,19 @@ export default function ListUser() {
                               if (willDelete) {
                                 dispatch(lockUser(item.idUser))
                                   .then(() => {
-                                    navigate("/home");
+                                    dispatch(getUsers());
+                                    dispatch(getUsersRequest());
+                                    dispatch(getUsersRegister());
                                   })
                                   .then(() => {
-                                    navigate("/home");
+                                    navigate("");
                                   });
 
                                 swal("Bạn đã khóa thành công !", {
-                                  icon: "Success ",
+                                  icon: "success",
                                 });
                               } else {
-                                swal("Bạn đã hủy yêu cầu !");
+                                swal("Bạn đã hủy thao tác khóa !");
                               }
                             });
                           }}

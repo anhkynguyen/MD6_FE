@@ -20,6 +20,7 @@ const postSlice = createSlice({
       state.posts = action.payload;
     });
     builder.addCase(findByIdProvider.fulfilled, (state, action) => {
+      console.log(action.payload);
       state.posts = action.payload;
     });
     builder.addCase(addProvider.fulfilled, (state, action) => {

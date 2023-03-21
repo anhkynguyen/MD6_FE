@@ -6,20 +6,17 @@ import { storage } from "../../upload/firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
+
 export default function EditProvider() {
   const { id } = useParams();
-  console.log(id, 88);
+  console.log(id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
   const [urls, setUrls] = useState([]);
   const [progress, setProgress] = useState(0);
 
-  const user = useSelector((state) => {
-    return state.user.currentUser;
-  });
   const posts = useSelector((state) => {
-    console.log(state, 777);
     if (state.post.posts[0] !== undefined) {
       return state.post.posts[0];
     } else {
@@ -34,7 +31,7 @@ export default function EditProvider() {
       };
     }
   });
-
+  console.log(posts);
   const handleChange = (e) => {
     for (let i = 0; i < e.target.files.length; i++) {
       const newImage = e.target.files[i];
@@ -73,7 +70,7 @@ export default function EditProvider() {
       });
     }
     Promise.all(promises)
-      .then(() => alert("All images uploaded"))
+      .then(() => swal("Ảnh đã được tải lên thành công !"))
       .catch((err) => console.log(err));
   };
 
@@ -98,7 +95,7 @@ export default function EditProvider() {
       measurement: data[0].measurement,
       date: data[0].date,
     };
-    console.log(urls, 222);
+    console.log(urls);
     dispatch(editProvider(data)).then((values) => {
       swal("Edit Success !!!");
       navigate("/home");
@@ -136,6 +133,8 @@ export default function EditProvider() {
                             alt={urls}
                             style={{
                               borderRadius: "23px",
+                              width: "100%",
+                              height: "430px",
                             }}
                           />
                           <input

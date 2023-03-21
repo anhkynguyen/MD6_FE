@@ -51,69 +51,68 @@ export default function ListProvider() {
                 posts.map((item) => {
                   return (
                     <div className="col-lg-2 col-sm-6">
-                      <Link to={"/user/showSellerProfile/" + item.idPost}>
-                        <div className="item">
+                      <div className="item">
+                        <Link to={"/user/showSellerProfile/" + item.idPost}>
                           <img
                             src={item.image}
                             height={200}
                             width={300}
                             alt=""
-                          />
-                          <h4>
-                            {item.namePost}
+                          />{" "}
+                        </Link>
+                        <h4>
+                          {item.namePost}
 
-                            <br />
-                            <span style={{ color: "white" }}>
-                              Số đo: {item.measurement}
-                            </span>
-                          </h4>
-                          {user.idUser === item.idUser ? (
-                            <ul>
-                              <li>
-                                <a>
-                                  <i
-                                    className="fa-solid fa-trash"
-                                    onClick={() => {
-                                      swal({
-                                        title: "Are you sure?",
-                                        text: "!!!",
-                                        icon: "warning",
-                                        buttons: true,
-                                        dangerMode: true,
-                                      }).then((willDelete) => {
-                                        if (willDelete) {
-                                          dispatch(
-                                            removeProvider(item.idPost)
-                                          ).then(() => {
-                                            dispatch(getProviders()).then(
-                                              () => {
-                                                navigate("/home");
-                                              }
-                                            );
-                                          });
-                                          swal("Xoa thanh cong!", {
-                                            icon: "success",
-                                          });
-                                        } else {
-                                          swal("Khong xoa thanh cong!");
+                          <br />
+                          <span style={{ color: "white" }}>
+                            Số đo: {item.measurement}
+                          </span>
+                        </h4>
+                        {user.idUser === item.idUser ? (
+                          <ul>
+                            <li>
+                              <a>
+                                <i
+                                  className="fa-solid fa-trash"
+                                  onClick={() => {
+                                    swal({
+                                      title: "Are you sure?",
+                                      text: "!!!",
+                                      icon: "warning",
+                                      buttons: true,
+                                      dangerMode: true,
+                                    }).then((willDelete) => {
+                                      if (willDelete) {
+                                        dispatch(
+                                          removeProvider(item.idPost)
+                                        ).then(() => {
                                           dispatch(getProviders()).then(() => {
                                             navigate("/home");
                                           });
-                                        }
-                                      });
-                                    }}
-                                  ></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href={`/user/edit-post/${item.idPost}`}>
-                                  <i className="fa-solid fa-pen-to-square"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          ) : (
-                            <div>
-                              {/* <>
+                                        });
+                                        swal("Xoa thanh cong!", {
+                                          icon: "success",
+                                        });
+                                      } else {
+                                        swal("Khong xoa thanh cong!");
+                                        dispatch(getProviders()).then(() => {
+                                          navigate("/home");
+                                        });
+                                      }
+                                    });
+                                  }}
+                                ></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href={`/home/edit-post/${item.idPost}`}>
+                                <i className="fa-solid fa-pen-to-square"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        ) : (
+                          <div>
+                            {/* <>
                               <button
                                 type="button"
                                 class="btn btn-primary btn-block logn-btn"
@@ -213,10 +212,9 @@ export default function ListProvider() {
                                 </div>
                               </div>
                             </> */}
-                            </div>
-                          )}
-                        </div>
-                      </Link>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   );
                 })}

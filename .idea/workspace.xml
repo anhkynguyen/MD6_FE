@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="612249af-2410-4b71-a92b-135302a60595" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MD6_FE.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbarAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/provider/editProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/editProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/listUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/listUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/userSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/userSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/userService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/provider/listProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/listProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/provider/sellerProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/sellerProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/orderService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/orderService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/providerService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/providerService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +32,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Naky/Desktop",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -55,7 +46,13 @@
       <option name="presentableId" value="Default" />
       <updated>1679361886393</updated>
       <workItem from="1679361894742" duration="3000" />
+      <workItem from="1679387335512" duration="598000" />
+      <workItem from="1679392297193" duration="13000" />
+      <workItem from="1679394094685" duration="746000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
