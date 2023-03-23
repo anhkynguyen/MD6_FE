@@ -9,13 +9,15 @@ export default function ListProvider() {
   const navigate = useNavigate();
 
   const posts = useSelector((state) => {
-    if (state.post !== undefined) {
+    console.log(1111,state)
+
       return state.post.posts;
-    }
+
   });
 
   const user = useSelector((state) => {
     if (state.user !== undefined) {
+      console.log(state)
       return state.user.currentUser;
     }
   });
@@ -26,7 +28,7 @@ export default function ListProvider() {
 
   return (
     <>
-      <div class="most-popular">
+      <div class="most-popular" style={{backgroundColor :''}}>
         <div>
           <div class="starsec"></div>
           <div class="starthird"></div>

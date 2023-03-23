@@ -17,10 +17,9 @@ export default function SellerProfile() {
   const user = useSelector((state) => state.user.currentUser);
   const provisions = useSelector((state) => state.provision.provisions);
   const post = useSelector((state) => {
-    console.log(state, 999);
     return state.user.profile;
   });
-  console.log(post[0], 11);
+
   const handleRent = (values) => {
     let data = {
       ...values,
@@ -48,7 +47,7 @@ export default function SellerProfile() {
   return (
     <Formik
       initialValues={{
-        startTime: "",
+        starTime: "",
         endTime: "",
         idProvision: "",
       }}
@@ -101,7 +100,7 @@ export default function SellerProfile() {
                                       <span>{post.measurement} cm</span>
                                     </li>
                                     <li>
-                                      Giá thuê <span>{post.price} VND</span>
+                                      Sở thích <span>{post.description}</span>
                                     </li>
                                   </ul>
                                 </div>
@@ -190,8 +189,8 @@ export default function SellerProfile() {
                                 </h5>
                                 <br></br>
                                 <Field
-                                  type="datetime-local"
-                                  name={"startTime"}
+                                  type="date"
+                                  name={"starTime"}
                                   id=""
                                   placeholder=""
                                   class="form-control"
@@ -202,7 +201,7 @@ export default function SellerProfile() {
                                 </h5>
                                 <br></br>
                                 <Field
-                                  type="datetime-local"
+                                  type="date"
                                   name="endTime"
                                   id=""
                                   placeholder=""

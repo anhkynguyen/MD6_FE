@@ -23,14 +23,24 @@ export default function Login() {
         navigate("/home");
       }
       if (e.payload === "User not found") {
-        swal("Tài khoản không tồn tại !!!");
+        swal({
+          title: "Tài khoản không tồn tại  !",
+          icon: "error",
+          text: "Bạn chưa có tài khoản hãy tạo tài khoản mới ngay bây giờ ",
+        });
       }
       if (e.payload === "Wrong password") {
-        swal("Sai mật khẩu! Vui lòng nhập lại mật khẩu !");
+        swal({
+          title: "Sai mật khẩu! Vui lòng nhập lại mật khẩu !",
+          icon: "warning",
+        });
       }
       if (e.payload === "your account has been locked") {
-        swal("Tài khoản chưa kích hoạt! Vui lòng liên hệ quản trị viên !");
-        navigate("/");
+        swal({
+          title:
+            "Tài khoản chưa kích hoạt , Vui lòng liên hệ quản trị viên ! !",
+          icon: "warning",
+        });
       }
     });
   };
@@ -46,7 +56,9 @@ export default function Login() {
       }}
       validationSchema={validateSchema}
       onSubmit={(values) => {
-        handleLogin(values);
+        handleLogin(values).then(() => {
+          swal({ title: "Đăng nhập thành công ", icon: "success" });
+        });
       }}
     >
       <Form>

@@ -2,18 +2,15 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import customAxios from "./api";
 
 export const getProviders = createAsyncThunk("post/getPosts", async () => {
-  try {
     const res = await customAxios.get("post");
     return res.data;
-  } catch (e) {
-    console.log(e);
-  }
+
 });
 export const findByIdProvider = createAsyncThunk(
   "post/findByIdPost",
   async (data) => {
     const res = await customAxios.get("post/findById/" + data);
-    console.log(data, 88);
+
     return res.data;
   }
 );
@@ -31,6 +28,7 @@ export const removeProvider = createAsyncThunk(
 );
 
 export const editProvider = createAsyncThunk("post/editPost", async (data) => {
+  console.log(data, 33344);
   await customAxios.put("post/edit/" + data[1], data[0]);
   const res = await customAxios.get("post");
   return res.data;

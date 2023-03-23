@@ -13,7 +13,7 @@ export default function NavbarAdmin() {
                 <img src="/assets/images/logo.png" alt="" />
               </Link>
 
-              <div class="search-input">
+              {/* <div class="search-input">
                 <form id="search" action="#">
                   <input
                     type="text"
@@ -24,14 +24,14 @@ export default function NavbarAdmin() {
                   />
                   <i class="fa fa-search"></i>
                 </form>
-              </div>
+              </div> */}
 
               <ul class="nav">
-                <li>
+                {/* <li>
                   <a href="/home" class="active">
                     Home
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <Link to={"/admin/listUser"}>Quản lý hội viên</Link>
                 </li>
@@ -54,9 +54,9 @@ export default function NavbarAdmin() {
                   alt=""
                 />
               </Link>
-              <a href="/" class="menu-trigger">
+              {/* <a href="/" class="menu-trigger">
                 <span>Menu</span>
-              </a>
+              </a> */}
             </nav>
           </div>
         </div>

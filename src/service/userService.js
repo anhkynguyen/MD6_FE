@@ -7,12 +7,6 @@ export const login = createAsyncThunk("user/login", async (data) => {
   return res.data;
 });
 
-export const register = createAsyncThunk("user/register", async (data) => {
-  const res = await customAxios.post("users/register", data);
-  console.log(3, res);
-  return res.data;
-});
-
 export const editProfile = createAsyncThunk(
   "user/editProfile",
   async (data) => {
@@ -100,3 +94,8 @@ export const getSellerProfile = createAsyncThunk(
     return res.data;
   }
 );
+export const register = createAsyncThunk("user/register", async (data) => {
+  const res = await customAxios.post("users/register", data);
+
+  return res.data;
+});

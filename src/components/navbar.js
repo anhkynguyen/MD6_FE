@@ -17,7 +17,7 @@ export default function Navbar() {
                     <img src="/assets/images/logo.png" alt="" />
                   </Link>
 
-                  <div class="search-input">
+                  {/* <div class="search-input">
                     <form id="search" action="#">
                       <input
                         type="text"
@@ -28,17 +28,14 @@ export default function Navbar() {
                       />
                       <i class="fa fa-search"></i>
                     </form>
-                  </div>
+                  </div> */}
 
                   <ul class="nav">
-                    <li>
-                      <a href="index.html" class="active">
+                    {/* <li>
+                      <a href="/home" class="active">
                         Home
                       </a>
-                    </li>
-                    <li>
-                      <a href="/home/add-post">Add</a>
-                    </li>
+                    </li> */}
 
                     <li>
                       <Link to={`/user/${user.idUser}`}>

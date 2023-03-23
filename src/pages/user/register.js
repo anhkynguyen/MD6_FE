@@ -15,25 +15,24 @@ const validateSchema = Yup.object().shape({
     .required("Vui lòng không để trống mật khẩu !"),
   gmail: Yup.string()
     .email("Vui lòng nhập đúng định dạng email!")
-    .required("Vui lòng không để trống !"),
-  birthday: Yup.string().required("Vui lòng không để trống !"),
-  gender: Yup.string().required("Vui lòng không để trống !"),
+    .required("Vui lòng không để trống Email !"),
+  birthday: Yup.string().required("Vui lòng không để trống ngaày sinh !"),
+  gender: Yup.string().required("Vui lòng không để trống giới tính !"),
 });
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleRegister = (values) => {
     let data = { ...values };
-    console.log(2, data);
     dispatch(register(data)).then((value) => {
-      console.log(value.payload);
+      console.log(value);
       if (value.payload === "Username already registered") {
-        swal("Username already registered");
+        swal("Tài khoản đã tồn tại !");
         navigate("/register");
       } else {
+        navigate("/");
         swal({ title: "Đănng kí thành công !", icon: "success" });
 
-        navigate("/");
       }
     });
   };
@@ -47,15 +46,16 @@ export default function Register() {
           gmail: "",
           birthday: "",
           gender: "",
+
         }}
         validationSchema={validateSchema}
         onSubmit={(values) => {
+          console.log(values)
           handleRegister(values);
         }}
       >
         <Form>
           <div id="mainCoantiner">
-            <div class="main-header"></div>
 
             <div>
               <div class="starsec"></div>
@@ -71,10 +71,13 @@ export default function Register() {
                     <div class="col-xl-12 col-md-12 col-md-12">
                       <div class="card">
                         <div class="card-body wow-bg" id="formBg">
+                          <div></div>
                           <h3 style={{ color: "pink" }}>Đăng Ký</h3>
                           <h5 style={{ color: "pink" }}>
                             Đăng ký tài khoản của bạn
                           </h5>
+                          <br></br>
+
                           <br></br>
                           <p style={{ color: "white", float: "left" }}>
                             Họ tên
@@ -85,8 +88,8 @@ export default function Register() {
                           >
                             <ErrorMessage name={"username"}></ErrorMessage>
                           </alert>{" "}
-                          <div class="input-group mb-2">
-                            {" "}
+                          <div class="input-group mb">
+
                             <Field
                               type="text"
                               name={"username"}
@@ -96,6 +99,7 @@ export default function Register() {
                               style={{ color: "white" }}
                             />{" "}
                           </div>
+                          <br/>
                           <p style={{ color: "white", float: "left" }}>
                             Mật khẩu
                           </p>
@@ -105,7 +109,7 @@ export default function Register() {
                           >
                             <ErrorMessage name={"password"}></ErrorMessage>
                           </alert>{" "}
-                          <div class="input-group mb-1">
+                          <div class="input-group ">
                             {" "}
                             <Field
                               name={"password"}
@@ -116,6 +120,7 @@ export default function Register() {
                               style={{ color: "white" }}
                             />{" "}
                           </div>
+                          <br/>
                           <p style={{ color: "white", float: "left" }}>
                             Ngày sinh
                           </p>{" "}
@@ -125,7 +130,7 @@ export default function Register() {
                           >
                             <ErrorMessage name={"birthday"}></ErrorMessage>
                           </alert>{" "}
-                          <div class="input-group mb-0">
+                          <div class="input-group ">
                             {" "}
                             <Field
                               name={"birthday"}
@@ -135,6 +140,7 @@ export default function Register() {
                               style={{ color: "white" }}
                             />{" "}
                           </div>
+                          <br/>
                           <p style={{ color: "white", float: "left" }}>Email</p>
                           <alert
                             className="text-danger"
@@ -142,7 +148,7 @@ export default function Register() {
                           >
                             <ErrorMessage name={"gmail"}></ErrorMessage>
                           </alert>{" "}
-                          <div class="input-group mb-0">
+                          <div class="input-group ">
                             {" "}
                             <Field
                               name={"gmail"}
@@ -153,6 +159,7 @@ export default function Register() {
                               style={{ color: "white" }}
                             />{" "}
                           </div>
+                          <br/>
                           <p style={{ color: "white", float: "left" }}>
                             Giới tính
                           </p>{" "}
@@ -162,7 +169,7 @@ export default function Register() {
                           >
                             <ErrorMessage name={"gender"}></ErrorMessage>
                           </alert>{" "}
-                          <div class="input-group mb-0">
+                          <div class="input-group ">
                             {" "}
                             <Field
                               name={"gender"}
@@ -173,6 +180,7 @@ export default function Register() {
                               placeholder="Hãy chọn giới tính của bạn"
                               style={{ color: "white" }}
                             >
+
                               {" "}
                               <option value="Vui lòng chọn giới tính" selected>
                                 Vui lòng chọn giới tính

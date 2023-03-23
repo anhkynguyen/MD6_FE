@@ -73,11 +73,17 @@ export default function Profile() {
                                         dispatch(getProfile(idUser));
                                       }
                                     );
-                                    swal("Bạn đã đổi trạng thái thành công !", {
+                                    swal({
+                                      title:
+                                        "titleBạn đã đổi trạng thái thành công !",
                                       icon: "success",
                                     });
                                   } else {
-                                    swal("Bạn đã hủy yêu cầu !");
+                                    swal({
+                                      title:
+                                        "Bạn đã hủy thao tác thay đổi trạng thái !",
+                                      icon: "error",
+                                    });
                                   }
                                 });
                               }}
@@ -122,15 +128,22 @@ export default function Profile() {
                                       dispatch(
                                         requestProvider(user.idUser)
                                       ).then(() => {
-                                        dispatch(getProfile()).then(() => {
-                                          // navigate("/home");
-                                        });
+                                        dispatch(getProfile(idUser)).then(
+                                          () => {
+                                            // navigate("/home");
+                                          }
+                                        );
                                       });
-                                      swal("Bạn đã gửi yêu cầu thành công !", {
-                                        icon: "Thành công ",
+                                      swal({
+                                        icon: "success",
+                                        title:
+                                          "Bạn đã gửi yêu cầu thành công !",
                                       });
                                     } else {
-                                      swal("Bạn đã hủy yêu cầu !");
+                                      swal({
+                                        title: "Bạn đã hủy yêu cầu !",
+                                        icon: "error",
+                                      });
                                     }
                                   });
                                 }}

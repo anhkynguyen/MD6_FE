@@ -76,7 +76,12 @@ export default function ProfileProvider() {
                         <div class="main-info header-text">
                           <span>{user.status}</span>
                           <h4>{user.username}</h4>
-                          <p>Người cung cấp dịch vụ</p>
+                          <button
+                            type="submit"
+                            class="btn btn-primary btn-block logn-btn"
+                          >
+                            <Link to={"/home/add-post"}>Thêm bài đăng </Link>
+                          </button>{" "}
                           <div class="main-border-button"></div>
                         </div>
                       </div>

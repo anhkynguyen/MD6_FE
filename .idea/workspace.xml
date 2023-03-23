@@ -3,12 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="612249af-2410-4b71-a92b-135302a60595" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbarAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/provider/addProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/addProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/provider/editProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/editProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/provider/listProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/listProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/provider/sellerProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/sellerProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/orderService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/orderService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/user/changePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/changePassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/user/listUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/listUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/user/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/user/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slices/userSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/userSlice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/providerService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/providerService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/userService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +42,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Naky/Desktop",
+    "last_opened_file_path": "C:/Users/Naky/Desktop/MD6_FE",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -49,6 +64,8 @@
       <workItem from="1679387335512" duration="598000" />
       <workItem from="1679392297193" duration="13000" />
       <workItem from="1679394094685" duration="746000" />
+      <workItem from="1679459058598" duration="31000" />
+      <workItem from="1679459092714" duration="6819000" />
     </task>
     <servers />
   </component>

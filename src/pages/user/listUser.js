@@ -113,7 +113,10 @@ export default function ListUser() {
                                           icon: "success ",
                                         });
                                       } else {
-                                        swal("Bạn đã hủy thao tác duyệt !");
+                                        swal({
+                                          title: "Bạn đã hủy thao tác duyệt !",
+                                          icon: "error",
+                                        });
                                       }
                                     });
                                   }}
@@ -155,7 +158,6 @@ export default function ListUser() {
                                   style={{
                                     maxWidth: "45px",
                                     maxHeight: "45px",
-
                                     borderRadius: "50%",
                                     marginRight: "15px",
                                   }}
@@ -183,20 +185,19 @@ export default function ListUser() {
                                       if (willDelete) {
                                         dispatch(
                                           acceptUsersRegister(item.idUser)
-                                        )
-                                          .then(() => {
-                                            navigate("/home");
-                                          })
-                                          .then(() => {
-                                            navigate("/home");
-                                          });
+                                        ).then(() => {
+                                          dispatch(getUsersRegister());
+                                        });
 
                                         swal({
                                           title: "Bạn đã duyệt thành công !",
                                           icon: "success",
                                         });
                                       } else {
-                                        swal("Bạn đã hủy thao tác duyệt !");
+                                        swal({
+                                          title: "Bạn đã hủy thao tác duyệt !",
+                                          icon: "error",
+                                        });
                                       }
                                     });
                                   }}
@@ -224,7 +225,12 @@ export default function ListUser() {
                 return (
                   <div class="col-lg-6">
                     <div class="item">
-                      <img src={item.avatar} alt="" class="templatemo-item" />
+                      <img
+                        src={item.avatar}
+                        alt=""
+                        class="templatemo-item"
+                        style={{ width: "80px", height: "80px" }}
+                      />
                       <h4> {item.username}</h4>
                       <span>{item.role}</span>
                       <h4>{item.status}</h4>
@@ -270,11 +276,15 @@ export default function ListUser() {
                                     // navigate("/home");
                                   });
 
-                                swal("Bạn đã mở khóa thành công !", {
+                                swal({
+                                  title: "Bạn đã mở khóa thành công !",
                                   icon: "success",
                                 });
                               } else {
-                                swal("Bạn đã hủy thao tác mở khóa !");
+                                swal({
+                                  title: "Bạn đã hủy thao tác mở khóa !",
+                                  icon: "error",
+                                });
                               }
                             });
                           }}
@@ -308,11 +318,15 @@ export default function ListUser() {
                                     navigate("");
                                   });
 
-                                swal("Bạn đã khóa thành công !", {
+                                swal({
+                                  title: "Bạn đã khóa thành công !",
                                   icon: "success",
                                 });
                               } else {
-                                swal("Bạn đã hủy thao tác khóa !");
+                                swal({
+                                  title: "Bạn đã hủy thao tác mở khóa !",
+                                  icon: "error",
+                                });
                               }
                             });
                           }}

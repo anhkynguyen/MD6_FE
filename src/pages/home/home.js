@@ -7,6 +7,10 @@ export default function Home() {
     <div className="row">
       <div className="col-12">
         <Navbar></Navbar>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
         <Outlet></Outlet>
         <Footer></Footer>
       </div>

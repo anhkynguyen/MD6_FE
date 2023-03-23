@@ -4,7 +4,16 @@ import { useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { storage } from "../../upload/firebaseConfig";
 import { addProvider } from "../../service/providerService";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
+import * as Yup from "yup";
+const validateSchema = Yup.object().shape({
+  namePost: Yup.string().required("Vui lòng không để trống !"),
+  description: Yup.string().required("Vui lòng không để trống !"),
+  price: Yup.string().required("Vui lòng không để trống !"),
+  height: Yup.string().required("Vui lòng không để trống !"),
+  weight: Yup.string().required("Vui lòng không để trống !"),
+  measurement: Yup.string().required("Vui lòng không để trống !"),
+});
 
 export default function AddProvider() {
   const dispatch = useDispatch();
@@ -76,6 +85,7 @@ export default function AddProvider() {
           weight: "",
           measurement: "",
         }}
+        validationSchema={validateSchema}
         onSubmit={(values) => {
           values.image = urls[0];
           values.idUser = user.idUser;
@@ -136,7 +146,17 @@ export default function AddProvider() {
                           <div class="form-holder">
                             <h5 style={{ color: "#e75e8d" }}>Tên bài đăng</h5>
                             <br></br>
+                            <alert
+                              className="text-danger"
+                              style={{ float: "left" }}
+                            >
+                              <ErrorMessage name={"namePost"}></ErrorMessage>
+                            </alert>{" "}
                             <Field
+                              style={{
+                                backgroundColor: "rgb(22,22,36)",
+                                color: "white",
+                              }}
                               type="text"
                               name={"namePost"}
                               id="namePost"
@@ -147,7 +167,17 @@ export default function AddProvider() {
                           <div class="form-holder">
                             <h5 style={{ color: "#e75e8d" }}>Chiều cao</h5>
                             <br></br>
+                            <alert
+                              className="text-danger"
+                              style={{ float: "left" }}
+                            >
+                              <ErrorMessage name={"height"}></ErrorMessage>
+                            </alert>{" "}
                             <Field
+                              style={{
+                                backgroundColor: "rgb(22,22,36)",
+                                color: "white",
+                              }}
                               type="number"
                               name={"height"}
                               id="height"
@@ -159,8 +189,18 @@ export default function AddProvider() {
                         <div class="form-row">
                           <div class="form-holder">
                             <h5 style={{ color: "#e75e8d" }}>Cân nặng</h5>
+                            <alert
+                              className="text-danger"
+                              style={{ float: "left" }}
+                            >
+                              <ErrorMessage name={"weight"}></ErrorMessage>
+                            </alert>{" "}
                             <br></br>
                             <Field
+                              style={{
+                                backgroundColor: "rgb(22,22,36)",
+                                color: "white",
+                              }}
                               type="number"
                               name={"weight"}
                               id="weight"
@@ -170,8 +210,18 @@ export default function AddProvider() {
                           </div>
                           <div class="form-holder">
                             <h5 style={{ color: "#e75e8d" }}>Số đo ba vòng</h5>
+                            <alert
+                              className="text-danger"
+                              style={{ float: "left" }}
+                            >
+                              <ErrorMessage name={"measurement"}></ErrorMessage>
+                            </alert>{" "}
                             <br></br>
                             <Field
+                              style={{
+                                backgroundColor: "rgb(22,22,36)",
+                                color: "white",
+                              }}
                               name="measurement"
                               type="text"
                               placeholder="Số đo ba vòng của bạn (cm)"
@@ -182,8 +232,18 @@ export default function AddProvider() {
                         <div class="form-row">
                           <div class="form-holder">
                             <h5 style={{ color: "#e75e8d" }}>Giá thuê</h5>
+                            <alert
+                              className="text-danger"
+                              style={{ float: "left" }}
+                            >
+                              <ErrorMessage name={"price"}></ErrorMessage>
+                            </alert>{" "}
                             <br></br>
                             <Field
+                              style={{
+                                backgroundColor: "rgb(22,22,36)",
+                                color: "white",
+                              }}
                               name={"price"}
                               id="price"
                               type="number"
@@ -193,8 +253,18 @@ export default function AddProvider() {
                           </div>
                           <div class="form-holder">
                             <h5 style={{ color: "#e75e8d" }}>Sở thích</h5>
+                            <alert
+                              className="text-danger"
+                              style={{ float: "left" }}
+                            >
+                              <ErrorMessage name={"description"}></ErrorMessage>
+                            </alert>{" "}
                             <br></br>
                             <Field
+                              style={{
+                                backgroundColor: "rgb(22,22,36)",
+                                color: "white",
+                              }}
                               name={"description"}
                               id="description"
                               type="text"
