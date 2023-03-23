@@ -22,14 +22,14 @@ export const getTopProviders = createAsyncThunk(
 export const findByIdProvider = createAsyncThunk(
   "post/findByIdPost",
   async (data) => {
-    const res = await customAxios.get("/post/" + data);
+    const res = await customAxios.get("/post/findById/" + data);
 
     return res.data;
   }
 );
 
 export const addProvider = createAsyncThunk("post/addPost", async (data) => {
-  const res = await customAxios.post("/post/add", data);
+  const res = await customAxios.post("post/add", data);
   return res.data;
 });
 export const removeProvider = createAsyncThunk(

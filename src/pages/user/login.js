@@ -18,7 +18,6 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = async (values) => {
-    console.log(111111111111,values)
     await dispatch(login(values)).then((e) => {
       if (e.payload !== "User not found" && e.payload !== "Wrong password") {
         navigate("/home");

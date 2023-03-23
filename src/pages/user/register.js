@@ -24,7 +24,7 @@ export default function Register() {
   const navigate = useNavigate();
   const handleRegister = (values) => {
     let data = { ...values };
-    console.log(2, data);
+    console.log(222222, data);
     dispatch(register(data)).then((value) => {
       console.log(value.payload);
       if (value.payload === "Username already registered") {

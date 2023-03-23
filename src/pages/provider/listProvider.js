@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import { useEffect } from "react";
 import { getProviders, removeProvider } from "../../service/providerService";
 import swal from "sweetalert";
@@ -7,12 +7,20 @@ import swal from "sweetalert";
 export default function ListProvider() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [page, setPage] = useSearchParams()
+  const page1 = page.get('page') || 1;
+  const totalPages = useSelector(state => {
+    if (state.post !== undefined) {
+      return state.post.posts.totalPage;
+    }
+  })
 
   const posts = useSelector((state) => {
     if (state.post !== undefined) {
       return state.post.posts;
     }
   });
+  console.log(posts)
 
   const user = useSelector((state) => {
     if (state.user !== undefined) {
@@ -21,7 +29,7 @@ export default function ListProvider() {
   });
 
   useEffect(() => {
-    dispatch(getProviders());
+    dispatch(getProviders(page1));
   }, []);
 
   return (
@@ -51,14 +59,16 @@ export default function ListProvider() {
                 posts.map((item) => {
                   return (
                     <div className="col-lg-2 col-sm-6">
-                      <Link to={"/user/showSellerProfile/" + item.idPost}>
+
                         <div className="item">
+                          <Link to={"/user/showSellerProfile/" + item.idPost}>
                           <img
                             src={item.image}
                             height={200}
                             width={300}
                             alt=""
                           />
+                          </Link>
                           <h4>
                             {item.namePost}
 
@@ -106,123 +116,67 @@ export default function ListProvider() {
                                 </a>
                               </li>
                               <li>
-                                <a href={`/user/edit-post/${item.idPost}`}>
+                                <a href={`/home/edit-post/${item.idPost}`}>
                                   <i className="fa-solid fa-pen-to-square"></i>
                                 </a>
                               </li>
                             </ul>
-                          ) : (
-                            <div>
-                              {/* <>
-                              <button
-                                type="button"
-                                class="btn btn-primary btn-block logn-btn"
-                                style={{ width: "100%" }}
-                                data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop"
-                              >
-                                Thuê
-                              </button>
 
-                              <div
-                                class="modal fade"
-                                id="staticBackdrop"
-                                data-bs-backdrop="static"
-                                data-bs-keyboard="false"
-                                tabindex="-1"
-                                aria-labelledby="staticBackdropLabel"
-                                aria-hidden="true"
-                              >
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5
-                                        class="modal-title"
-                                        id="staticBackdropLabel"
-                                      >
-                                        {" "}
-                                      </h5>
-                                      <button
-                                        type="button"
-                                        class="btn-close"
-                                        data-bs-dismiss="modal"
-                                        aria-label="Close"
-                                      ></button>
-                                    </div>
-                                    <div class="modal-body">
-                                      {" "}
-                                      <div class="form-row">
-                                        <div class="form-holder">
-                                          <h5 style={{ color: "#e75e8d" }}>
-                                            Chọn dịch vụ
-                                          </h5>
-                                          <br></br>
-                                          <input
-                                            type="text"
-                                            name={"namePost"}
-                                            id="namePost"
-                                            placeholder="Tên bài đăng"
-                                            class="form-control"
-                                          />
-                                        </div>
-                                        <div class="form-holder">
-                                          <h5 style={{ color: "#e75e8d" }}>
-                                            Thời gian bắt đầu
-                                          </h5>
-                                          <br></br>
-                                          <input
-                                            type="date"
-                                            name={""}
-                                            id=""
-                                            placeholder=""
-                                            class="form-control"
-                                          />
-                                          <br></br>
-                                          <h5 style={{ color: "#e75e8d" }}>
-                                            Thời gian kết thúc
-                                          </h5>
-                                          <br></br>
-                                          <input
-                                            type="date"
-                                            name={""}
-                                            id=""
-                                            placeholder=""
-                                            class="form-control"
-                                          />
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button
-                                        type="button"
-                                        style={{ width: "48%" }}
-                                        class="btn btn-primary btn-block logn-btn"
-                                        data-bs-dismiss="modal"
-                                      >
-                                        Hủy
-                                      </button>
-                                      <button
-                                        type="button"
-                                        style={{ width: "48%" }}
-                                        class="btn btn-primary btn-block logn-btn"
-                                      >
-                                        Thuê
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </> */}
-                            </div>
+
+                          ) : (
+                            <>
+                            </>
                           )}
                         </div>
-                      </Link>
                     </div>
                   );
+
                 })}
             </div>
+
           </div>
         </div>
+        <nav aria-label="Page navigation example">
+          <ul className="pagination justify-content-center">
+            <li className="page-item">
+              {(page1 === 1) ?
+                  <>
+                    <div className="page-link"><span aria-hidden="true"
+                                                     style={{color: 'black'}}>&laquo;</span>
+                    </div>
+                  </>
+                  :
+                  <>
+                    <div className="page-link" onClick={() => {
+                      dispatch(getProviders(page1 - 1));
+                      navigate('/post?page=' + (page1 - 1))
+                    }
+                    }><span aria-hidden="true">&laquo;</span>
+                    </div>
+                  </>
+              }
+            </li>
+            <li className="page-item"><a className="page-link">{page1}/{totalPages}</a></li>
+            <li className="page-item">
+              {(page1 === totalPages) ?
+                  <>
+                    <div className="page-link"><span aria-hidden="true"
+                                                     style={{color: 'black'}}>&raquo;</span>
+                    </div>
+                  </>
+                  :
+                  <>
+                    <div className="page-link" onClick={() => {
+                      dispatch(getProviders(Number(page1) + 1));
+                      navigate('/post?page=' + (Number(page1) + 1))
+                    }
+                    }><span aria-hidden="true">&raquo;</span>
+                    </div>
+                  </>
+              }
+            </li>
+          </ul>
+        </nav>
       </div>
     </>
   );

@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="612249af-2410-4b71-a92b-135302a60595" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MD6_FE.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="5e1660a4-83d1-414a-8a9d-ac826fbe9810" name="Changes" comment="&quot;feature/loginform&quot;">
+      <change afterPath="$PROJECT_DIR$/src/pages/home/order.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/order/listOrderSeller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/order/listOrderUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/slices/orderSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbarAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbarAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/editProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/editProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/listUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/listUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/provider/listProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/listProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/provider/sellerProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/sellerProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/user/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/user/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/slices/userSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/userSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/orderService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/orderService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/providerService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/providerService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/userService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,25 +45,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="612249af-2410-4b71-a92b-135302a60595" name="Changes" comment="" />
+      <changelist id="5e1660a4-83d1-414a-8a9d-ac826fbe9810" name="Changes" comment="&quot;feature/loginform&quot;" />
       <created>1679361886393</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1679361886393</updated>
       <workItem from="1679361894742" duration="3000" />
+      <workItem from="1679446119619" duration="21197000" />
+      <workItem from="1679532623930" duration="6724000" />
+      <workItem from="1679553267074" duration="4517000" />
+      <workItem from="1679558202270" duration="3624000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

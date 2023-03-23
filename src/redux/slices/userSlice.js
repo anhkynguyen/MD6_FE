@@ -76,7 +76,7 @@ const userSlice = createSlice({
       state.user = action.payload;
     });
     builder.addCase(getSellerProfile.fulfilled, (state, action) => {
-      state.profile = action.payload[0];
+      state.profile = action.payload;
     });
   },
 });
