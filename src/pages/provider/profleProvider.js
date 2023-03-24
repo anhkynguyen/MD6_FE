@@ -12,6 +12,7 @@ import { addProvider } from "../../service/providerService";
 import { Field, Form, Formik, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";
 import { getProvision } from "../../service/provisionService";
+import { addPersonal } from "../../service/personalService";
 const validateSchema = Yup.object().shape({
   namePost: Yup.string().required("Vui lòng không để trống !"),
   description: Yup.string().required("Vui lòng không để trống !"),
@@ -22,6 +23,7 @@ const validateSchema = Yup.object().shape({
 });
 
 export default function ProfileProvider() {
+  const [checked, setChecked] = useState([]);
   const { idUser } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => {
@@ -40,7 +42,16 @@ export default function ProfileProvider() {
   const user1 = useSelector((state) => {
     return state.user.currentUser;
   });
-
+  // Add/Remove checked item from list
+  const handleCheck = (event) => {
+    var updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(event.target.value), 1);
+    }
+    setChecked(updatedList);
+  };
   const handleChange = (e) => {
     for (let i = 0; i < e.target.files.length; i++) {
       const newImage = e.target.files[i];
@@ -91,6 +102,10 @@ export default function ProfileProvider() {
     dispatch(addProvider(data)).then(() => {
       navigate("/home");
     });
+  };
+  const handleAddPersonal = (value) => {
+    let data1 = checked;
+    dispatch(addPersonal(data1));
   };
   useEffect(() => {
     dispatch(getProfile(idUser));
@@ -207,7 +222,6 @@ export default function ProfileProvider() {
                                   <>
                                     <Formik
                                       initialValues={{
-                                        toggle: false,
                                         namePost: "",
                                         description: "",
                                         image: "",
@@ -215,12 +229,13 @@ export default function ProfileProvider() {
                                         height: "",
                                         weight: "",
                                         measurement: "",
-                                        idProvision: [],
+                                        idProvision: [checked],
                                       }}
                                       validationSchema={validateSchema}
                                       onSubmit={(values) => {
                                         values.image = urls[0];
                                         values.idUser = user1.idUser;
+                                        handleAddPersonal();
                                         handleAdd(values).then(() => {
                                           swal({
                                             title: "Đăng bài thành công !",
@@ -473,11 +488,12 @@ export default function ProfileProvider() {
                                               {provisions.map((item) => {
                                                 return (
                                                   <label>
-                                                    <Field
+                                                    <input
                                                       type="checkbox"
                                                       id="idProvision"
                                                       name="idProvision"
                                                       value={item.idProvision}
+                                                      onChange={handleCheck}
                                                     />
                                                     <label>
                                                       {" "}
