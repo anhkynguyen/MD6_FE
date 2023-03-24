@@ -32,3 +32,14 @@ export const editProvider = createAsyncThunk("post/editPost", async (data) => {
   const res = await customAxios.get("post");
   return res.data;
 });
+export const getTopProviders = createAsyncThunk(
+  "post/getAllPost2",
+  async () => {
+    try {
+      const res = await customAxios.get("/post/getAllPost2");
+      return res.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);

@@ -5,6 +5,7 @@ import {
   findByIdProvider,
   getProviders,
   removeProvider,
+  getTopProviders,
 } from "../../service/providerService";
 
 const initialState = {
@@ -31,6 +32,9 @@ const postSlice = createSlice({
     });
     builder.addCase(editProvider.fulfilled, (state, action) => {
       console.log(999, action.payload);
+      state.posts = action.payload;
+    });
+    builder.addCase(getTopProviders.fulfilled, (state, action) => {
       state.posts = action.payload;
     });
   },

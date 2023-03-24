@@ -10,6 +10,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { storage } from "../../upload/firebaseConfig";
 
 import { useState } from "react";
+import ListTopProvider from "./listTopProvider";
 
 export default function ListProvider() {
   const { id } = useParams();
@@ -134,6 +135,7 @@ export default function ListProvider() {
 
   return (
     <>
+      <ListTopProvider></ListTopProvider>
       <div class="most-popular">
         <div class="row">
           <div class="col-lg-12">

@@ -2,7 +2,7 @@ import { Formik, Form, Field } from "formik";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { rentProvider } from "../../service/orderService";
+import { addOrder } from "../../service/orderService";
 import { getSellerProfile } from "../../service/userService";
 import swal from "sweetalert";
 import { getProviders } from "../../service/providerService";
@@ -17,6 +17,7 @@ export default function SellerProfile() {
   const user = useSelector((state) => state.user.currentUser);
   const provisions = useSelector((state) => state.provision.provisions);
   const post = useSelector((state) => {
+    console.log(state, 12);
     return state.user.profile;
   });
 
@@ -26,8 +27,9 @@ export default function SellerProfile() {
       idUser: user.idUser,
       idPost: idUser,
     };
-    console.log(data, 123);
-    dispatch(rentProvider(data)).then((e) => {
+    console.log(data, 333);
+
+    dispatch(addOrder(data)).then((e) => {
       if (e.payload === "Wrong Check In") {
         swal("Wrong Check In");
       } else if (e.payload === "Wrong Check Out") {
@@ -162,34 +164,15 @@ export default function SellerProfile() {
                           <div class="modal-body">
                             {" "}
                             <div class="form-row">
-                              <div class="form-holder">
-                                <h5 style={{ color: "#e75e8d" }}>
-                                  Chọn dịch vụ
-                                </h5>
-                                <br></br>
-                                <Field
-                                  as="select"
-                                  type="text"
-                                  name={"idProvision"}
-                                  id="idProvision"
-                                  placeholder=""
-                                  class="form-control"
-                                >
-                                  {provisions.map((item) => (
-                                    <option value={item.idProvision}>
-                                      {item.provisionName}
-                                    </option>
-                                  ))}
-                                </Field>
-                              </div>
+                              <div class="form-holder"></div>
                               <div class="form-holder">
                                 <h5 style={{ color: "#e75e8d" }}>
                                   Thời gian bắt đầu
                                 </h5>
                                 <br></br>
                                 <Field
-                                  type="date"
-                                  name={"starTime"}
+                                  type="datetime-local"
+                                  name={"startTime"}
                                   id=""
                                   placeholder=""
                                   class="form-control"
@@ -200,7 +183,7 @@ export default function SellerProfile() {
                                 </h5>
                                 <br></br>
                                 <Field
-                                  type="date"
+                                  type="datetime-local"
                                   name="endTime"
                                   id=""
                                   placeholder=""

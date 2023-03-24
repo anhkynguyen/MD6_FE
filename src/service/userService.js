@@ -85,8 +85,9 @@ export const changeStatus = createAsyncThunk(
 export const getSellerProfile = createAsyncThunk(
   "user/getSellerProfile",
   async (data) => {
+    console.log(data);
     const res = await customAxios.get("/users/showSellerProfile/" + data);
-
+    console.log(res.data, 44);
     return res.data;
   }
 );

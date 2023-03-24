@@ -4,6 +4,10 @@ import NavbarAdmin from "./navbarAdmin";
 
 export default function Navbar() {
   const user = useSelector((state) => state.user.currentUser);
+  const post = useSelector((state) => {
+    return state.post.posts;
+  });
+
   return (
     <>
       {user.role !== "admin" ? (
@@ -16,7 +20,7 @@ export default function Navbar() {
                     <img src="/assets/images/logo.png" alt="" />
                   </Link>
 
-                  {/* <div class="search-input">
+                  <div class="search-input">
                     <form id="search" action="#">
                       <input
                         type="text"
@@ -27,15 +31,22 @@ export default function Navbar() {
                       />
                       <i class="fa fa-search"></i>
                     </form>
-                  </div> */}
+                  </div>
 
                   <ul class="nav">
-                    {/* <li>
+                    <li>
                       <a href="/home" class="active">
                         Home
                       </a>
-                    </li> */}
-
+                    </li>
+                    <li>
+                      <a href="/home/add-post">Đăng Bài</a>
+                    </li>
+                    <li>
+                      <Link to={`/order/showOrderInUser/${user.idUser}`}>
+                        Giỏ hàng
+                      </Link>
+                    </li>
                     <li>
                       <Link to={`/user/${user.idUser}`}>
                         <>{user.username}</>
