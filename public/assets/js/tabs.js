@@ -9195,12 +9195,12 @@ $.ui.intersect = (function() {
 			return ( l < x1 + ( draggable.helperProportions.width / 2 ) && // Right Half
 				x2 - ( draggable.helperProportions.width / 2 ) < r && // Left Half
 				t < y1 + ( draggable.helperProportions.height / 2 ) && // Bottom Half
-				y2 - ( draggable.helperProportions.height / 2 ) < b ); // Top Half
+				y2 - ( draggable.helperProportions.height / 2 ) < b ); // ListTopProvider Half
 		case "pointer":
 			return isOverAxis( event.pageY, t, droppable.proportions().height ) && isOverAxis( event.pageX, l, droppable.proportions().width );
 		case "touch":
 			return (
-				( y1 >= t && y1 <= b ) || // Top edge touching
+				( y1 >= t && y1 <= b ) || // ListTopProvider edge touching
 				( y2 >= t && y2 <= b ) || // Bottom edge touching
 				( y1 < t && y2 > b ) // Surrounded vertically
 			) && (
@@ -14044,7 +14044,7 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 			return (l < x1 + (this.helperProportions.width / 2) && // Right Half
 				x2 - (this.helperProportions.width / 2) < r && // Left Half
 				t < y1 + (this.helperProportions.height / 2) && // Bottom Half
-				y2 - (this.helperProportions.height / 2) < b ); // Top Half
+				y2 - (this.helperProportions.height / 2) < b ); // ListTopProvider Half
 
 		}
 	},

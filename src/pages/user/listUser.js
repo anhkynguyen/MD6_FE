@@ -234,19 +234,6 @@ export default function ListUser() {
                       <h4>{item.status}</h4>
 
                       <ul>
-                        {/* <li>
-                          <label class="switch">
-                            <input
-                              type="checkbox"
-                              value={"off"}
-                              onClick={() => {
-                                dispatch(lockUser(item.idUser));
-                                console.log(111111, item.idUser);
-                              }}
-                            />
-                            <span class="slider round"></span>
-                          </label>
-                        </li> */}
                         <button
                           style={{
                             float: "right",

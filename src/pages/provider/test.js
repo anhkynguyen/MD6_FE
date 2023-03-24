@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import {getProviders, removeProvider} from "../../service/providerService";
 import swal from "sweetalert";
-import Top from "./top";
+import ListTopProvider from "./listTopProvider";
 
 export default function ListProvider() {
     const dispatch = useDispatch();
@@ -39,7 +39,7 @@ export default function ListProvider() {
                             </div>
                             <br></br>
                         </div>
-                        <Top></Top>
+                        <ListTopProvider></ListTopProvider>
                         <div className="row">
                             {user !== undefined &&
                                 posts &&

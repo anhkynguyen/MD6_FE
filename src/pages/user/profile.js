@@ -127,7 +127,7 @@ export default function Profile() {
                                         requestProvider(user.idUser)
                                       ).then(() => {
                                         dispatch(getProfile()).then(() => {
-                                          // navigate("/home");
+                                          navigate("/home");
                                         });
                                       });
                                       swal("Bạn đã gửi yêu cầu thành công !", {
