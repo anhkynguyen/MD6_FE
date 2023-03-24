@@ -47,9 +47,8 @@ export default function SellerProfile() {
   return (
     <Formik
       initialValues={{
-        starTime: "",
         endTime: "",
-        idProvision: "",
+        startTime: "",
       }}
       onSubmit={(values) => {
         console.log(values, 22222);

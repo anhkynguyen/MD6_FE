@@ -4,7 +4,6 @@ import NavbarAdmin from "./navbarAdmin";
 
 export default function Navbar() {
   const user = useSelector((state) => state.user.currentUser);
-
   return (
     <>
       {user.role !== "admin" ? (

@@ -11,6 +11,7 @@ const provisionSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getProvision.fulfilled, (state, action) => {
+      console.log(action.payload, 333);
       state.provisions = action.payload;
     });
   },

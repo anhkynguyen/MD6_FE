@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 export default function Profile() {
   const { idUser } = useParams();
-  console.log(idUser, 9999);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const user = useSelector((state) => state.user.profile);
@@ -96,16 +96,6 @@ export default function Profile() {
                           <div class="main-info header-text">
                             <span>{user.status} </span>
                             <h4>{user.username} </h4>
-                            {/* <label
-                              onClick={dispatch(changeStatus(user.idUser)).then(
-                                () => {
-                                  navigate("");
-                                }
-                              )}
-                            >
-                              {" "}
-                              <StatusSwitch />
-                            </label> */}
 
                             <p>
                               Chọn người bạn muốn ghép đôi hoặc trở thành người

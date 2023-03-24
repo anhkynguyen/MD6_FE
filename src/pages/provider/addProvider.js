@@ -21,7 +21,7 @@ export default function AddProvider() {
   const [images, setImages] = useState([]);
   const [urls, setUrls] = useState([]);
   const [progress, setProgress] = useState(0);
-  const user = useSelector((state) => {
+  const user1 = useSelector((state) => {
     return state.user.currentUser;
   });
 
@@ -68,7 +68,7 @@ export default function AddProvider() {
   };
 
   const handleAdd = (values) => {
-    let data = { ...values, user: user.idUser };
+    let data = { ...values, user: user1.idUser };
     dispatch(addProvider(data)).then(() => {
       navigate("/home");
     });
@@ -88,7 +88,7 @@ export default function AddProvider() {
         validationSchema={validateSchema}
         onSubmit={(values) => {
           values.image = urls[0];
-          values.idUser = user.idUser;
+          values.idUser = user1.idUser;
           handleAdd(values);
         }}
       >

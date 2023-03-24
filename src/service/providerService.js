@@ -1,10 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import customAxios from "./api";
 
-export const getProviders = createAsyncThunk("post/getPosts", async () => {
-    const res = await customAxios.get("post");
-    return res.data;
-
+export const getProviders = createAsyncThunk("post/getPosts", async (page) => {
+  const res = await customAxios.get("post?page=" + page);
+  return res.data;
 });
 export const findByIdProvider = createAsyncThunk(
   "post/findByIdPost",

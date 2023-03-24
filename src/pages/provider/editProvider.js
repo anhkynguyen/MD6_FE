@@ -89,7 +89,7 @@ export default function EditProvider() {
       namePost: data[0].namePost,
       image: data[0].image,
       description: data[0].description,
-
+      price: data[0].price,
       height: data[0].height,
       weight: data[0].weight,
       measurement: data[0].measurement,
@@ -227,7 +227,7 @@ export default function EditProvider() {
                           </div>
                         </div>
                         <div class="form-row">
-                          {/* <div class="form-holder">
+                          <div class="form-holder">
                             <h5 style={{ color: "#e75e8d" }}>Giá thuê</h5>
                             <br></br>
                             <Field
@@ -241,7 +241,7 @@ export default function EditProvider() {
                                 color: "white",
                               }}
                             />
-                          </div> */}
+                          </div>
                           <div class="form-holder">
                             <h5 style={{ color: "#e75e8d" }}>Sở thích</h5>
                             <br></br>

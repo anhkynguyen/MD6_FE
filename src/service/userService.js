@@ -3,7 +3,6 @@ import customAxios from "./api";
 
 export const login = createAsyncThunk("user/login", async (data) => {
   const res = await customAxios.post("users/login", data);
-
   return res.data;
 });
 
@@ -17,7 +16,6 @@ export const editProfile = createAsyncThunk(
 
 export const getProfile = createAsyncThunk("user/getProfile", async (data) => {
   const res = await customAxios.get("users/showMyProfile/" + data);
-  console.log(res.data, 999);
   return res.data;
 });
 
@@ -70,7 +68,6 @@ export const changePassword = createAsyncThunk(
       "users/changePassword/" + data[1],
       data[0]
     );
-    console.log(res.data, 999);
     return res.data;
   }
 );
@@ -88,9 +85,8 @@ export const changeStatus = createAsyncThunk(
 export const getSellerProfile = createAsyncThunk(
   "user/getSellerProfile",
   async (data) => {
-    console.log(data);
     const res = await customAxios.get("/users/showSellerProfile/" + data);
-    console.log(res.data);
+
     return res.data;
   }
 );

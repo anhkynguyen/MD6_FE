@@ -18,7 +18,9 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = async (values) => {
+    console.log(values);
     await dispatch(login(values)).then((e) => {
+      console.log(e.payload);
       if (e.payload !== "User not found" && e.payload !== "Wrong password") {
         navigate("/home");
       }
@@ -56,9 +58,7 @@ export default function Login() {
       }}
       validationSchema={validateSchema}
       onSubmit={(values) => {
-        handleLogin(values).then(() => {
-          swal({ title: "Đăng nhập thành công ", icon: "success" });
-        });
+        handleLogin(values);
       }}
     >
       <Form>

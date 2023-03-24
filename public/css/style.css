@@ -195,6 +195,8 @@ p {
 .form-row .form-holder {
   width: 50%;
   margin-right: 30px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .form-row .form-holder:last-child {
   margin-right: 0;
