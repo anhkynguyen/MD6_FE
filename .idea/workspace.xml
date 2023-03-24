@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e1660a4-83d1-414a-8a9d-ac826fbe9810" name="Changes" comment="&quot;feature/loginform&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/templatemo-cyborg-gaming.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/templatemo-cyborg-gaming.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/tabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/listProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/listProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/provider/top.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/provider/listTopProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/listUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/listUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/providerService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/providerService.js" afterDir="false" />
-    </list>
+    <list default="true" id="5e1660a4-83d1-414a-8a9d-ac826fbe9810" name="Changes" comment="&quot;feature/newAdd&quot;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +48,7 @@
       <workItem from="1679532623930" duration="6724000" />
       <workItem from="1679553267074" duration="4517000" />
       <workItem from="1679558202270" duration="5052000" />
-      <workItem from="1679618253534" duration="9561000" />
+      <workItem from="1679618253534" duration="9717000" />
     </task>
     <servers />
   </component>
