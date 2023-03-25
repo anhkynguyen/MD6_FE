@@ -6,17 +6,37 @@ import { storage } from "../../upload/firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
+import { getProvision } from "../../service/provisionService";
+import { addPersonal } from "../../service/personalService";
 
 export default function EditProvider() {
+  const [checked, setChecked] = useState([]);
+
   const { id } = useParams();
-  console.log(id);
+  const idPost = useSelector((state) => {
+    return state.post.posts.idPost;
+  });
+  let a = { checked, idPost };
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
   const [urls, setUrls] = useState([]);
   const [progress, setProgress] = useState(0);
-
+  const provisions = useSelector((state) => {
+    return state.provision.provisions;
+  });
+  const handleCheck = (event) => {
+    var updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(event.target.value), 1);
+    }
+    setChecked(updatedList);
+  };
   const posts = useSelector((state) => {
+    console.log(state);
     if (state.post.posts[0] !== undefined) {
       return state.post.posts[0];
     } else {
@@ -31,7 +51,7 @@ export default function EditProvider() {
       };
     }
   });
-  console.log(posts);
+
   const handleChange = (e) => {
     for (let i = 0; i < e.target.files.length; i++) {
       const newImage = e.target.files[i];
@@ -39,7 +59,11 @@ export default function EditProvider() {
       setImages((prevState) => [...prevState, newImage]);
     }
   };
+  const handleAddPersonal = (value) => {
+    let data1 = { idProvision: a.checked, idPost: idPost };
 
+    dispatch(addPersonal(data1));
+  };
   const handleUpload = () => {
     const promises = [];
     if (images.length > 0) {
@@ -73,6 +97,9 @@ export default function EditProvider() {
       .then(() => swal("Ảnh đã được tải lên thành công !"))
       .catch((err) => console.log(err));
   };
+  useEffect(() => {
+    dispatch(getProvision());
+  }, []);
 
   useEffect(() => {
     dispatch(findByIdProvider(id)).then((value) => {
@@ -82,7 +109,6 @@ export default function EditProvider() {
 
   const handleEdit = (values) => {
     let data = [{ ...values, image: urls }, id];
-    console.log(data, 44);
 
     data[0] = {
       idPost: data[0].idPost,
@@ -257,12 +283,35 @@ export default function EditProvider() {
                               }}
                             />
                           </div>
+                          {provisions.map((item) => {
+                            return (
+                              <label>
+                                <input
+                                  type="checkbox"
+                                  id="idProvision"
+                                  name="idProvision"
+                                  value={item.idProvision}
+                                  onChange={handleCheck}
+                                />
+                                <label> {item.provisionName}</label>
+                              </label>
+                            );
+                          })}
                         </div>
                         <div class="col-12">
                           <button
                             style={{ width: "100%", height: "40px" }}
                             type="submit"
                             class="btn btn-primary btn-block logn-btn"
+                          >
+                            Sửa thông tin người cung cấp dịch vụ
+                          </button>{" "}
+                        </div>
+                        <div class="col-12">
+                          <button
+                            onClick={() => {
+                              handleAddPersonal();
+                            }}
                           >
                             Sửa thông tin người cung cấp dịch vụ
                           </button>{" "}

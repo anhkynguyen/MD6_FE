@@ -148,7 +148,7 @@ export default function SellerProfile() {
                       aria-labelledby="staticBackdropLabel"
                       aria-hidden="true"
                     >
-                      <div class="modal-dialog">
+                      <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">
@@ -164,7 +164,20 @@ export default function SellerProfile() {
                           <div class="modal-body">
                             {" "}
                             <div class="form-row">
-                              <div class="form-holder"></div>
+                              <div class="form-holder">
+                                {" "}
+                                <h5 style={{ color: "#e75e8d" }}>
+                                  Thời gian kết thúc
+                                </h5>
+                                <br></br>
+                                <Field
+                                  type="datetime-local"
+                                  name="endTime"
+                                  id=""
+                                  placeholder=""
+                                  class="form-control"
+                                />
+                              </div>
                               <div class="form-holder">
                                 <h5 style={{ color: "#e75e8d" }}>
                                   Thời gian bắt đầu
@@ -173,18 +186,6 @@ export default function SellerProfile() {
                                 <Field
                                   type="datetime-local"
                                   name={"startTime"}
-                                  id=""
-                                  placeholder=""
-                                  class="form-control"
-                                />
-                                <br></br>
-                                <h5 style={{ color: "#e75e8d" }}>
-                                  Thời gian kết thúc
-                                </h5>
-                                <br></br>
-                                <Field
-                                  type="datetime-local"
-                                  name="endTime"
                                   id=""
                                   placeholder=""
                                   class="form-control"

@@ -21,7 +21,6 @@ const postSlice = createSlice({
       state.posts = action.payload;
     });
     builder.addCase(findByIdProvider.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.posts = action.payload;
     });
     builder.addCase(addProvider.fulfilled, (state, action) => {
@@ -31,7 +30,6 @@ const postSlice = createSlice({
       state.posts.splice(action.payload);
     });
     builder.addCase(editProvider.fulfilled, (state, action) => {
-      console.log(999, action.payload);
       state.posts = action.payload;
     });
     builder.addCase(getTopProviders.fulfilled, (state, action) => {

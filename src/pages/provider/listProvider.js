@@ -14,7 +14,6 @@ import ListTopProvider from "./listTopProvider";
 
 export default function ListProvider() {
   const { id } = useParams();
-  console.log(id);
 
   const [images, setImages] = useState([]);
   const [urls, setUrls] = useState([]);
@@ -86,7 +85,6 @@ export default function ListProvider() {
 
   const handleEdit = (values) => {
     let data = [{ ...values, image: urls }, id];
-    console.log(data, 44);
 
     data[0] = {
       idPost: data[0].idPost,
@@ -124,7 +122,6 @@ export default function ListProvider() {
 
   const user = useSelector((state) => {
     if (state.user !== undefined) {
-      console.log(state);
       return state.user.currentUser;
     }
   });
@@ -136,6 +133,12 @@ export default function ListProvider() {
   return (
     <>
       <ListTopProvider></ListTopProvider>
+      <div>
+        <div class="starsec"></div>
+        <div class="starthird"></div>
+        <div class="starfourth"></div>
+        <div class="starfifth"></div>
+      </div>
       <div class="most-popular">
         <div class="row">
           <div class="col-lg-12">

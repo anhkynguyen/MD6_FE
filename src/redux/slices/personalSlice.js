@@ -7,11 +7,12 @@ const initialState = {
 };
 
 const personalSlice = createSlice({
-  name: "home",
+  name: "personal",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(addPersonal.fulfilled, (state, action) => {
+      console.log(action.payload, 4444);
       state.personals.push(action.payload);
     });
   },

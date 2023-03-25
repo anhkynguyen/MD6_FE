@@ -56,9 +56,10 @@ export default function Profile() {
                         </div>
                         <div class="col-lg-4 align-self-center">
                           <div class="main-border-button">
+                            <h4>Trạng thái</h4>
                             <button
                               type="submit"
-                              class="btn btn-primary btn-block logn-btn"
+                              class="btn btn "
                               onClick={() => {
                                 swal({
                                   title:
@@ -76,7 +77,7 @@ export default function Profile() {
                                     );
                                     swal({
                                       title:
-                                        "titleBạn đã đổi trạng thái thành công !",
+                                        "Bạn đã đổi trạng thái thành công !",
                                       icon: "success",
                                     });
                                   } else {
@@ -89,13 +90,25 @@ export default function Profile() {
                                 });
                               }}
                             >
-                              Thay đổi trạng thái
+                              <i
+                                class="fa-solid fa-arrows-rotate fa-spin fa-2xl"
+                                style={{ color: "#2dd730" }}
+                              ></i>
                             </button>
+                            <h3
+                              style={{
+                                color: "yellow",
+                                borderRadius: "15px",
+                                height: "40px",
+                                border: "black",
+                              }}
+                            >
+                              {user.status}{" "}
+                            </h3>
                           </div>
                           <br></br>
 
                           <div class="main-info header-text">
-                            <span>{user.status} </span>
                             <h4>{user.username} </h4>
 
                             <p>

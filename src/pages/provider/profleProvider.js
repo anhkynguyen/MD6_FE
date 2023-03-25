@@ -143,9 +143,10 @@ export default function ProfileProvider() {
                       </div>
                       <div class="col-lg-4 align-self-center">
                         <div class="main-border-button">
+                          <h4>Trạng thái</h4>
                           <button
                             type="submit"
-                            class="btn btn-primary btn-block logn-btn"
+                            class="btn btn "
                             onClick={() => {
                               swal({
                                 title:
@@ -158,28 +159,43 @@ export default function ProfileProvider() {
                                 if (willDelete) {
                                   dispatch(changeStatus(user.idUser)).then(
                                     () => {
-                                      dispatch(getProfile(idUser)).then(() => {
-                                        // navigate("/home");
-                                      });
+                                      dispatch(getProfile(idUser));
                                     }
                                   );
-                                  swal("Bạn đã đổi trạng thái thành công !", {
+                                  swal({
+                                    title: "Bạn đã đổi trạng thái thành công !",
                                     icon: "success",
                                   });
                                 } else {
-                                  swal("Bạn đã hủy yêu cầu !");
+                                  swal({
+                                    title:
+                                      "Bạn đã hủy thao tác thay đổi trạng thái !",
+                                    icon: "error",
+                                  });
                                 }
                               });
                             }}
                           >
-                            Thay đổi trạng thái
+                            <i
+                              class="fa-solid fa-arrows-rotate fa-spin fa-2xl"
+                              style={{ color: "#2dd730" }}
+                            ></i>
                           </button>
+                          <h3
+                            style={{
+                              color: "yellow",
+                              borderRadius: "15px",
+                              height: "40px",
+                              border: "black",
+                            }}
+                          >
+                            {user.status}{" "}
+                          </h3>
                         </div>
                         <br></br>
                         <div class="main-info header-text">
-                          <span>{user.status}</span>
                           <h4>{user.username}</h4>
-                          <br /> <h5> Người cung cấp dịch vụ</h5>
+                          <br /> <p> Người cung cấp dịch vụ</p>
                           <br />
                           <button
                             class="btn btn-primary btn-block logn-btn"

@@ -231,9 +231,19 @@ export default function ListUser() {
                         class="templatemo-item"
                         style={{ width: "80px", height: "80px" }}
                       />
-                      <h4> {item.username}</h4>
-                      <span>{item.role}</span>
-                      <h4>{item.status}</h4>
+                      <p
+                        style={{
+                          fontSize: "20px",
+                          color: "white",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {item.username} <br></br>
+                        <h3 style={{ fontSize: "15px", color: "green" }}>
+                          {item.role}
+                        </h3>
+                      </p>
+                      <br></br>
 
                       <ul>
                         {/* <li>
@@ -252,14 +262,15 @@ export default function ListUser() {
                         <button
                           style={{
                             float: "right",
-                            position: "relative",
+
                             bottom: "30px",
                           }}
                           type="submit"
-                          class="btn btn-primary btn-block logn-btn"
+                          class="btn"
                           onClick={() => {
                             swal({
-                              title: "Bạn có muốn mở khóa thành viên  không ?",
+                              title:
+                                "Bạn có thay đổi trạng thái thành viên  không ?",
                               text: "",
                               icon: "warning",
                               buttons: true,
@@ -277,21 +288,37 @@ export default function ListUser() {
                                   });
 
                                 swal({
-                                  title: "Bạn đã mở khóa thành công !",
+                                  title:
+                                    "Bạn đã thay đổi trạng thái thành viên thành công !",
                                   icon: "success",
                                 });
                               } else {
                                 swal({
-                                  title: "Bạn đã hủy thao tác mở khóa !",
+                                  title: "Bạn đã hủy thao tác thay đổi !",
                                   icon: "error",
                                 });
                               }
                             });
                           }}
                         >
-                          Mở khóa
+                          <i
+                            class="fa-solid fa-power-off fa-fade fa-2xl"
+                            style={{ color: " #ed390c" }}
+                          ></i>
                         </button>{" "}
-                        <button
+                        <h3
+                          style={{
+                            color: "yellow",
+                            float: "right",
+                            fontSize: "15px",
+                            height: "40px",
+                            textAlign: "center",
+                            paddingTop: "10px",
+                          }}
+                        >
+                          {item.status}
+                        </h3>
+                        {/* <button
                           style={{
                             float: "right",
                             position: "relative",
@@ -332,7 +359,7 @@ export default function ListUser() {
                           }}
                         >
                           Khoá
-                        </button>{" "}
+                        </button>{" "} */}
                       </ul>
                     </div>
                   </div>
