@@ -24,6 +24,7 @@ const postSlice = createSlice({
       state.posts = action.payload;
     });
     builder.addCase(addProvider.fulfilled, (state, action) => {
+      console.log(action.payload, 5);
       state.posts.push(action.payload);
     });
     builder.addCase(removeProvider.fulfilled, (state, action) => {

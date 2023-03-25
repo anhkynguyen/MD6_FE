@@ -16,6 +16,7 @@ export const findByIdProvider = createAsyncThunk(
 
 export const addProvider = createAsyncThunk("post/addPost", async (data) => {
   const res = await customAxios.post("/post/add", data);
+
   return res.data;
 });
 export const removeProvider = createAsyncThunk(
@@ -27,7 +28,6 @@ export const removeProvider = createAsyncThunk(
 );
 
 export const editProvider = createAsyncThunk("post/editPost", async (data) => {
-  console.log(data, 33344);
   await customAxios.put("post/edit/" + data[1], data[0]);
   const res = await customAxios.get("post");
   return res.data;

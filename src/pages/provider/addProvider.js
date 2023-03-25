@@ -6,6 +6,7 @@ import { storage } from "../../upload/firebaseConfig";
 import { addProvider } from "../../service/providerService";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import swal from "sweetalert";
 const validateSchema = Yup.object().shape({
   namePost: Yup.string().required("Vui lòng không để trống !"),
   description: Yup.string().required("Vui lòng không để trống !"),
@@ -63,7 +64,7 @@ export default function AddProvider() {
       });
     }
     Promise.all(promises)
-      .then(() => alert("All images uploaded"))
+      .then(() => swal({ title: "Tải ảnh lên thành công !", icon: "success" }))
       .catch((err) => console.log(err));
   };
 
@@ -104,38 +105,51 @@ export default function AddProvider() {
               <div class="col-12">
                 <div class="page-content">
                   <div class="main-profile">
-                    <div class="inner">
-                      <div style={{ backgroundColor: "rgb(31,33,34)" }}>
-                        <div className="col-lg-9">
-                          <img
-                            src={urls[0]}
-                            alt={urls[0]}
-                            style={{
-                              borderRadius: "23px",
-                              width: "100%",
-                              height: "430px",
-                            }}
-                          />
-                          <input
-                            style={{ borderRadius: "15px" }}
-                            id="image"
-                            name={"image"}
-                            type="file"
-                            onChange={handleChange}
-                          />
-                        </div>
+                    <div
+                      class="inner"
+                      style={{
+                        backgroundColor: "rgb(31,33,34)",
+                        width: "100%",
+                      }}
+                    >
+                      <div className="col-lg-4" style={{ textAlign: "center" }}>
+                        <img
+                          src={urls[0]}
+                          alt={urls[0]}
+                          style={{
+                            borderRadius: "23px",
+                            width: "100%",
+                            height: "490px",
+                          }}
+                        />
+                        <input
+                          style={{ borderRadius: "15px" }}
+                          id="image"
+                          name={"image"}
+                          type="file"
+                          onChange={handleChange}
+                        />{" "}
                         <button
                           type="button"
+                          style={{
+                            backgroundColor: "rgb(28,31,47)",
+                            width: "50%",
+                          }}
                           class="btn btn-primary btn-block logn-btn"
                           onClick={() => dispatch(handleUpload)}
                         >
-                          Upload
+                          Tải ảnh lên
                         </button>
                       </div>
 
                       <div
                         class="form-content"
-                        style={{ backgroundColor: "rgb(31,33,34)" }}
+                        style={{
+                          backgroundColor: "rgb(31,33,34)",
+                          paddingTop: "0px",
+                          paddingLeft: "25px",
+                          paddingRight: "25px",
+                        }}
                       >
                         <div class="form-header">
                           <h2>Đăng thông tin</h2>
@@ -273,9 +287,12 @@ export default function AddProvider() {
                             />
                           </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12" style={{ textAlign: "center" }}>
                           <button
-                            style={{ width: "100%", height: "40px" }}
+                            style={{
+                              width: "50%",
+                              height: "50px",
+                            }}
                             type="submit"
                             class="btn btn-primary btn-block logn-btn"
                           >

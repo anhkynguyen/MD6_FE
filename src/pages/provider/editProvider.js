@@ -37,7 +37,7 @@ export default function EditProvider() {
   };
   const posts = useSelector((state) => {
     console.log(state);
-    if (state.post.posts[0] !== undefined) {
+    if (state.post.posts !== undefined) {
       return state.post.posts[0];
     } else {
       return {
@@ -109,7 +109,7 @@ export default function EditProvider() {
 
   const handleEdit = (values) => {
     let data = [{ ...values, image: urls }, id];
-
+    console.log(data, 777);
     data[0] = {
       idPost: data[0].idPost,
       namePost: data[0].namePost,
@@ -121,9 +121,9 @@ export default function EditProvider() {
       measurement: data[0].measurement,
       date: data[0].date,
     };
-    console.log(urls);
+
     dispatch(editProvider(data)).then((values) => {
-      swal("Edit Success !!!");
+      swal({ title: "Sửa thông tin thành công", icon: "success" });
       navigate("/home");
     });
   };
@@ -151,38 +151,51 @@ export default function EditProvider() {
               <div class="col-12">
                 <div class="page-content">
                   <div class="main-profile">
-                    <div class="inner">
-                      <div style={{ backgroundColor: "rgb(31,33,34)" }}>
-                        <div className="col-lg-9">
-                          <img
-                            src={urls}
-                            alt={urls}
-                            style={{
-                              borderRadius: "23px",
-                              width: "100%",
-                              height: "430px",
-                            }}
-                          />
-                          <input
-                            style={{ borderRadius: "15px" }}
-                            id="image"
-                            name={"image"}
-                            type="file"
-                            onChange={handleChange}
-                          />
-                        </div>
+                    <div
+                      class="inner"
+                      style={{
+                        backgroundColor: "rgb(31,33,34)",
+                        width: "100%",
+                      }}
+                    >
+                      <div className="col-lg-4" style={{ textAlign: "center" }}>
+                        <img
+                          src={urls}
+                          alt={urls}
+                          style={{
+                            borderRadius: "23px",
+                            width: "100%",
+                            height: "490px",
+                          }}
+                        />
+                        <input
+                          style={{ borderRadius: "15px" }}
+                          id="image"
+                          name={"image"}
+                          type="file"
+                          onChange={handleChange}
+                        />
                         <button
                           type="button"
+                          style={{
+                            backgroundColor: "rgb(28,31,47)",
+                            width: "50%",
+                          }}
                           class="btn btn-primary btn-block logn-btn"
                           onClick={() => dispatch(handleUpload)}
                         >
-                          Upload
+                          Tải ảnh lên
                         </button>
                       </div>
 
                       <div
                         class="form-content"
-                        style={{ backgroundColor: "rgb(31,33,34)" }}
+                        style={{
+                          backgroundColor: "rgb(31,33,34)",
+                          paddingTop: "0px",
+                          paddingLeft: "25px",
+                          paddingRight: "25px",
+                        }}
                       >
                         <div class="form-header">
                           <h2>Cập nhật thông tin</h2>
@@ -298,9 +311,12 @@ export default function EditProvider() {
                             );
                           })}
                         </div>
-                        <div class="col-12">
+                        <div class="col-12" style={{ textAlign: "center" }}>
                           <button
-                            style={{ width: "100%", height: "40px" }}
+                            style={{
+                              width: "50%",
+                              height: "50px",
+                            }}
                             type="submit"
                             class="btn btn-primary btn-block logn-btn"
                           >
