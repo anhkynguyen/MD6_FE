@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <footer style={{ backgroundColor: "rgb(24,24,40)" }}>
+      <footer style={{ backgroundColor: "rgb(24,24,40)", margin: "10px" }}>
         <div
           class="container"
           style={{ backgroundColor: "rgb(24,24,40)", textAlign: "center" }}

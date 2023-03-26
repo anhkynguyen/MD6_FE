@@ -6,10 +6,11 @@ export const getProviders = createAsyncThunk("post/getPosts", async (page) => {
   return res.data;
 });
 export const findByIdProvider = createAsyncThunk(
-  "post/findByIdPost",
+  "post/findByIdUser",
   async (data) => {
-    const res = await customAxios.get("post/findById/" + data);
-
+    console.log(data);
+    const res = await customAxios.get("post/findPostByIdUSer/" + data);
+    console.log(res.data, 444);
     return res.data;
   }
 );

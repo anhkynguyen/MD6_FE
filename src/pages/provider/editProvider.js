@@ -11,10 +11,10 @@ import { addPersonal } from "../../service/personalService";
 
 export default function EditProvider() {
   const [checked, setChecked] = useState([]);
-
   const { id } = useParams();
   const idPost = useSelector((state) => {
-    return state.post.posts.idPost;
+    console.log(state.post.posts[0].idPost, 11);
+    return state.post.posts[0].idPost;
   });
   let a = { checked, idPost };
 
@@ -36,8 +36,8 @@ export default function EditProvider() {
     setChecked(updatedList);
   };
   const posts = useSelector((state) => {
-    console.log(state);
     if (state.post.posts !== undefined) {
+      console.log(state);
       return state.post.posts[0];
     } else {
       return {
@@ -94,7 +94,9 @@ export default function EditProvider() {
       });
     }
     Promise.all(promises)
-      .then(() => swal("Ảnh đã được tải lên thành công !"))
+      .then(() =>
+        swal({ title: "Ảnh đã được tải lên thành công !", icon: "success" })
+      )
       .catch((err) => console.log(err));
   };
   useEffect(() => {
@@ -296,20 +298,6 @@ export default function EditProvider() {
                               }}
                             />
                           </div>
-                          {provisions.map((item) => {
-                            return (
-                              <label>
-                                <input
-                                  type="checkbox"
-                                  id="idProvision"
-                                  name="idProvision"
-                                  value={item.idProvision}
-                                  onChange={handleCheck}
-                                />
-                                <label> {item.provisionName}</label>
-                              </label>
-                            );
-                          })}
                         </div>
                         <div class="col-12" style={{ textAlign: "center" }}>
                           <button
@@ -322,15 +310,107 @@ export default function EditProvider() {
                           >
                             Sửa thông tin người cung cấp dịch vụ
                           </button>{" "}
-                        </div>
-                        <div class="col-12">
-                          <button
+                          {/* <button
                             onClick={() => {
                               handleAddPersonal();
                             }}
+                            style={{
+                              width: "50%",
+                              height: "50px",
+                            }}
+                            type="submit"
+                            class="btn btn-primary btn-block logn-btn"
                           >
                             Sửa thông tin người cung cấp dịch vụ
-                          </button>{" "}
+                          </button>{" "} */}
+                          <button
+                            type="button"
+                            class="btn btn-primary btn-block logn-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"
+                          >
+                            Thêm thể loại thuê
+                          </button>
+                          <div
+                            class="modal fade"
+                            id="staticBackdrop"
+                            data-bs-backdrop="static"
+                            data-bs-keyboard="false"
+                            tabindex="-1"
+                            aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true"
+                          >
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h3
+                                    class="modal-title"
+                                    id="staticBackdropLabel"
+                                  >
+                                    Chọn dịch vụ
+                                  </h3>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body">
+                                  {" "}
+                                  {provisions.map((item) => {
+                                    return (
+                                      <label>
+                                        <input
+                                          type="checkbox"
+                                          id="idProvision"
+                                          name="idProvision"
+                                          value={item.idProvision}
+                                          onChange={handleCheck}
+                                        />
+                                        <label
+                                          style={{
+                                            paddingRight: "20px",
+                                            fontSize: "large",
+                                            color: "black",
+                                          }}
+                                        >
+                                          {" "}
+                                          {item.provisionName}
+                                        </label>
+                                      </label>
+                                    );
+                                  })}
+                                </div>
+                                <div class="modal-footer">
+                                  <button
+                                    type="button"
+                                    style={{
+                                      width: "48%",
+                                      height: "50px",
+                                    }}
+                                    class="btn btn-primary btn-block logn-btn"
+                                    data-bs-dismiss="modal"
+                                  >
+                                    Hủy
+                                  </button>
+                                  <button
+                                    onClick={() => {
+                                      handleAddPersonal();
+                                    }}
+                                    style={{
+                                      width: "48%",
+                                      height: "50px",
+                                    }}
+                                    type="submit"
+                                    class="btn btn-primary btn-block logn-btn"
+                                  >
+                                    Thêm
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

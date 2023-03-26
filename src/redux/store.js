@@ -4,6 +4,7 @@ import userReducer from "./slices/userSlice";
 import orderReducer from "./slices/orderSlice";
 import provisionReducer from "./slices/provisionSlice";
 import personalReducer from "./slices/provisionSlice";
+import commentReducer from "./slices/commentSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     order: orderReducer,
     provision: provisionReducer,
     personal: personalReducer,
+    comment: commentReducer,
   },
 });
 

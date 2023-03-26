@@ -116,6 +116,7 @@ export default function ListProvider() {
 
   const posts = useSelector((state) => {
     if (state.post !== undefined) {
+     
       return state.post.posts;
     }
   });
@@ -172,12 +173,12 @@ export default function ListProvider() {
 
                           <br />
                           <span style={{ color: "white" }}>
-                            Số đo: {item.measurement}
+                            Giá: {item.price} đ/h
                           </span>
                         </h4>
                         {user.idUser === item.idUser ? (
                           <ul>
-                            <li>
+                            {/* <li>
                               <a>
                                 <i
                                   className="fa-solid fa-trash"
@@ -210,12 +211,12 @@ export default function ListProvider() {
                                   }}
                                 ></i>
                               </a>
-                            </li>
-                            <li>
+                            </li> */}
+                            {/* <li>
                               <Link to={`/home/edit-post/${item.idPost}`}>
                                 <i className="fa-solid fa-pen-to-square"></i>
                               </Link>
-                            </li>
+                            </li> */}
                             <li>
                               <div
                                 class="modal fade"

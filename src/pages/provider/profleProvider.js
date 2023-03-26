@@ -13,6 +13,7 @@ import { Field, Form, Formik, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";
 import { getProvision } from "../../service/provisionService";
 import { addPersonal } from "../../service/personalService";
+
 const validateSchema = Yup.object().shape({
   namePost: Yup.string().required("Vui lòng không để trống !"),
   description: Yup.string().required("Vui lòng không để trống !"),
@@ -31,8 +32,9 @@ export default function ProfileProvider() {
       return state.user.profile;
     }
   });
+  
   const provisions = useSelector((state) => {
-    console.log(state.provision.provisions, 666);
+    console.log(state, 333);
     return state.provision.provisions;
   });
   const navigate = useNavigate();
@@ -112,6 +114,7 @@ export default function ProfileProvider() {
   }, []);
   useEffect(() => {
     dispatch(getProvision());
+    
   }, []);
 
   return (
@@ -568,6 +571,15 @@ export default function ProfileProvider() {
                             class="btn btn-primary btn-block logn-btn"
                           >
                             Đổi mật khẩu
+                          </button>{" "}
+                        </Link>
+                        <Link to={"/home/edit-post/" + user.idUser}>
+                          <button
+                            style={{ float: "right", width: "100%" }}
+                            type="submit"
+                            class="btn btn-primary btn-block logn-btn"
+                          >
+                            Cập nhật thông tin bài đăng
                           </button>{" "}
                         </Link>
                       </div>

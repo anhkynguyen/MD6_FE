@@ -18,7 +18,6 @@ export default function Profile() {
   // const user = useSelector((state) => state.user.profile);
   const user = useSelector((state) => {
     if (state.user !== undefined) {
-      console.log(state, 5555);
       return state.user.profile;
     }
   });
@@ -185,7 +184,6 @@ export default function Profile() {
                           </ul>
                         </div>
                       </div>
-                      <div class="row"></div>
                     </div>
                   </div>
                 </div>
