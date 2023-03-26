@@ -73,7 +73,7 @@ export default function ListOrderSeller() {
                                                             <tr style={{textAlign: "center"}}>
                                                                 <td>{key + 1}</td>
                                                                 <td><img
-                                                                    src={item.avatar}
+                                                                    src={item.image}
                                                                     alt=""
                                                                     style={{
                                                                         maxWidth: "45px",
@@ -83,49 +83,54 @@ export default function ListOrderSeller() {
                                                                         marginRight: "15px",
                                                                     }}
                                                                 /></td>
-                                                                <td>{item.username}</td>
+                                                                <td>{item.namePost}</td>
                                                                 <td>{item.startTime}</td>
                                                                 <td>{item.endTime} </td>
                                                                 <td>{item.provisionName}</td>
                                                                 <td>{item.statusOrder}</td>
                                                                 <td>{item.total}</td>
                                                                 <td class="main-border-button">{
-                                                                    <button
-                                                                        style={{
-                                                                            position: "relative",
-                                                                            bottom: "20px",
-                                                                            textAlign: "center"
+                                                                    item.statusOrder !== "Approved"? (
+                                                                        <button
+                                                                            style={{
 
-                                                                        }}
-                                                                        type="submit"
+                                                                                bottom: "20px",
+                                                                                textAlign: "center"
 
-                                                                        onClick={() => {
-                                                                            swal({
-                                                                                title:
-                                                                                    "Bạn có muốn xác nhận dịch vụ không ?",
-                                                                                text: "",
-                                                                                icon: "warning",
-                                                                                buttons: true,
-                                                                                dangerMode: true,
-                                                                            }).then((willDelete) => {
-                                                                                if (willDelete) {
-                                                                                    console.log(item.idOrder, 151)
-                                                                                    dispatch(changeStatusOrder(item.idOrder))
-                                                                                ;
-                                                                                    swal(
-                                                                                        "Bạn xác nhận yêu cầu thành công !",
-                                                                                        {
-                                                                                            icon: "Thành công ",
-                                                                                        }
-                                                                                    );
-                                                                                } else {
-                                                                                    swal("Bạn đã hủy yêu cầu !");
-                                                                                }
-                                                                            });
-                                                                        }}
-                                                                    >
-                                                                        Xác nhận
-                                                                    </button>
+                                                                            }}
+                                                                            className="btn btn-outline-danger"
+                                                                            type="submit"
+
+                                                                            onClick={() => {
+                                                                                swal({
+                                                                                    title:
+                                                                                        "Bạn có muốn xác nhận dịch vụ không ?",
+                                                                                    text: "",
+                                                                                    icon: "warning",
+                                                                                    buttons: true,
+                                                                                    dangerMode: true,
+                                                                                }).then((willDelete) => {
+                                                                                    if (willDelete) {
+                                                                                        console.log(item.idOrder, 151)
+                                                                                        dispatch(changeStatusOrder(item.idOrder))
+                                                                                        ;
+                                                                                        swal(
+                                                                                            "Bạn xác nhận yêu cầu thành công !",
+                                                                                            {
+                                                                                                icon: "Thành công ",
+                                                                                            }
+                                                                                        );
+                                                                                    } else {
+                                                                                        swal("Bạn đã hủy yêu cầu !");
+                                                                                    }
+                                                                                });
+                                                                            }}
+                                                                        >
+                                                                            Xác nhận
+                                                                        </button>
+                                                                        ):
+                                                                        <></>
+
                                                                 }</td>
                                                             </tr>
 

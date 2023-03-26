@@ -40,3 +40,17 @@ export const changeStatusOrder = createAsyncThunk(
 
     }
 )
+
+export const changeStatusOrderInUser = createAsyncThunk(
+    "order/changeStatusOrderInUser", async (data)=>{
+        await customAxios.get("order/changeStatusOrderInUser/" + data);
+        return data
+    }
+)
+
+export const getOrderAdmin = createAsyncThunk("order/getAllOrders", async ()=>{
+    console.log(11111111111111)
+    const res =await customAxios.get("order/getAllOrders");
+    console.log(res.data, 67)
+    return res.data
+})

@@ -11,9 +11,9 @@ export const getProviders = createAsyncThunk("post/getPosts", async (page) => {
 });
 
 export const getTopProviders = createAsyncThunk(
-    "post/getAllPost2", async () => {
+    "post/showPosts", async () => {
   try {
-    const res = await customAxios.get("/post/getAllPost2" );
+    const res = await customAxios.get("/post/showPosts" );
     return res.data;
   } catch (e) {
     console.log(e);

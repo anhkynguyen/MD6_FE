@@ -33,9 +33,11 @@ export default function NavbarAdmin() {
                   </a>
                 </li>
                 <li>
+                  <Link to={"/order/listOrder"}>Danh sách đã đặt hàng</Link>
+                </li>
+                <li>
                   <Link to={"/admin/listUser"}>Quản lý hội viên</Link>
                 </li>
-
                 <li>
                   <Link to={`/user/${user.idUser}`}>
                     {user.username}

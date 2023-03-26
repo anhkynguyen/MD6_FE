@@ -7,7 +7,6 @@ export default function Admin() {
     <div className="row">
       <div className="col-12">
         <NavbarAdmin></NavbarAdmin>
-
         <Outlet></Outlet>
         <Footer></Footer>
       </div>

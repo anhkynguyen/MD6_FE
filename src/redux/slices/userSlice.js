@@ -13,13 +13,14 @@ import {
   getUsersRegister,
   lockUser,
   getSellerProfile,
-  changeStatus,
+  changeStatus, changeSellerToVip, getAddVip, showVip, userAskVip,
 } from "../../service/userService";
 
 const initialState = {
   currentUser: JSON.parse(localStorage.getItem("user")),
   user: [],
   users: [],
+  vips: [],
   usersRequest: [],
   usersRegister: [],
   profile: {},
@@ -77,6 +78,18 @@ const userSlice = createSlice({
     });
     builder.addCase(getSellerProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
+    });
+    builder.addCase(changeSellerToVip.fulfilled, (state, action) => {
+      state.vips = action.payload;
+    });
+    builder.addCase(getAddVip.fulfilled, (state, action) => {
+      state.vips = action.payload;
+    });
+    builder.addCase(showVip.fulfilled, (state, action) => {
+      state.vips = action.payload;
+    });
+    builder.addCase(userAskVip.fulfilled, (state, action) => {
+      state.user = action.payload;
     });
   },
 });

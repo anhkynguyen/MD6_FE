@@ -1,29 +1,28 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {changeStatusOrder, changeStatusOrderInUser, getOrderInSeller, getOrderInUser} from "../../service/orderService";
-import {useNavigate, useParams} from "react-router-dom";
+import {changeSellerToVip, getAddVip} from "../../service/userService";
+import {useNavigate} from "react-router-dom";
 import swal from "sweetalert";
 
-export default function ListOrderUser() {
-    const {idUser} = useParams();
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+export default function ListAddVip(){
+const navigate = useNavigate()
+    const dispatch = useDispatch();
     const posts = useSelector((state) => {
         return state.post.posts
     })
-    const users = useSelector((state) => {
-        return state.user.users;
+    const vip = useSelector((state)=>{
+        console.log(state, 45)
+        return state.user.vips
+    })
+
+    const user = useSelector((state) => {
+        if (state.user !== undefined) {
+            return state.user.currentUser;
+        }
     });
-
-    const orderInUser = useSelector((state) => {
-        return state.order.orderInUser;
-    });
-
-
-
-    useEffect(() => {
-        dispatch(getOrderInUser(idUser));
-    }, [])
+    useEffect(()=>{
+        dispatch(getAddVip())
+    },[])
     return (
         <>
             <div>
@@ -48,7 +47,7 @@ export default function ListOrderUser() {
                                                     }}
                                                 >
                                                     {" "}
-                                                    Danh sách đơn hàng{" "}
+                                                    Danh sách duyệt Vip{" "}
                                                 </h5>
                                                 <br/>
                                             </div>
@@ -56,21 +55,20 @@ export default function ListOrderUser() {
                                                 <tr style={{textAlign: "center"}}>
                                                     <td style={{border : "1px", width: "30px"}}>STT</td>
                                                     <td style={{border : "1px", width: "30px"}}>Ảnh</td>
-                                                    <td style={{border : "1px", width: "30px"}}>Tên bài</td>
-                                                    <td style={{border : "1px", width: "30px"}}>Thời gian bắt đầu</td>
-                                                    <td style={{border : "1px", width: "30px"}}>Thời gian kết thúc</td>
+                                                    <td style={{border : "1px", width: "30px"}}>Tên người đăng</td>
+                                                    <td style={{border : "1px", width: "30px"}}>Giới tính</td>
+                                                    <td style={{border : "1px", width: "30px"}}>Ngày tháng năm sinh</td>
                                                     <td style={{border : "1px", width: "30px"}}>Trạng thái</td>
-                                                    <td style={{border : "1px", width: "30px"}}>Tổng tiền</td>
-                                                    <td style={{border : "1px", width: "30px"}}>Hoàn thành</td>
+                                                    <td style={{border : "1px", width: "30px"}}>Duyệt</td>
                                                 </tr>
 
-                                            {orderInUser !== undefined &&
-                                                orderInUser.map((item, key) => {
-                                                    return (
+                                                {vip !== undefined &&
+                                                    vip.map((item, key) => {
+                                                        return (
                                                             <tr style={{textAlign: "center"}}>
                                                                 <td>{key + 1}</td>
                                                                 <td><img
-                                                                    src={item.image}
+                                                                    src={item.avatar}
                                                                     alt=""
                                                                     style={{
                                                                         maxWidth: "45px",
@@ -80,13 +78,12 @@ export default function ListOrderUser() {
                                                                         marginRight: "15px",
                                                                     }}
                                                                 /></td>
-                                                                <td>{item.namePost}</td>
-                                                                <td>{item.startTime}</td>
-                                                                <td>{item.endTime} </td>
-                                                                <td>{item.statusOrder}</td>
-                                                                <td>{item.total}</td>
+                                                                <td>{item.username}</td>
+                                                                <td>{item.gender} </td>
+                                                                <td>{item.birthday}</td>
+                                                                <td>{item.role}</td>
                                                                 <td className="main-border-button">{
-                                                                    (item.statusOrder !== "Done") ? (
+                                                                    (item.role !== "Vip") ? (
                                                                             <button
                                                                                 style={{
 
@@ -107,8 +104,8 @@ export default function ListOrderUser() {
                                                                                         dangerMode: true,
                                                                                     }).then((willDelete) => {
                                                                                         if (willDelete) {
-                                                                                            console.log(item.idOrder, 151)
-                                                                                            dispatch(changeStatusOrderInUser(item.idOrder));
+                                                                                            console.log(item.idUser, 151)
+                                                                                            dispatch(changeSellerToVip(item.idUser));
                                                                                             navigate("/home")
                                                                                             ;
                                                                                             swal(
@@ -126,13 +123,13 @@ export default function ListOrderUser() {
                                                                                 Xác nhận
                                                                             </button>
                                                                         ):
-                                                                            <>Đã hoàn thành</>
+                                                                        <>Đã hoàn thành</>
 
 
                                                                 }</td>
                                                             </tr>
-                                                    );
-                                                })}
+                                                        );
+                                                    })}
 
                                             </table>
                                         </div>
@@ -147,4 +144,3 @@ export default function ListOrderUser() {
         </>
     )
 }
-

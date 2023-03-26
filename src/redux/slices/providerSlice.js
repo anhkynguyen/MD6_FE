@@ -9,6 +9,7 @@ import {
 
 const initialState = {
   posts: [],
+  post1: [],
   post: [],
 };
 const postSlice = createSlice({
@@ -20,7 +21,7 @@ const postSlice = createSlice({
       state.posts = action.payload;
     });
     builder.addCase(getTopProviders.fulfilled, (state, action) => {
-      state.posts = action.payload;
+      state.post1 = action.payload;
     });
     builder.addCase(findByIdProvider.fulfilled, (state, action) => {
       state.posts = action.payload;

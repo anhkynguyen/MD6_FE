@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  changeStatus,
+  changeStatus, getAddVip,
   getProfile,
-  requestProvider,
+  requestProvider, userAskVip,
 } from "../../service/userService";
 import swal from "sweetalert";
 import ProfileProvider from "../provider/profleProvider";
@@ -17,16 +17,17 @@ export default function Profile() {
   const dispatch = useDispatch();
   // const user = useSelector((state) => state.user.profile);
   const user = useSelector((state) => {
-    if (state.user !== undefined) {
-      return state.user.profile;
+    console.log(state.user, 909)
+    if (state.user !== undefined || null) {
+      return state.user.currentUser;
     }
   });
+  console.log(user, 88)
   useEffect(() => {
     dispatch(getProfile(idUser));
   }, []);
   return (
     <>
-      {" "}
       {user.ask !== "Yes" || user.role !== "seller" ? (
         <div class="container">
           <div>
@@ -55,39 +56,12 @@ export default function Profile() {
                         </div>
                         <div class="col-lg-4 align-self-center">
                           <div class="main-border-button">
-                            <button
+                            <Link to={"/user/list-vip"}><button
                               type="submit"
                               class="btn btn-primary btn-block logn-btn"
-                              onClick={() => {
-                                swal({
-                                  title:
-                                    "Bạn có muốn thay đổi trạng thái không ?",
-                                  text: "",
-                                  icon: "warning",
-                                  buttons: true,
-                                  dangerMode: true,
-                                }).then((willDelete) => {
-                                  if (willDelete) {
-                                    dispatch(changeStatus(user.idUser)).then(
-                                      () => {
-                                        dispatch(getProfile(idUser)).then(
-                                          () => {
-                                            // navigate("/home");
-                                          }
-                                        );
-                                      }
-                                    );
-                                    swal("Bạn đã đổi trạng thái thành công !", {
-                                      icon: "success",
-                                    });
-                                  } else {
-                                    swal("Bạn đã hủy yêu cầu !");
-                                  }
-                                });
-                              }}
                             >
-                              Thay đổi trạng thái
-                            </button>
+                              Danh sách yêu cầu thành Vip
+                            </button></Link>
                           </div>
                           <br></br>
 

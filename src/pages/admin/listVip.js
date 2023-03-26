@@ -2,19 +2,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import {getTopProviders} from "../../service/providerService";
+import {getAddVip, showVip} from "../../service/userService";
 
-export default function ListTopProvider() {
+export default function ListVip() {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
-    const posts = useSelector((state1) => {
-        console.log(state1.post.post1, 33)
-        if (state1.post !== undefined) {
-            return state1.post.post1;
-        }
-    });
-    console.log(posts,334)
-
+const vips = useSelector((state)=> state.user.vips)
     const user = useSelector((state) => {
         if (state.user !== undefined) {
             return state.user.currentUser;
@@ -22,7 +15,7 @@ export default function ListTopProvider() {
     });
 
     useEffect(() => {
-        dispatch(getTopProviders());
+        dispatch(showVip());
     }, []);
 
     return (
@@ -32,16 +25,16 @@ export default function ListTopProvider() {
                     <div className="other-games">
                         <div className="row">
                             <div className="heading-section">
-                                <h4>Bảng xếp hạng</h4>
+                                <h4>Thành viên Vip</h4>
                             </div>
                             {user !== undefined &&
-                                posts &&
-                                posts.map((item, key) => {
+                                vips &&
+                                vips.map((item, key) => {
                                     return (
                                         <div className="col-lg-2">
                                             <div class="item">
                                                 <img
-                                                    src={item.image}
+                                                    src={item.avatar}
                                                     alt=""
                                                     style={{
                                                         width: "46px",
@@ -50,7 +43,7 @@ export default function ListTopProvider() {
                                                         marginRight: "15px"
                                                     }}
                                                 />
-                                                <h4>{item.namePost}</h4>
+                                                <h4>{item.username}</h4>
                                                 <br/>
                                             </div>
                                         </div>

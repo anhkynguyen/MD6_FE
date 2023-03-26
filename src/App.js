@@ -17,6 +17,8 @@ import ListOrderUser from "./pages/order/listOrderUser";
 import Order from "./pages/home/order";
 import ListOrderSeller from "./pages/order/listOrderSeller";
 import ListTopProvider from "./pages/provider/listTopProvider";
+import ListOrderAdmin from "./pages/admin/listOrderAdmin";
+import ListAddVip from "./pages/admin/listAddVip";
 
 function App() {
     const user = useSelector((state) => state.user.currentUser);
@@ -40,11 +42,13 @@ function App() {
                                 <Route path={"add"} element={<SellerProfile/>}/>
                                 <Route path={"showSellerProfile/:idUser"} element={<SellerProfile/>}/>
                                 <Route path={"change-password/:idUser"} element={<ChangePassword/>}/>
+                                <Route path={"list-vip"} element={<ListAddVip/>}/>
                             </Route>
                             <Route path={"order"} element={<Order/>}>
                                 <Route path={"showOrderInUser/:idUser"} element={<ListOrderUser/>}/>
                                 <Route path={"showOrderInSeller/:idPost"} element={<ListOrderSeller/>}/>
                                 <Route path={"changeStatusOrder/:id"} element={<ListOrderSeller/>}/>
+                                <Route path={"listOrder"} element={<ListOrderAdmin/>}/>
                             </Route>
                             <Route path="admin" element={<Admin/>}>
                                 <Route path={""} element={<ListProvider/>}></Route>

@@ -1,5 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addOrder, changeStatusOrder, getOrderInSeller, getOrderInUser} from "../../service/orderService";
+import {
+    addOrder,
+    changeStatusOrder,
+    changeStatusOrderInUser, getOrderAdmin,
+    getOrderInSeller,
+    getOrderInUser
+} from "../../service/orderService";
 
 const initialState = {
     orders: [],
@@ -24,9 +30,14 @@ const orderSlice = createSlice({
             state.orders.push(action.payload)
         })
         builder.addCase(changeStatusOrder.fulfilled, (state, action) => {
-            console.log(action.payload ,33333)
             state.orderInSeller = action.payload;
         });
+        builder.addCase(changeStatusOrderInUser.fulfilled, (state, action)=>{
+            state.orderInUser = action.payload
+        })
+        builder.addCase(getOrderAdmin.fulfilled, (state, action)=>{
+            state.orders = action.payload
+        })
     }
 })
 

@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProfile } from "../../service/userService";
+import {getProfile, userAskVip} from "../../service/userService";
+import swal from "sweetalert";
 
 export default function ProfileProvider() {
-  const id = useParams();
-  console.log(id);
-
+  const {id} = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.currentUser);
 
@@ -41,6 +40,41 @@ export default function ProfileProvider() {
                           <p>Người cung cấp dịch vụ</p>
                           <div class="main-border-button"></div>
                         </div>
+                        <div className="main-border-button">
+                          <button
+                              type="submit"
+                              className="btn btn-primary btn-block logn-btn"
+                              onClick={() => {
+                                swal({
+                                  title:
+                                      "Bạn có muốn thay đổi trạng thái không ?",
+                                  text: "",
+                                  icon: "warning",
+                                  buttons: true,
+                                  dangerMode: true,
+                                }).then((willDelete) => {
+                                  if (willDelete) {
+                                    dispatch(userAskVip(user.idUser)).then(
+                                        () => {
+                                          dispatch(getProfile(idUser)).then(
+                                              () => {
+                                                // navigate("/home");
+                                              }
+                                          );
+                                        }
+                                    );
+                                    swal("Bạn đã gửi yêu cầu thành công !", {
+                                      icon: "success",
+                                    });
+                                  } else {
+                                    swal("Bạn đã hủy yêu cầu !");
+                                  }
+                                });
+                              }}
+                          >
+                            Bạn muốn trở thành Vip
+                          </button>
+                        </div>
                       </div>
                       <div class="col-lg-4 align-self-center">
                         <ul>
@@ -63,7 +97,6 @@ export default function ProfileProvider() {
                   </div>
                 </div>
               </div>
-              /
             </div>
           </div>
         </div>
