@@ -91,6 +91,29 @@ export const getSellerProfile = createAsyncThunk(
 );
 export const register = createAsyncThunk("user/register", async (data) => {
   const res = await customAxios.post("users/register", data);
-
   return res.data;
 });
+export const getAddVip = createAsyncThunk("admins/getAddVip", async () => {
+  const res = await customAxios.get("admins/getAddVip");
+  return res.data;
+});
+
+export const showVip = createAsyncThunk("user/showVip", async () => {
+  const res = await customAxios.get("users/showVip");
+  return res.data;
+});
+
+export const userAskVip = createAsyncThunk("user/userAskVip", async (data) => {
+  await customAxios.put("users/userAskVip/" + data);
+  return data;
+});
+
+export const changeSellerToVip = createAsyncThunk(
+  "admins/changeSellerToVip",
+  async (data) => {
+    console.log(data, 123);
+    await customAxios.get("admins/changeSellerToVip/" + data);
+    console.log(data, 456);
+    return data;
+  }
+);

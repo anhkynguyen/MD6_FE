@@ -27,13 +27,21 @@ export default function NavbarAdmin() {
               </div> */}
 
               <ul class="nav">
-                {/* <li>
+                <li>
                   <a href="/home" class="active">
-                    Home
+                    Trang chủ
                   </a>
-                </li> */}
+                </li>
                 <li>
                   <Link to={"/admin/listUser"}>Quản lý hội viên</Link>
+                </li>
+                <li>
+                  <Link to={`/order/showOrderInUser/${user.idUser}`}>
+                    Quản lý đơn đã thuê
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"/order/listOrder"}>Danh sách đã đặt hàng</Link>
                 </li>
 
                 <li>

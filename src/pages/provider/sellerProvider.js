@@ -64,15 +64,16 @@ export default function SellerProfile() {
       <div className="row">
         <div className="col-lg-12">
           <div className="heading-section">
+            {" "}
             <div>
               <div class="starsec"></div>
               <div class="starthird"></div>
               <div class="starfourth"></div>
               <div class="starfifth"></div>
             </div>
-
             <div class="col-lg-12">
               <div class="page-content">
+                <h2 style={{ textAlign: "center" }}> {post.namePost}</h2>
                 <div class="row">
                   <div class="col-12" style={{ paddingTop: "0px" }}>
                     <div
@@ -138,7 +139,9 @@ export default function SellerProfile() {
                                 content: "",
                               }}
                               onSubmit={(values) => {
-                                handleAddComment(values);
+                                handleAddComment(values).then(() => {
+                                  dispatch(getAllComment());
+                                });
                               }}
                             >
                               <>
@@ -170,6 +173,10 @@ export default function SellerProfile() {
                                   <div class="offcanvas-header">
                                     <h3
                                       class="offcanvas-title"
+                                      style={{
+                                        textAlign: "center",
+                                        width: "100%",
+                                      }}
                                       id="offcanvasScrollingLabel"
                                     >
                                       Bình luận
@@ -182,14 +189,15 @@ export default function SellerProfile() {
                                     ></button>
                                   </div>
                                   <div class="offcanvas-body">
-                                    <p>Bình luận tại đây</p>
+                                    <p>Để lại bình luận của bạn tại đ</p>
 
                                     <Form>
                                       <Field
+                                        style={{ width: "80%" }}
                                         type="text"
                                         name={"content"}
                                       ></Field>
-                                      <button type="submit"> Gửi</button>
+                                      <button type="submit">Gửi</button>
                                     </Form>
                                     {comment.map((item) => {
                                       return (

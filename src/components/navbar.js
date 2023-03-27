@@ -36,17 +36,33 @@ export default function Navbar() {
                   <ul class="nav">
                     <li>
                       <a href="/home" class="active">
-                        Home
+                        Trang chủ
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="/home/add-post">Đăng Bài</a>
-                    </li>
-                    <li>
-                      <Link to={`/order/showOrderInUser/${user.idUser}`}>
-                        Giỏ hàng
-                      </Link>
-                    </li>
+                    </li> */}
+                    {user.role === "seller" || user.role === "Vip" ? (
+                      <>
+                        <li>
+                          <a href={`/order/showOrderInSeller/${user.idUser}`}>
+                            Quản lý đơn đặt hàng{" "}
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/order/showOrderInUser/${user.idUser}`}>
+                            Quản lý đơn đã thuê
+                          </a>
+                        </li>
+                      </>
+                    ) : (
+                      <li>
+                        <Link to={`/order/showOrderInUser/${user.idUser}`}>
+                          Quản lý đơn đã thuê
+                        </Link>
+                      </li>
+                    )}
+
                     <li>
                       <Link to={`/user/${user.idUser}`}>
                         <>{user.username}</>

@@ -11,6 +11,7 @@ import { storage } from "../../upload/firebaseConfig";
 
 import { useState } from "react";
 import ListTopProvider from "./listTopProvider";
+import ListVip from "../admin/listVip";
 
 export default function ListProvider() {
   const { id } = useParams();
@@ -116,7 +117,6 @@ export default function ListProvider() {
 
   const posts = useSelector((state) => {
     if (state.post !== undefined) {
-     
       return state.post.posts;
     }
   });
@@ -134,6 +134,7 @@ export default function ListProvider() {
   return (
     <>
       <ListTopProvider></ListTopProvider>
+      <ListVip></ListVip>
       <div>
         <div class="starsec"></div>
         <div class="starthird"></div>
@@ -149,6 +150,9 @@ export default function ListProvider() {
               <br></br>
               <div class="col-lg-12">
                 <div class="main-button"></div>
+              </div>
+              <div className="heading-section">
+                <h4>Thành viên</h4>
               </div>
               <br></br>
             </div>

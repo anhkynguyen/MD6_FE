@@ -15,13 +15,17 @@ import AddProvider from "./pages/provider/addProvider";
 import RentProvider from "./pages/provider/sellerProvider";
 import SellerProfile from "./pages/provider/sellerProvider";
 import ListTopProvider from "./pages/provider/listTopProvider";
+import ListAddVip from "./pages/admin/listAddVip";
+import ListOrderAdmin from "./pages/admin/listOrderAdmin";
 
 import ListOrderUser from "./pages/order/listOrderUser";
 import Order from "./pages/home/order";
 import ListOrderSeller from "./pages/order/listOrderSeller";
 
 function App() {
-  const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => {
+    return state.user.currentUser;
+  });
 
   return (
     <>
@@ -29,7 +33,9 @@ function App() {
         <Routes>
           <Route path={""} element={<Login></Login>}></Route>
           <Route path={"register"} element={<Register></Register>}></Route>
-          {user !== "User not found" || user !== "Wrong password" ? (
+          {user !== "User not found" ||
+          user !== "Wrong password" ||
+          user !== "your account has been locked" ? (
             <>
               <Route path={"home"} element={<Home />}>
                 <Route path={""} element={<ListProvider />}></Route>
@@ -42,6 +48,15 @@ function App() {
               </Route>
               <Route path={"user"} element={<User />}>
                 <Route path={":idUser"} element={<Profile />}></Route>
+                <Route
+                  path={"showSellerProfile/:idUser"}
+                  element={<SellerProfile />}
+                />
+                <Route
+                  path={"change-password/:idUser"}
+                  element={<ChangePassword />}
+                />
+                <Route path={"list-vip"} element={<ListAddVip />} />
                 <Route
                   path={"showSellerProfile/:idUser"}
                   element={<SellerProfile />}
@@ -69,6 +84,7 @@ function App() {
                   path={"changeStatusOrder/:id"}
                   element={<ListOrderSeller />}
                 />
+                <Route path={"listOrder"} element={<ListOrderAdmin />} />
               </Route>
               <Route path="admin" element={<Admin />}>
                 <Route path={""} element={<ListProvider />}></Route>

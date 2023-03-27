@@ -46,57 +46,94 @@ export default function ListOrderUser() {
                           }}
                         >
                           {" "}
-                          Danh sách đơn hàng{" "}
+                          Danh sách đặt đơn hàng{" "}
                         </h5>
                         <br />
                       </div>
-                      <table border={1} style={{ width: "100%" }}>
-                        <tr style={{ textAlign: "center" }}>
-                          <td style={{ border: "1px", width: "30px" }}>STT</td>
-                          <td style={{ border: "1px", width: "30px" }}>Ảnh</td>
-                          <td style={{ border: "1px", width: "30px" }}>
-                            Tên bài
-                          </td>
-                          <td style={{ border: "1px", width: "30px" }}>
-                            Thời gian bắt đầu
-                          </td>
-                          <td style={{ border: "1px", width: "30px" }}>
-                            Thời gian kết thúc
-                          </td>
-                          <td style={{ border: "1px", width: "30px" }}>
-                            Trạng thái
-                          </td>
-                          <td style={{ border: "1px", width: "30px" }}>
-                            Tổng tiền
-                          </td>
-                        </tr>
-
-                        {orderInUser !== undefined &&
-                          orderInUser.map((item, key) => {
+                      <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Tên người CCDV</th>
+                            <th scope="col"></th>
+                            <th scope="col">Bắt đầu</th>
+                            <th scope="col">Kết thúc</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Tổng tiền</th>
+                            {/* <th scope="col">Xác nhận</th> */}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {orderInUser.map((item, key) => {
                             return (
-                              <tr style={{ textAlign: "center" }}>
-                                <td>{key + 1}</td>
-                                <td>
-                                  <img
-                                    src={item.avatar}
-                                    alt=""
-                                    style={{
-                                      maxWidth: "45px",
-                                      maxHeight: "45px",
+                              <>
+                                <tr>
+                                  <td>{key + 1}</td>
+                                  <td>{item.username}</td>
+                                  <td>
+                                    <img
+                                      src={item.avatar}
+                                      style={{
+                                        maxWidth: "45px",
+                                        maxHeight: "45px",
+                                        borderRadius: "50%",
+                                        marginRight: "15px",
+                                      }}
+                                    ></img>
+                                  </td>
 
-                                      borderRadius: "50%",
-                                      marginRight: "15px",
-                                    }}
-                                  />
-                                </td>
-                                <td>{item.username}</td>
-                                <td>{item.startTime}</td>
-                                <td>{item.endTime} </td>
-                                <td>{item.statusOrder}</td>
-                                <td>{item.total}</td>
-                              </tr>
+                                  <td>{item.startTime}</td>
+                                  <td>{item.endTime}</td>
+                                  <td>{item.statusOrder}</td>
+                                  <td>{item.total}</td>
+
+                                  {/* <td class="main-border-button">
+                                    {
+                                      <button
+                                        style={{
+                                          position: "relative",
+                                          textAlign: "center",
+                                        }}
+                                        type="submit"
+                                        onClick={() => {
+                                          swal({
+                                            title:
+                                              "Bạn có muốn xác nhận dịch vụ không ?",
+                                            text: "",
+                                            icon: "warning",
+                                            buttons: true,
+                                            dangerMode: true,
+                                          }).then((willDelete) => {
+                                            if (willDelete) {
+                                              console.log(item.idOrder, 151);
+                                              dispatch(
+                                                changeStatusOrder(item.idOrder)
+                                              ).then(() => {
+                                                dispatch(
+                                                  getOrderInSeller(idPost)
+                                                );
+                                              });
+                                              swal(
+                                                "Bạn xác nhận yêu cầu thành công !",
+                                                {
+                                                  icon: "Thành công ",
+                                                }
+                                              );
+                                            } else {
+                                              swal("Bạn đã hủy yêu cầu !");
+                                            }
+                                          });
+                                        }}
+                                      >
+                                        Xác nhận
+                                      </button>
+                                    }
+                                  </td> */}
+                                </tr>
+                              </>
                             );
                           })}
+                        </tbody>
                       </table>
                     </div>
                     <br />

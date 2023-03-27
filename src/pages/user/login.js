@@ -21,7 +21,11 @@ export default function Login() {
     console.log(values);
     await dispatch(login(values)).then((e) => {
       console.log(e.payload);
-      if (e.payload !== "User not found" && e.payload !== "Wrong password") {
+      if (
+        e.payload !== "User not found" ||
+        e.payload !== "Wrong password" ||
+        e.payload !== "your account has been locked"
+      ) {
         navigate("/home");
       }
       if (e.payload === "User not found") {
@@ -29,20 +33,20 @@ export default function Login() {
           title: "Tài khoản không tồn tại  !",
           icon: "error",
           text: "Bạn chưa có tài khoản hãy tạo tài khoản mới ngay bây giờ ",
-        });
+        }).then(navigate("/"));
       }
       if (e.payload === "Wrong password") {
         swal({
           title: "Sai mật khẩu! Vui lòng nhập lại mật khẩu !",
           icon: "warning",
-        });
+        }).then(navigate("/"));
       }
       if (e.payload === "your account has been locked") {
         swal({
           title:
             "Tài khoản chưa kích hoạt , Vui lòng liên hệ quản trị viên ! !",
           icon: "warning",
-        });
+        }).then(navigate("/"));
       }
     });
   };

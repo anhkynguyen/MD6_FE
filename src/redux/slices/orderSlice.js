@@ -4,6 +4,7 @@ import {
   changeStatusOrder,
   getOrderInSeller,
   getOrderInUser,
+  getOrderAdmin,
 } from "../../service/orderService";
 
 const initialState = {
@@ -32,6 +33,9 @@ const orderSlice = createSlice({
     builder.addCase(changeStatusOrder.fulfilled, (state, action) => {
       console.log(action.payload, 33333);
       state.orderInSeller = action.payload;
+    });
+    builder.addCase(getOrderAdmin.fulfilled, (state, action) => {
+      state.orders = action.payload;
     });
   },
 });

@@ -15,26 +15,25 @@ export const getOrderInUser = createAsyncThunk(
 export const getOrderInSeller = createAsyncThunk(
   "order/getAllOrdersInSeller",
   async (data) => {
-    try {
-      const res = await customAxios.get("/order/getAllOrdersInSeller/" + data); // data là idPost
-      return res.data;
-    } catch (e) {
-      console.log(e);
-    }
+    const res = await customAxios.get("/order/getAllOrdersInSeller/" + data); // data là idPost
+    return res.data;
   }
 );
 export const addOrder = createAsyncThunk("order/addOrder", async (data) => {
-  console.log(data, 24);
   const res = await customAxios.post("order/add", data);
-  console.log(res.data, 25);
   return res.data;
 });
 export const changeStatusOrder = createAsyncThunk(
   "order/changeStatusOrder",
   async (data) => {
-    console.log(data, 32);
     await customAxios.get("order/changeStatusOrder/" + data);
-    console.log(data, 34);
     return data;
+  }
+);
+export const getOrderAdmin = createAsyncThunk(
+  "order/getAllOrders",
+  async () => {
+    const res = await customAxios.get("order/getAllOrders");
+    return res.data;
   }
 );

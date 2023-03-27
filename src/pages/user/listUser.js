@@ -8,6 +8,8 @@ import {
   acceptRequestProvider,
   acceptUsersRegister,
   lockUser,
+  getAddVip,
+  changeSellerToVip,
 } from "../../service/userService";
 import swal from "sweetalert";
 export default function ListUser() {
@@ -20,13 +22,19 @@ export default function ListUser() {
   const usersRequest = useSelector((state) => {
     return state.user.usersRequest;
   });
+  const vip = useSelector((state) => {
+    console.log(state.user.vips, 45);
+    return state.user.vips;
+  });
   const usersRegister = useSelector((state) => {
     return state.user.usersRegister;
   });
+
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getUsersRequest());
     dispatch(getUsersRegister());
+    dispatch(getAddVip());
   }, []);
 
   return (
@@ -42,7 +50,7 @@ export default function ListUser() {
           <div class="col-lg-12">
             <div class="page-content">
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                   <div class="top-streamers">
                     <div class="heading-section">
                       <h5
@@ -130,7 +138,7 @@ export default function ListUser() {
                       })}
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                   <div class="top-streamers">
                     <div class="heading-section">
                       <h5
@@ -169,10 +177,9 @@ export default function ListUser() {
                                   style={{
                                     float: "right",
                                     position: "relative",
-                                    bottom: "30px",
                                   }}
                                   type="submit"
-                                  class="btn btn-primary btn-block logn-btn"
+                                  class="btn btn-primary btn-block"
                                   onClick={() => {
                                     swal({
                                       title:
@@ -188,6 +195,86 @@ export default function ListUser() {
                                         ).then(() => {
                                           dispatch(getUsersRegister());
                                         });
+
+                                        swal({
+                                          title: "Bạn đã duyệt thành công !",
+                                          icon: "success",
+                                        });
+                                      } else {
+                                        swal({
+                                          title: "Bạn đã hủy thao tác duyệt !",
+                                          icon: "error",
+                                        });
+                                      }
+                                    });
+                                  }}
+                                >
+                                  Duyệt
+                                </button>{" "}
+                              </li>
+                            </ul>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="top-streamers">
+                    <div class="heading-section">
+                      <h5
+                        style={{
+                          textAlign: "center",
+                          color: "rgb(236,96,144)",
+                        }}
+                      >
+                        {" "}
+                        Duyệt Thành Viên Đăng Ký Vip{" "}
+                      </h5>
+                      <br />
+                    </div>
+                    {vip !== undefined &&
+                      vip.map((item, key) => {
+                        return (
+                          <div>
+                            {" "}
+                            <ul>
+                              <li>
+                                <span>{key + 1}</span>
+                                <img
+                                  src={item.avatar}
+                                  alt=""
+                                  style={{
+                                    maxWidth: "45px",
+                                    maxHeight: "45px",
+                                    borderRadius: "50%",
+                                    marginRight: "15px",
+                                  }}
+                                />
+                                <h6>
+                                  <i class="fa fa-check"></i> {item.username}
+                                </h6>{" "}
+                                <button
+                                  style={{
+                                    float: "right",
+                                    position: "relative",
+                                    borderRadius: "15px",
+                                  }}
+                                  type="submit"
+                                  class="btn btn-primary btn-block"
+                                  onClick={() => {
+                                    swal({
+                                      title:
+                                        "Bạn có muốn duyệt thành viên này không ?",
+                                      text: "",
+                                      icon: "warning",
+                                      buttons: true,
+                                      dangerMode: true,
+                                    }).then((willDelete) => {
+                                      if (willDelete) {
+                                        dispatch(
+                                          changeSellerToVip(item.idUser)
+                                        );
+                                        navigate("/home");
 
                                         swal({
                                           title: "Bạn đã duyệt thành công !",

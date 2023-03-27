@@ -12,8 +12,8 @@ import { addPersonal } from "../../service/personalService";
 export default function EditProvider() {
   const [checked, setChecked] = useState([]);
   const { id } = useParams();
+  console.log(id);
   const idPost = useSelector((state) => {
-    console.log(state.post.posts[0].idPost, 11);
     return state.post.posts[0].idPost;
   });
   let a = { checked, idPost };
@@ -324,6 +324,10 @@ export default function EditProvider() {
                             Sửa thông tin người cung cấp dịch vụ
                           </button>{" "} */}
                           <button
+                            style={{
+                              width: "50%",
+                              height: "50px",
+                            }}
                             type="button"
                             class="btn btn-primary btn-block logn-btn"
                             data-bs-toggle="modal"
@@ -344,6 +348,7 @@ export default function EditProvider() {
                               <div class="modal-content">
                                 <div class="modal-header">
                                   <h3
+                                    style={{ width: "100%" }}
                                     class="modal-title"
                                     id="staticBackdropLabel"
                                   >

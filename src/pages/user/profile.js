@@ -115,45 +115,50 @@ export default function Profile() {
                               cung cấp dịch vụ ngay bây giờ
                             </p>
                             <div class="main-border-button">
-                              <button
-                                type="submit"
-                                class="btn btn-primary btn-block logn-btn"
-                                onClick={() => {
-                                  swal({
-                                    title:
-                                      "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
-                                    text: "",
-                                    icon: "warning",
-                                    buttons: true,
-                                    dangerMode: true,
-                                  }).then((willDelete) => {
-                                    if (willDelete) {
-                                      dispatch(
-                                        requestProvider(user.idUser)
-                                      ).then(() => {
-                                        dispatch(getProfile(idUser)).then(
-                                          () => {
-                                            // navigate("/home");
-                                          }
-                                        );
-                                      });
-                                      swal({
-                                        icon: "success",
-                                        title:
-                                          "Bạn đã gửi yêu cầu thành công !",
-                                      });
-                                    } else {
-                                      swal({
-                                        title: "Bạn đã hủy yêu cầu !",
-                                        icon: "error",
-                                      });
-                                    }
-                                  });
-                                }}
-                              >
-                                Trở thành nhà cung cấp dịch vụ
-                              </button>
+                              {user.role === "Vip" ? (
+                                <h3 style={{ color: "yellow" }}>VIP</h3>
+                              ) : (
+                                <button
+                                  type="submit"
+                                  class="btn btn-primary btn-block logn-btn"
+                                  onClick={() => {
+                                    swal({
+                                      title:
+                                        "Bạn có muốn trở thành người cung cấp dịch vụ không ?",
+                                      text: "",
+                                      icon: "warning",
+                                      buttons: true,
+                                      dangerMode: true,
+                                    }).then((willDelete) => {
+                                      if (willDelete) {
+                                        dispatch(
+                                          requestProvider(user.idUser)
+                                        ).then(() => {
+                                          dispatch(getProfile(idUser)).then(
+                                            () => {
+                                              // navigate("/home");
+                                            }
+                                          );
+                                        });
+                                        swal({
+                                          icon: "success",
+                                          title:
+                                            "Bạn đã gửi yêu cầu thành công !",
+                                        });
+                                      } else {
+                                        swal({
+                                          title: "Bạn đã hủy yêu cầu !",
+                                          icon: "error",
+                                        });
+                                      }
+                                    });
+                                  }}
+                                >
+                                  Trở thành nhà cung cấp dịch vụ
+                                </button>
+                              )}
                             </div>
+                            <div></div>
                           </div>
                         </div>
 
@@ -171,17 +176,29 @@ export default function Profile() {
                             <li>
                               Chức vụ <span>{user.role}</span>
                             </li>
-                            <li>
-                              <Link to={"/user/change-password/" + user.idUser}>
-                                <button
-                                  type="submit"
-                                  class="btn btn-primary btn-block logn-btn"
-                                >
-                                  Đổi mật khẩu
-                                </button>{" "}
-                              </Link>
-                            </li>
                           </ul>
+                          <Link to={"/user/change-password/" + user.idUser}>
+                            <button
+                              style={{ float: "right", width: "100%" }}
+                              type="submit"
+                              class="btn btn-primary btn-block logn-btn"
+                            >
+                              Đổi mật khẩu
+                            </button>{" "}
+                          </Link>
+                          {user.role === "seller" || user.role === "Vip" ? (
+                            <Link to={"/home/edit-post/" + user.idUser}>
+                              <button
+                                style={{ float: "right", width: "100%" }}
+                                type="submit"
+                                class="btn btn-primary btn-block logn-btn"
+                              >
+                                Cập nhật thông tin bài đăng
+                              </button>{" "}
+                            </Link>
+                          ) : (
+                            <></>
+                          )}
                         </div>
                       </div>
                     </div>

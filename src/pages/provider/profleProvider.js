@@ -13,6 +13,7 @@ import { Field, Form, Formik, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";
 import { getProvision } from "../../service/provisionService";
 import { addPersonal } from "../../service/personalService";
+import { userAskVip } from "../../service/userService";
 
 const validateSchema = Yup.object().shape({
   namePost: Yup.string().required("Vui lòng không để trống !"),
@@ -32,7 +33,7 @@ export default function ProfileProvider() {
       return state.user.profile;
     }
   });
-  
+
   const provisions = useSelector((state) => {
     console.log(state, 333);
     return state.provision.provisions;
@@ -114,7 +115,6 @@ export default function ProfileProvider() {
   }, []);
   useEffect(() => {
     dispatch(getProvision());
-    
   }, []);
 
   return (
@@ -199,12 +199,48 @@ export default function ProfileProvider() {
                         <div class="main-info header-text">
                           <h4>{user.username}</h4>
                           <br /> <p> Người cung cấp dịch vụ</p>
+                          <div className="main-border-button">
+                            <button
+                              type="submit"
+                              className="btn btn-primary btn-block logn-btn"
+                              onClick={() => {
+                                swal({
+                                  title:
+                                    "Bạn có muốn thay đổi trạng thái không ?",
+                                  text: "",
+                                  icon: "warning",
+                                  buttons: true,
+                                  dangerMode: true,
+                                }).then((willDelete) => {
+                                  if (willDelete) {
+                                    dispatch(userAskVip(user.idUser)).then(
+                                      () => {
+                                        dispatch(getProfile(idUser)).then(
+                                          () => {
+                                            // navigate("/home");
+                                          }
+                                        );
+                                      }
+                                    );
+                                    swal("Bạn đã gửi yêu cầu thành công !", {
+                                      icon: "success",
+                                    });
+                                  } else {
+                                    swal("Bạn đã hủy yêu cầu !");
+                                  }
+                                });
+                              }}
+                            >
+                              Bạn muốn trở thành VIP
+                            </button>
+                          </div>
                           <br />
                           <button
                             class="btn btn-primary btn-block logn-btn"
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop"
+                            style={{ width: "200px" }}
                           >
                             {" "}
                             Thêm bài đăng
@@ -255,14 +291,21 @@ export default function ProfileProvider() {
                                         values.image = urls[0];
                                         values.idUser = user1.idUser;
                                         handleAddPersonal();
-                                        handleAdd(values).then(() => {
-                                          swal({
-                                            title: "Đăng bài thành công !",
-                                            icon: "success",
-                                          }).then(() => {
+                                        handleAdd(values)
+                                          .then(() => {
+                                            swal({
+                                              title: "Đăng bài thành công !",
+                                              icon: "success",
+                                            }).then(() => {
+                                              swal({
+                                                title: "Thêm mới thành công !",
+                                                icon: "success",
+                                              });
+                                            });
+                                          })
+                                          .then(() => {
                                             navigate("/home");
                                           });
-                                        });
                                       }}
                                     >
                                       <Form>
@@ -504,7 +547,7 @@ export default function ProfileProvider() {
                                                   />
                                                 </div>
                                               </div>
-                                              {provisions.map((item) => {
+                                              {/* {provisions.map((item) => {
                                                 return (
                                                   <label>
                                                     <input
@@ -520,7 +563,7 @@ export default function ProfileProvider() {
                                                     </label>
                                                   </label>
                                                 );
-                                              })}
+                                              })} */}
                                             </div>
                                           </div>
                                         </div>{" "}
