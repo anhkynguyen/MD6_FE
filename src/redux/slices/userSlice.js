@@ -27,7 +27,7 @@ const initialState = {
   vips: [],
   usersRequest: [],
   usersRegister: [],
-  profile: {},
+  profile: [],
   checkPassword: "",
 };
 

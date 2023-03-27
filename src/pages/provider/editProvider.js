@@ -310,19 +310,6 @@ export default function EditProvider() {
                           >
                             Sửa thông tin người cung cấp dịch vụ
                           </button>{" "}
-                          {/* <button
-                            onClick={() => {
-                              handleAddPersonal();
-                            }}
-                            style={{
-                              width: "50%",
-                              height: "50px",
-                            }}
-                            type="submit"
-                            class="btn btn-primary btn-block logn-btn"
-                          >
-                            Sửa thông tin người cung cấp dịch vụ
-                          </button>{" "} */}
                           <button
                             style={{
                               width: "50%",
@@ -333,7 +320,7 @@ export default function EditProvider() {
                             data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop"
                           >
-                            Thêm thể loại thuê
+                            Thêm thể loại dịch vụ thuê
                           </button>
                           <div
                             class="modal fade"
@@ -401,7 +388,9 @@ export default function EditProvider() {
                                   </button>
                                   <button
                                     onClick={() => {
-                                      handleAddPersonal();
+                                      handleAddPersonal().then(() => {
+                                        navigate("/home");
+                                      });
                                     }}
                                     style={{
                                       width: "48%",

@@ -1,17 +1,28 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useSearchParams } from "react-router-dom";
+import { searchProviderByName } from "../service/providerService";
 import NavbarAdmin from "./navbarAdmin";
 
 export default function Navbar() {
   const user = useSelector((state) => state.user.currentUser);
-  const post = useSelector((state) => {
-    return state.post.posts;
-  });
+  const [page, setPage] = useSearchParams();
 
+  const totalPages = useSelector((state) => {
+    if (state.post !== undefined) {
+      return state.post.posts.totalPage;
+    }
+  });
+  const dispatch = useDispatch();
+  const handleSearch = (value) => {
+    dispatch(searchProviderByName(value));
+  };
   return (
     <>
       {user.role !== "admin" ? (
-        <div class="header-area header-sticky">
+        <div
+          class="header-area"
+          style={{ position: "sticky", backgroundColor: "rgb(31,33,34)" }}
+        >
           <div class="container">
             <div class="row">
               <div class="col-12">
@@ -23,11 +34,17 @@ export default function Navbar() {
                   <div class="search-input">
                     <form id="search" action="#">
                       <input
-                        type="text"
-                        placeholder="Type Something"
+                        placeholder="Nhập gì đó"
                         id="searchText"
-                        name="searchKeyword"
                         onkeypress="handle"
+                        className="form-control"
+                        type="search"
+                        name={"search"}
+                        aria-label="Search"
+                        style={{ maxWidth: "250px" }}
+                        onKeyUp={(e) => {
+                          handleSearch(e.target.value);
+                        }}
                       />
                       <i class="fa fa-search"></i>
                     </form>

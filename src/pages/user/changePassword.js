@@ -116,7 +116,7 @@ export default function ChangePassword() {
                             >
                               <ErrorMessage name={"newPassword"}></ErrorMessage>
                             </alert>{" "}
-                            <div class="input-group mb-4">
+                            {/* <div class="input-group mb-4">
                               {" "}
                               <Field
                                 type="password"
@@ -125,7 +125,7 @@ export default function ChangePassword() {
                                 placeholder="Nhập lại mật khẩu mới của bạn "
                                 style={{ color: "white" }}
                               />{" "}
-                            </div>
+                            </div> */}
                             <div class="row">
                               <div class="col-12">
                                 {" "}

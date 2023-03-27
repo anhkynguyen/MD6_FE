@@ -7,7 +7,7 @@ import * as Yup from "yup";
 const validateSchema = Yup.object().shape({
   username: Yup.string()
     .required("Vui lòng không để trống tên!")
-    .min(6, "Tên phải từ 6 kí tự trở lên !")
+    .min(5, "Tên phải từ 5 kí tự trở lên !")
     .max(50, "Tên chỉ dưới 50 kí tự"),
   password: Yup.string()
     .min(6, "Mật khẩu phải từ 6 kí tự trở lên !")
@@ -32,7 +32,6 @@ export default function Register() {
       } else {
         navigate("/");
         swal({ title: "Đănng kí thành công !", icon: "success" });
-
       }
     });
   };
@@ -46,17 +45,15 @@ export default function Register() {
           gmail: "",
           birthday: "",
           gender: "",
-
         }}
         validationSchema={validateSchema}
         onSubmit={(values) => {
-          console.log(values)
+          console.log(values);
           handleRegister(values);
         }}
       >
         <Form>
           <div id="mainCoantiner">
-
             <div>
               <div class="starsec"></div>
               <div class="starthird"></div>
@@ -77,7 +74,6 @@ export default function Register() {
                             Đăng ký tài khoản của bạn
                           </h5>
                           <br></br>
-
                           <br></br>
                           <p style={{ color: "white", float: "left" }}>
                             Họ tên
@@ -89,7 +85,6 @@ export default function Register() {
                             <ErrorMessage name={"username"}></ErrorMessage>
                           </alert>{" "}
                           <div class="input-group mb">
-
                             <Field
                               type="text"
                               name={"username"}
@@ -99,7 +94,7 @@ export default function Register() {
                               style={{ color: "white" }}
                             />{" "}
                           </div>
-                          <br/>
+                          <br />
                           <p style={{ color: "white", float: "left" }}>
                             Mật khẩu
                           </p>
@@ -120,7 +115,7 @@ export default function Register() {
                               style={{ color: "white" }}
                             />{" "}
                           </div>
-                          <br/>
+                          <br />
                           <p style={{ color: "white", float: "left" }}>
                             Ngày sinh
                           </p>{" "}
@@ -140,7 +135,7 @@ export default function Register() {
                               style={{ color: "white" }}
                             />{" "}
                           </div>
-                          <br/>
+                          <br />
                           <p style={{ color: "white", float: "left" }}>Email</p>
                           <alert
                             className="text-danger"
@@ -159,7 +154,7 @@ export default function Register() {
                               style={{ color: "white" }}
                             />{" "}
                           </div>
-                          <br/>
+                          <br />
                           <p style={{ color: "white", float: "left" }}>
                             Giới tính
                           </p>{" "}
@@ -180,7 +175,6 @@ export default function Register() {
                               placeholder="Hãy chọn giới tính của bạn"
                               style={{ color: "white" }}
                             >
-
                               {" "}
                               <option value="Vui lòng chọn giới tính" selected>
                                 Vui lòng chọn giới tính

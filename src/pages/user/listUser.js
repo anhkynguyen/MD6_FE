@@ -106,15 +106,9 @@ export default function ListUser() {
                                       if (willDelete) {
                                         dispatch(
                                           acceptRequestProvider(item.idUser)
-                                        )
-                                          .then(() => {
-                                            console.log(19);
-                                            navigate("/home");
-                                          })
-                                          .then(() => {
-                                            console.log(20);
-                                            navigate("/home");
-                                          });
+                                        ).then(() => {
+                                          dispatch(getUsersRequest());
+                                        });
 
                                         swal({
                                           title: "Bạn đã duyệt thành công !",
@@ -164,8 +158,8 @@ export default function ListUser() {
                                   src={item.avatar}
                                   alt=""
                                   style={{
-                                    maxWidth: "45px",
-                                    maxHeight: "45px",
+                                    maxWidth: "40px",
+                                    maxHeight: "40px",
                                     borderRadius: "50%",
                                     marginRight: "15px",
                                   }}
@@ -177,9 +171,10 @@ export default function ListUser() {
                                   style={{
                                     float: "right",
                                     position: "relative",
+                                    bottom: "30px",
                                   }}
                                   type="submit"
-                                  class="btn btn-primary btn-block"
+                                  class="btn btn-primary btn-block logn-btn"
                                   onClick={() => {
                                     swal({
                                       title:
@@ -258,9 +253,10 @@ export default function ListUser() {
                                     float: "right",
                                     position: "relative",
                                     borderRadius: "15px",
+                                    bottom: "30px",
                                   }}
                                   type="submit"
-                                  class="btn btn-primary btn-block"
+                                  class="btn btn-primary btn-block logn-btn"
                                   onClick={() => {
                                     swal({
                                       title:
@@ -330,7 +326,6 @@ export default function ListUser() {
                           {item.role}
                         </h3>
                       </p>
-                      <br></br>
 
                       <ul>
                         {/* <li>

@@ -6,11 +6,14 @@ import {
   getProviders,
   removeProvider,
   getTopProviders,
+  searchProviderByName,
+  searchProviderByGender,
 } from "../../service/providerService";
 
 const initialState = {
   posts: [],
   post: [],
+  searchPost: [],
 };
 const postSlice = createSlice({
   name: "post",
@@ -35,6 +38,13 @@ const postSlice = createSlice({
     });
     builder.addCase(getTopProviders.fulfilled, (state, action) => {
       state.posts = action.payload;
+    });
+    builder.addCase(searchProviderByName.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.searchPost = action.payload;
+    });
+    builder.addCase(searchProviderByGender.fulfilled, (state, action) => {
+      state.searchPost = action.payload;
     });
   },
 });

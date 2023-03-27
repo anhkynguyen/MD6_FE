@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import customAxios from "./api";
 
@@ -37,11 +38,24 @@ export const editProvider = createAsyncThunk("post/editPost", async (data) => {
 export const getTopProviders = createAsyncThunk(
   "post/getAllPost2",
   async () => {
-    try {
-      const res = await customAxios.get("/post/getAllPost2");
-      return res.data;
-    } catch (e) {
-      console.log(e);
-    }
+    const res = await customAxios.get("/post/getAllPost2");
+    return res.data;
+  }
+);
+export const searchProviderByName = createAsyncThunk(
+  "provider/searchProvider",
+  async (data) => {
+    console.log(data, 444);
+    const res = await customAxios.get(`/users/findByName/${data}`);
+    console.log(res.data, 8888);
+    return res.data;
+  }
+);
+export const searchProviderByGender = createAsyncThunk(
+  "provider/searchProviderByGender",
+  async (data) => {
+    console.log(data);
+    const res = await customAxios.get(`/users/findByGender/${data}`);
+    return res.data;
   }
 );

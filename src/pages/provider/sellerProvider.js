@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { addOrder } from "../../service/orderService";
-import { getProfile, getSellerProfile } from "../../service/userService";
+import { getSellerProfile } from "../../service/userService";
 import swal from "sweetalert";
 import { getProviders } from "../../service/providerService";
 import { getProvision } from "../../service/provisionService";
@@ -22,6 +22,7 @@ export default function SellerProfile() {
   const provisions = useSelector((state) => state.provision.provisions);
 
   const post = useSelector((state) => {
+    console.log(state.user.profile, 33);
     return state.user.profile;
   });
 
@@ -73,7 +74,7 @@ export default function SellerProfile() {
             </div>
             <div class="col-lg-12">
               <div class="page-content">
-                <h2 style={{ textAlign: "center" }}> {post.namePost}</h2>
+                {/* <h2 style={{ textAlign: "center" }}> {post.namePost}</h2> */}
                 <div class="row">
                   <div class="col-12" style={{ paddingTop: "0px" }}>
                     <div
@@ -189,7 +190,7 @@ export default function SellerProfile() {
                                     ></button>
                                   </div>
                                   <div class="offcanvas-body">
-                                    <p>Để lại bình luận của bạn tại đ</p>
+                                    <p>Để lại bình luận của bạn tại đây </p>
 
                                     <Form>
                                       <Field
