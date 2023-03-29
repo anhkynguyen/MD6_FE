@@ -44,7 +44,7 @@ export default function Login() {
       if (e.payload === "your account has been locked") {
         swal({
           title:
-            "Tài khoản chưa kích hoạt , Vui lòng liên hệ quản trị viên ! !",
+            "Tài khoản chưa kích hoạt , Vui lòng liên hệ loc@gmail.com ! !",
           icon: "warning",
         }).then(navigate("/"));
       }

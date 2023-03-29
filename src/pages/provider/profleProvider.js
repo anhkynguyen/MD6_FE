@@ -18,9 +18,17 @@ import { userAskVip } from "../../service/userService";
 const validateSchema = Yup.object().shape({
   namePost: Yup.string().required("Vui lòng không để trống !"),
   description: Yup.string().required("Vui lòng không để trống !"),
-  price: Yup.string().required("Vui lòng không để trống !"),
-  height: Yup.string().required("Vui lòng không để trống !"),
-  weight: Yup.string().required("Vui lòng không để trống !"),
+  price: Yup.string()
+    .required("Vui lòng không để trống !")
+    .max(2000000, "Giá phải nhỏ hơn 2 triệu")
+    .min(1000, "Giá phải lớn hơn 1000 đồng"),
+  height: Yup.string()
+    .required("Vui lòng không để trống !")
+    .max(200, "Vui lòng nhập lại chiều cao"),
+
+  weight: Yup.string()
+    .required("Vui lòng không để trống !")
+    .max(200, "Vui lòng nhập lại cân nặng"),
   measurement: Yup.string().required("Vui lòng không để trống !"),
 });
 
@@ -201,7 +209,10 @@ export default function ProfileProvider() {
                           <br /> <p> Người cung cấp dịch vụ</p>
                           <div className="main-border-button">
                             <button
-                              style={{ marginTop: "80px" }}
+                              style={{
+                                marginTop: "50px",
+                                marginRight: "90px",
+                              }}
                               type="submit"
                               className="btn btn-primary btn-block logn-btn"
                               onClick={() => {
@@ -236,367 +247,23 @@ export default function ProfileProvider() {
                             >
                               Bạn muốn trở thành VIP
                             </button>{" "}
-                            <button
-                              class="btn btn-primary btn-block logn-btn"
-                              type="button"
-                              data-bs-toggle="modal"
-                              data-bs-target="#staticBackdrop"
-                              style={{ width: "200px" }}
+                            <br></br>
+                          </div>{" "}
+                          <div className="main-border-button">
+                            <a
+                              style={{
+                                float: "left",
+                                width: "200px",
+                                height: "40px",
+                                textAlign: "center",
+                                paddingBottom: "10px",
+                                color: "white",
+                                backgroundColor: "rgb(28,31,47)",
+                              }}
+                              href="/home/add-post"
                             >
-                              {" "}
-                              Thêm bài đăng
-                            </button>
-                            <div
-                              class="modal fade"
-                              id="staticBackdrop"
-                              data-bs-backdrop="static"
-                              data-bs-keyboard="false"
-                              tabindex="-1"
-                              aria-labelledby="staticBackdropLabel"
-                              aria-hidden="true"
-                            >
-                              <div class="modal-dialog modal-xl">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h3
-                                      style={{
-                                        textAlign: "center",
-                                        width: "100%",
-                                      }}
-                                    >
-                                      Thêm mới bài đăng
-                                    </h3>
-
-                                    <button
-                                      type="button"
-                                      class="btn-close"
-                                      data-bs-dismiss="modal"
-                                      aria-label="Close"
-                                    ></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <>
-                                      <Formik
-                                        initialValues={{
-                                          namePost: "",
-                                          description: "",
-                                          image: "",
-                                          price: "",
-                                          height: "",
-                                          weight: "",
-                                          measurement: "",
-                                          idProvision: [checked],
-                                        }}
-                                        validationSchema={validateSchema}
-                                        onSubmit={(values) => {
-                                          values.image = urls[0];
-                                          values.idUser = user1.idUser;
-                                          handleAddPersonal();
-                                          handleAdd(values)
-                                            .then(() => {
-                                              swal({
-                                                title: "Đăng bài thành công !",
-                                                icon: "success",
-                                              }).then(() => {
-                                                swal({
-                                                  title:
-                                                    "Thêm mới thành công !",
-                                                  icon: "success",
-                                                });
-                                              });
-                                            })
-                                            .then(() => {
-                                              navigate("/home");
-                                            });
-                                        }}
-                                      >
-                                        <Form>
-                                          <div class="container">
-                                            <div class="row">
-                                              {" "}
-                                              <div class="col-md-4">
-                                                <div>
-                                                  {" "}
-                                                  <img
-                                                    src={urls[0]}
-                                                    alt={urls[0]}
-                                                    style={{
-                                                      borderRadius: "23px",
-                                                      width: "100%",
-                                                      height: "330px",
-                                                    }}
-                                                  />
-                                                </div>
-
-                                                <input
-                                                  id="image"
-                                                  name={"image"}
-                                                  type="file"
-                                                  onChange={handleChange}
-                                                />
-                                                <button
-                                                  type="button"
-                                                  class="btn btn-primary btn-block logn-btn"
-                                                  onClick={() =>
-                                                    dispatch(handleUpload)
-                                                  }
-                                                >
-                                                  Upload
-                                                </button>
-                                              </div>
-                                              <div class="col-md-8  ">
-                                                <div class="form-row">
-                                                  <div class="form-holder">
-                                                    <h5
-                                                      style={{
-                                                        color: "#e75e8d",
-                                                        lineHeight: "0px",
-                                                      }}
-                                                    >
-                                                      Tên bài đăng
-                                                    </h5>
-                                                    <br></br>
-                                                    <alert
-                                                      className="text-danger"
-                                                      style={{
-                                                        float: "left",
-                                                      }}
-                                                    >
-                                                      <ErrorMessage
-                                                        name={"namePost"}
-                                                      ></ErrorMessage>
-                                                    </alert>{" "}
-                                                    <Field
-                                                      style={{
-                                                        backgroundColor:
-                                                          "white",
-                                                        color: "black",
-                                                        border: "solid",
-                                                      }}
-                                                      type="text"
-                                                      name={"namePost"}
-                                                      id="namePost"
-                                                      placeholder="Tên bài đăng"
-                                                      class="form-control"
-                                                    />
-                                                  </div>
-
-                                                  <div class="form-holder">
-                                                    <h5
-                                                      style={{
-                                                        color: "#e75e8d",
-                                                        lineHeight: "0px",
-                                                      }}
-                                                    >
-                                                      Chiều cao
-                                                    </h5>
-                                                    <br></br>
-                                                    <alert
-                                                      className="text-danger"
-                                                      style={{
-                                                        float: "left",
-                                                      }}
-                                                    >
-                                                      <ErrorMessage
-                                                        name={"height"}
-                                                      ></ErrorMessage>
-                                                    </alert>{" "}
-                                                    <Field
-                                                      style={{
-                                                        backgroundColor:
-                                                          "white",
-                                                        color: "pink",
-                                                        border: "solid",
-                                                      }}
-                                                      type="number"
-                                                      name={"height"}
-                                                      id="height"
-                                                      placeholder="Chiều cao của bạn (cm)"
-                                                      class="form-control"
-                                                    />
-                                                  </div>
-                                                </div>
-                                                <div class="form-row">
-                                                  <div class="form-holder">
-                                                    <h5
-                                                      style={{
-                                                        color: "#e75e8d",
-                                                        lineHeight: "0px",
-                                                      }}
-                                                    >
-                                                      Cân nặng
-                                                    </h5>
-                                                    <alert
-                                                      className="text-danger"
-                                                      style={{
-                                                        float: "left",
-                                                      }}
-                                                    >
-                                                      <ErrorMessage
-                                                        name={"weight"}
-                                                      ></ErrorMessage>
-                                                    </alert>{" "}
-                                                    <br></br>
-                                                    <Field
-                                                      style={{
-                                                        backgroundColor:
-                                                          "white",
-                                                        color: "black",
-                                                        border: "solid",
-                                                      }}
-                                                      type="number"
-                                                      name={"weight"}
-                                                      id="weight"
-                                                      placeholder="Cân nặng của bạn (kg)"
-                                                      class="form-control"
-                                                    />
-                                                  </div>
-                                                  <div class="form-holder">
-                                                    <h5
-                                                      style={{
-                                                        color: "#e75e8d",
-                                                        lineHeight: "0px",
-                                                      }}
-                                                    >
-                                                      Số đo ba vòng
-                                                    </h5>
-                                                    <alert
-                                                      className="text-danger"
-                                                      style={{
-                                                        float: "left",
-                                                      }}
-                                                    >
-                                                      <ErrorMessage
-                                                        name={"measurement"}
-                                                      ></ErrorMessage>
-                                                    </alert>{" "}
-                                                    <br></br>
-                                                    <Field
-                                                      style={{
-                                                        backgroundColor:
-                                                          "white",
-                                                        color: "black",
-                                                        border: "solid",
-                                                      }}
-                                                      name="measurement"
-                                                      type="text"
-                                                      placeholder="Số đo ba vòng của bạn (cm)"
-                                                      class="form-control"
-                                                    />
-                                                  </div>
-                                                </div>
-                                                <div class="form-row">
-                                                  <div class="form-holder">
-                                                    <h5
-                                                      style={{
-                                                        color: "#e75e8d",
-                                                        lineHeight: "0px",
-                                                      }}
-                                                    >
-                                                      Giá thuê
-                                                    </h5>
-                                                    <alert
-                                                      className="text-danger"
-                                                      style={{
-                                                        float: "left",
-                                                      }}
-                                                    >
-                                                      <ErrorMessage
-                                                        name={"price"}
-                                                      ></ErrorMessage>
-                                                    </alert>{" "}
-                                                    <br></br>
-                                                    <Field
-                                                      style={{
-                                                        backgroundColor:
-                                                          "white",
-                                                        color: "black",
-                                                        border: "solid",
-                                                      }}
-                                                      name={"price"}
-                                                      id="price"
-                                                      type="number"
-                                                      placeholder="Giá thuê theo giờ"
-                                                      class="form-control"
-                                                    />
-                                                  </div>
-                                                  <div class="form-holder">
-                                                    <h5
-                                                      style={{
-                                                        color: "#e75e8d",
-                                                        lineHeight: "0px",
-                                                      }}
-                                                    >
-                                                      Sở thích
-                                                    </h5>
-                                                    <alert
-                                                      className="text-danger"
-                                                      style={{
-                                                        float: "left",
-                                                      }}
-                                                    >
-                                                      <ErrorMessage
-                                                        name={"description"}
-                                                      ></ErrorMessage>
-                                                    </alert>{" "}
-                                                    <br></br>
-                                                    <Field
-                                                      name={"description"}
-                                                      id="description"
-                                                      style={{
-                                                        backgroundColor:
-                                                          "white",
-                                                        color: "black",
-                                                        border: "solid",
-                                                      }}
-                                                      type="text"
-                                                      placeholder="Sở thích của bạn"
-                                                      class="form-control"
-                                                    />
-                                                  </div>
-                                                </div>
-                                                {/* {provisions.map((item) => {
-                                                return (
-                                                  <label>
-                                                    <input
-                                                      type="checkbox"
-                                                      id="idProvision"
-                                                      name="idProvision"
-                                                      value={item.idProvision}
-                                                      onChange={handleCheck}
-                                                    />
-                                                    <label>
-                                                      {" "}
-                                                      {item.provisionName}
-                                                    </label>
-                                                  </label>
-                                                );
-                                              })} */}
-                                              </div>
-                                            </div>
-                                          </div>{" "}
-                                          <div class="modal-footer">
-                                            <button
-                                              type="button"
-                                              class="btn btn-primary btn-block logn-btn"
-                                              data-bs-dismiss="modal"
-                                            >
-                                              Hủy
-                                            </button>
-                                            <button
-                                              type="submit"
-                                              class="btn btn-primary btn-block logn-btn"
-                                            >
-                                              Thêm mới
-                                            </button>
-                                          </div>
-                                        </Form>
-                                      </Formik>
-                                    </>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                              Đăng Bài
+                            </a>
                           </div>
                           <div class="main-border-button"></div>
                         </div>

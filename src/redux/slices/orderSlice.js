@@ -27,7 +27,7 @@ const orderSlice = createSlice({
       state.orderInSeller = action.payload;
     });
     builder.addCase(addOrder.fulfilled, (state, action) => {
-      console.log(action.payload, 4444);
+      console.log(action.payload, 666666);
       state.orders.push(action.payload);
     });
     builder.addCase(changeStatusOrder.fulfilled, (state, action) => {

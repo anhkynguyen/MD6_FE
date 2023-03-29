@@ -9,6 +9,7 @@ import { getProviders } from "../../service/providerService";
 import { getProvision } from "../../service/provisionService";
 import { addComment } from "../../service/commentService";
 import { getAllComment } from "../../service/commentService";
+import { object } from "yup";
 
 export default function SellerProfile() {
   const navigate = useNavigate();
@@ -34,15 +35,36 @@ export default function SellerProfile() {
     };
 
     dispatch(addOrder(data)).then((e) => {
-      if (e.payload === "Wrong Check In") {
-        swal("Wrong Check In");
-      } else if (e.payload === "Wrong Check Out") {
-        swal("Wrong Check Out");
-      } else {
-        dispatch(getProviders()).then(() => {
-          swal("Order successfully");
-          navigate("/home");
+      if (e.payload == "Bạn chưa thể thuê dịch vụ") {
+        swal({
+          title: "Thời gian này đã có người thuê vui lòng chọn lại",
+          icon: "error",
         });
+      }
+      if (e.payload == "hãy chọn lại thời gian bắt đầu thuê") {
+        swal({
+          title: "Chọn lại thời gian bắt đầu thuê !",
+          icon: "warning",
+        }).then();
+      }
+      if (e.payload == "hãy chọn lại ngày bắt đầu thuê") {
+        swal({
+          title: "Hãy chọn lại ngày bắt đầu thuê ! !",
+          icon: "warning",
+        }).then();
+      }
+      if (e.payload == "Hãy chọn lại ngày thuê dịch vụ") {
+        swal({
+          title: "Hãy chọn lại ngày thuê dịch vụ ! !",
+          icon: "warning",
+        }).then();
+      }
+
+      if (typeof e.payload === object) {
+        swal({
+          title: "ok",
+          icon: "warning",
+        }).then();
       }
     });
   };
@@ -230,10 +252,11 @@ export default function SellerProfile() {
             </div>
             <Formik
               initialValues={{
-                endTime: "",
                 startTime: "",
+                endTime: "",
               }}
               onSubmit={(values) => {
+                console.log(values, 44444555);
                 handleRent(values);
               }}
             >
@@ -277,12 +300,12 @@ export default function SellerProfile() {
                             <div class="form-holder">
                               {" "}
                               <h5 style={{ color: "#e75e8d" }}>
-                                Thời gian kết thúc
+                                Thời gian bắt đầu
                               </h5>
                               <br></br>
                               <Field
                                 type="datetime-local"
-                                name="endTime"
+                                name="startTime"
                                 id=""
                                 placeholder=""
                                 class="form-control"
@@ -290,12 +313,12 @@ export default function SellerProfile() {
                             </div>
                             <div class="form-holder">
                               <h5 style={{ color: "#e75e8d" }}>
-                                Thời gian bắt đầu
+                                Thời gian kết thúc
                               </h5>
                               <br></br>
                               <Field
                                 type="datetime-local"
-                                name={"startTime"}
+                                name="endTime"
                                 id=""
                                 placeholder=""
                                 class="form-control"
@@ -314,6 +337,8 @@ export default function SellerProfile() {
                           </button>
                           <button
                             type="submit"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
                             style={{ width: "48%" }}
                             class="btn btn-primary btn-block logn-btn"
                           >

@@ -112,7 +112,7 @@ export default function ListUser() {
 
                                         swal({
                                           title: "Bạn đã duyệt thành công !",
-                                          icon: "success ",
+                                          icon: "success",
                                         });
                                       } else {
                                         swal({

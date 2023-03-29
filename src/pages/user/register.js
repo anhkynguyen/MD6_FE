@@ -31,7 +31,7 @@ export default function Register() {
         navigate("/register");
       } else {
         navigate("/");
-        swal({ title: "Đănng kí thành công !", icon: "success" });
+        swal({ title: "Đăng kí thành công !", icon: "success" });
       }
     });
   };

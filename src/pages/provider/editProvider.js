@@ -389,7 +389,10 @@ export default function EditProvider() {
                                   <button
                                     onClick={() => {
                                       handleAddPersonal().then(() => {
-                                        navigate("/home");
+                                        swal({
+                                          title: "Thêm thành công",
+                                          icon: "success",
+                                        });
                                       });
                                     }}
                                     style={{
@@ -398,6 +401,7 @@ export default function EditProvider() {
                                     }}
                                     type="submit"
                                     class="btn btn-primary btn-block logn-btn"
+                                    className="btn-close"
                                   >
                                     Thêm
                                   </button>
