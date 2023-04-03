@@ -149,7 +149,7 @@ export default function ListTopProvider() {
                   </div>
                 </div>
 
-                <div class="col-lg-4" style={{ paddingTop: "200px" }}>
+                <div class="col-lg-4" style={{ paddingTop: "56px" }}>
                   <div class="top-streamers">
                     <div class="heading-section">
                       <h4>TOP Lượt xem</h4>
