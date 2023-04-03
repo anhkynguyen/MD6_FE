@@ -12,7 +12,6 @@ import { addPersonal } from "../../service/personalService";
 export default function EditProvider() {
   const [checked, setChecked] = useState([]);
   const { id } = useParams();
-  console.log(id);
   const idPost = useSelector((state) => {
     return state.post.posts[0].idPost;
   });

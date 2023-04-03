@@ -9,9 +9,8 @@ export const getProviders = createAsyncThunk("post/getPosts", async (page) => {
 export const findByIdProvider = createAsyncThunk(
   "post/findByIdUser",
   async (data) => {
-    console.log(data);
     const res = await customAxios.get("post/findPostByIdUSer/" + data);
-    console.log(res.data, 444);
+
     return res.data;
   }
 );
@@ -45,9 +44,7 @@ export const getTopProviders = createAsyncThunk(
 export const searchProviderByName = createAsyncThunk(
   "provider/searchProvider",
   async (data) => {
-    console.log(data, 444);
     const res = await customAxios.get(`/users/findByName/${data}`);
-    console.log(res.data, 8888);
     return res.data;
   }
 );
@@ -56,6 +53,38 @@ export const searchProviderByGender = createAsyncThunk(
   async (data) => {
     console.log(data);
     const res = await customAxios.get(`/users/findByGender/${data}`);
+    return res.data;
+  }
+);
+export const countViewPost = createAsyncThunk(
+  "post/countViewPost",
+  async (data) => {
+    const res = await customAxios.get("post/countView/" + data);
+    return data;
+  }
+);
+export const showSixPostHaveMostViews = createAsyncThunk(
+  "post/showSixPostHaveMostViews",
+  async (data) => {
+    const res = await customAxios.get("users/showSixSeller");
+
+    return res.data;
+  }
+);
+export const showTopMalesFemales = createAsyncThunk(
+  "post/showTopMalesFemales",
+  async () => {
+    const res = await customAxios.get("users/showTopFourMalesEightFemales");
+
+    return res.data;
+  }
+);
+export const showTopTwelve = createAsyncThunk(
+  "post/showTopTwelve",
+  async (data) => {
+    console.log(data, 12233);
+    const res = await customAxios.get(`users/showTwelfthSeller`);
+    console.log(res.data, 5677);
     return res.data;
   }
 );

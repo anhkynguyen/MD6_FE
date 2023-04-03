@@ -10,20 +10,24 @@ import { getProvision } from "../../service/provisionService";
 import { addComment } from "../../service/commentService";
 import { getAllComment } from "../../service/commentService";
 import { object } from "yup";
+import { getPersonalByIdUser } from "../../service/personalService";
 
 export default function SellerProfile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { idUser } = useParams();
+  const idUserPersonal = useSelector((state) => {
+    console.log(state.user.profile.idUser);
+    return state.user.profile.idUser;
+  });
+
   const comment = useSelector((state) => {
-    console.log(state, 555);
     return state.comment.comments;
   });
   const user = useSelector((state) => state.user.currentUser);
-  const provisions = useSelector((state) => state.provision.provisions);
+  const provisions = useSelector((state) => state.personal.provisions);
 
   const post = useSelector((state) => {
-    console.log(state.user.profile, 33);
     return state.user.profile;
   });
 
@@ -78,8 +82,12 @@ export default function SellerProfile() {
     dispatch(addComment(dataComment));
   };
   useEffect(() => {
+    dispatch(getPersonalByIdUser(idUserPersonal));
+  }, [idUserPersonal]);
+  useEffect(() => {
     dispatch(getSellerProfile(idUser));
-    dispatch(getProvision());
+  }, []);
+  useEffect(() => {
     dispatch(getAllComment());
   }, []);
   return (

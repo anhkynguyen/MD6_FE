@@ -49,7 +49,6 @@ export default function Navbar() {
                       <i class="fa fa-search"></i>
                     </form>
                   </div>
-
                   <ul class="nav">
                     <li>
                       <a href="/home" class="active">

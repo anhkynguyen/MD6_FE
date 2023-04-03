@@ -8,12 +8,19 @@ import {
   getTopProviders,
   searchProviderByName,
   searchProviderByGender,
+  countViewPost,
+  showSixPostHaveMostViews,
+  showTopMalesFemales,
+  showTopTwelve,
 } from "../../service/providerService";
 
 const initialState = {
   posts: [],
   post: [],
   searchPost: [],
+  sixPostHaveMostView: [],
+  topMalesFemales: [],
+  topTwelve: [],
 };
 const postSlice = createSlice({
   name: "post",
@@ -27,7 +34,6 @@ const postSlice = createSlice({
       state.posts = action.payload;
     });
     builder.addCase(addProvider.fulfilled, (state, action) => {
-      console.log(action.payload, 5);
       state.posts.push(action.payload);
     });
     builder.addCase(removeProvider.fulfilled, (state, action) => {
@@ -40,11 +46,23 @@ const postSlice = createSlice({
       state.posts = action.payload;
     });
     builder.addCase(searchProviderByName.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.searchPost = action.payload;
     });
     builder.addCase(searchProviderByGender.fulfilled, (state, action) => {
       state.searchPost = action.payload;
+    });
+    builder.addCase(countViewPost.fulfilled, (state, action) => {
+      state.posts = action.payload;
+    });
+    builder.addCase(showSixPostHaveMostViews.fulfilled, (state, action) => {
+      state.sixPostHaveMostView = action.payload;
+    });
+    builder.addCase(showTopMalesFemales.fulfilled, (state, action) => {
+      state.topMalesFemales = action.payload;
+    });
+    builder.addCase(showTopTwelve.fulfilled, (state, action) => {
+      console.log(action.payload,111);
+      state.topTwelve = action.payload;
     });
   },
 });

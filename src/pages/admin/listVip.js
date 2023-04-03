@@ -25,7 +25,7 @@ export default function ListVip() {
           <div className="other-games">
             <div className="row">
               <div className="heading-section">
-                <h4>Thành viên Vip</h4>
+                <h4>Thành viên VIP</h4>
               </div>
               {user !== undefined &&
                 vips &&

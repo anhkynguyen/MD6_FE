@@ -5,12 +5,8 @@ import { Outlet } from "react-router-dom";
 export default function Home() {
   return (
     <div className="row">
-      <div className="col-12">
+      <div className="col-12" style={{ paddingTop: "0px" }}>
         <Navbar></Navbar>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
         <Outlet></Outlet>
         <Footer></Footer>
       </div>

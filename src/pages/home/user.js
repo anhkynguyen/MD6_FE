@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar";
 export default function User() {
   return (
     <div className="row">
-      <div className="col-12">
+      <div className="col-12" style={{ paddingTop: "0px" }}>
         <Navbar></Navbar>
         <br></br>
         <br></br>

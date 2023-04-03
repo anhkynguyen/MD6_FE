@@ -5,7 +5,15 @@ export const addPersonal = createAsyncThunk(
   "personal/addPersonal",
   async (data) => {
     const res = await customAxios.post("personalService/add", data);
-    console.log(res.data, 555);
+
+    return res.data;
+  }
+);
+export const getPersonalByIdUser = createAsyncThunk(
+  "personal/getPersonalByIdUser",
+  async (data) => {
+    const res = await customAxios.get("users/showPersonal/" + data);
+
     return res.data;
   }
 );

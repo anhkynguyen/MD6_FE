@@ -20,9 +20,9 @@ export const getOrderInSeller = createAsyncThunk(
   }
 );
 export const addOrder = createAsyncThunk("order/addOrder", async (data) => {
-  console.log(data, 4444);
+
   const res = await customAxios.post("order/add", data);
-  console.log(res.data, 7777);
+
   return res.data;
 });
 export const changeStatusOrder = createAsyncThunk(

@@ -5,9 +5,8 @@ import NavbarAdmin from "../../components/navbarAdmin";
 export default function Admin() {
   return (
     <div className="row">
-      <div className="col-12">
+      <div className="col-12" style={{ paddingTop: "0px" }}>
         <NavbarAdmin></NavbarAdmin>
-
         <Outlet></Outlet>
         <Footer></Footer>
       </div>

@@ -6,13 +6,9 @@ import { useParams } from "react-router-dom";
 import { getProfile, changeStatus } from "../../service/userService";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
-import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import { storage } from "../../upload/firebaseConfig";
-import { addProvider } from "../../service/providerService";
-import { Field, Form, Formik, ErrorMessage, FieldArray } from "formik";
+import { findByIdProvider } from "../../service/providerService";
 import * as Yup from "yup";
 import { getProvision } from "../../service/provisionService";
-import { addPersonal } from "../../service/personalService";
 import { userAskVip } from "../../service/userService";
 
 const validateSchema = Yup.object().shape({
@@ -33,93 +29,27 @@ const validateSchema = Yup.object().shape({
 });
 
 export default function ProfileProvider() {
-  const [checked, setChecked] = useState([]);
   const { idUser } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => {
+    console.log(state, 223);
     if (state.user !== undefined) {
       return state.user.profile;
     }
   });
-
-  const provisions = useSelector((state) => {
-    console.log(state, 333);
-    return state.provision.provisions;
+  const idUser1 = useSelector((state) => {
+    if (state.user !== undefined) {
+      return state.user.profile.idUser;
+    }
   });
+  const post = useSelector((state) => {
+    return state.post.posts;
+  });
+  console.log(post.length, 5555);
   const navigate = useNavigate();
-  const [images, setImages] = useState([]);
-  const [urls, setUrls] = useState([]);
-  const [progress, setProgress] = useState(0);
-  const user1 = useSelector((state) => {
-    return state.user.currentUser;
-  });
-  // Add/Remove checked item from list
-  const handleCheck = (event) => {
-    var updatedList = [...checked];
-    if (event.target.checked) {
-      updatedList = [...checked, event.target.value];
-    } else {
-      updatedList.splice(checked.indexOf(event.target.value), 1);
-    }
-    setChecked(updatedList);
-  };
-  const handleChange = (e) => {
-    for (let i = 0; i < e.target.files.length; i++) {
-      const newImage = e.target.files[i];
-      newImage["id"] = Math.random();
-      setImages((prevState) => [...prevState, newImage]);
-    }
-  };
-
-  const handleUpload = () => {
-    const promises = [];
-    if (images.length > 0) {
-      images.map((image) => {
-        const storageRef = ref(storage, `images/${image.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, image);
-        promises.push(uploadTask);
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress = Math.round(
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            setProgress(progress);
-          },
-          (error) => {
-            console.log(error);
-          },
-          async () => {
-            await getDownloadURL(uploadTask.snapshot.ref).then(
-              (downloadURLs) => {
-                setUrls((prevState) => [...prevState, downloadURLs]);
-                console.log("File available at", downloadURLs);
-              }
-            );
-          }
-        );
-      });
-    }
-    Promise.all(promises)
-      .then(() =>
-        swal({ title: "Ảnh đã được tải lên thành công ", icon: "success" })
-      )
-      .catch((err) => console.log(err));
-  };
-
-  const handleAdd = (values) => {
-    let data = { ...values, user: user1.idUser };
-    console.log(data, 2333333333);
-    dispatch(addProvider(data)).then(() => {
-      navigate("/home");
-    });
-  };
-  const handleAddPersonal = (value) => {
-    let data1 = checked;
-    dispatch(addPersonal(data1));
-  };
   useEffect(() => {
     dispatch(getProfile(idUser));
+    dispatch(findByIdProvider(idUser1));
   }, []);
   useEffect(() => {
     dispatch(getProvision());
@@ -249,22 +179,26 @@ export default function ProfileProvider() {
                             </button>{" "}
                             <br></br>
                           </div>{" "}
-                          <div className="main-border-button">
-                            <a
-                              style={{
-                                float: "left",
-                                width: "200px",
-                                height: "40px",
-                                textAlign: "center",
-                                paddingBottom: "10px",
-                                color: "white",
-                                backgroundColor: "rgb(28,31,47)",
-                              }}
-                              href="/home/add-post"
-                            >
-                              Đăng Bài
-                            </a>
-                          </div>
+                          {post.length === 0 ? (
+                            <div className="main-border-button">
+                              <a
+                                style={{
+                                  float: "left",
+                                  width: "200px",
+                                  height: "40px",
+                                  textAlign: "center",
+                                  paddingBottom: "10px",
+                                  color: "white",
+                                  backgroundColor: "rgb(28,31,47)",
+                                }}
+                                href="/home/add-post"
+                              >
+                                Đăng Bài
+                              </a>
+                            </div>
+                          ) : (
+                            <></>
+                          )}
                           <div class="main-border-button"></div>
                         </div>
                       </div>

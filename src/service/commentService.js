@@ -12,7 +12,7 @@ export const getAllComment = createAsyncThunk(
   "comment/getAllComment",
   async (data) => {
     const res = await customAxios.get("comment"); // data là idUser
-    console.log(res.data, 33);
+
     return res.data;
   }
 );

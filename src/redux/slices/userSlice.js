@@ -68,7 +68,7 @@ const userSlice = createSlice({
       state.user = action.payload;
     });
     builder.addCase(getUsersRegister.fulfilled, (state, action) => {
-      console.log(action.payload);
+    
       state.usersRegister = action.payload;
     });
     builder.addCase(acceptUsersRegister.fulfilled, (state, action) => {

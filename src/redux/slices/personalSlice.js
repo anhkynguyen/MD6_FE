@@ -12,7 +12,6 @@ const personalSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(addPersonal.fulfilled, (state, action) => {
-      console.log(action.payload, 4444);
       state.personals.push(action.payload);
     });
   },

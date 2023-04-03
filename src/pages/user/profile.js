@@ -9,6 +9,7 @@ import {
 import swal from "sweetalert";
 import ProfileProvider from "../provider/profleProvider";
 import { Link } from "react-router-dom";
+import { findByIdProvider } from "../../service/providerService";
 
 export default function Profile() {
   const { idUser } = useParams();
@@ -21,7 +22,13 @@ export default function Profile() {
       return state.user.profile;
     }
   });
+  const idUser1 = useSelector((state) => {
+    if (state.user !== undefined) {
+      return state.user.profile.idUser;
+    }
+  });
   useEffect(() => {
+    dispatch(findByIdProvider(idUser1));
     dispatch(getProfile(idUser));
   }, []);
   return (
@@ -204,7 +211,6 @@ export default function Profile() {
                     </div>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>

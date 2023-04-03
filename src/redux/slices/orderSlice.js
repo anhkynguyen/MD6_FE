@@ -19,19 +19,15 @@ const orderSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getOrderInUser.fulfilled, (state, action) => {
-      console.log(action.payload, 33);
       state.orderInUser = action.payload;
     });
     builder.addCase(getOrderInSeller.fulfilled, (state, action) => {
-      console.log(action.payload, 44);
       state.orderInSeller = action.payload;
     });
     builder.addCase(addOrder.fulfilled, (state, action) => {
-      console.log(action.payload, 666666);
       state.orders.push(action.payload);
     });
     builder.addCase(changeStatusOrder.fulfilled, (state, action) => {
-      console.log(action.payload, 33333);
       state.orderInSeller = action.payload;
     });
     builder.addCase(getOrderAdmin.fulfilled, (state, action) => {

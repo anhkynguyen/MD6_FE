@@ -2,8 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import {
+  countViewPost,
   getProviders,
   searchProviderByGender,
+  showSixPostHaveMostViews,
 } from "../../service/providerService";
 
 import { useParams } from "react-router-dom";
@@ -30,7 +32,6 @@ export default function ListProvider() {
     }
   });
   const search = useSelector((state) => {
-    console.log(state.post.searchPost, 333);
     return state.post.searchPost;
   });
   const user = useSelector((state) => {
@@ -41,12 +42,14 @@ export default function ListProvider() {
 
   useEffect(() => {
     dispatch(getProviders(page1));
+    dispatch(showSixPostHaveMostViews());
   }, []);
 
   return (
     <>
-      <ListTopProvider></ListTopProvider>
+      {" "}
       <ListVip></ListVip>
+      <ListTopProvider></ListTopProvider>
       <div>
         <div class="starsec"></div>
         <div class="starthird"></div>
@@ -76,7 +79,12 @@ export default function ListProvider() {
                     return (
                       <div className="col-lg-2 col-sm-6">
                         <div className="item">
-                          <Link to={"/user/showSellerProfile/" + item.idPost}>
+                          <Link
+                            to={"/user/showSellerProfile/" + item.idPost}
+                            onClick={() => {
+                              dispatch(countViewPost(item.idPost));
+                            }}
+                          >
                             <img
                               src={item.image}
                               height={200}
@@ -84,13 +92,16 @@ export default function ListProvider() {
                               alt=""
                             />{" "}
                           </Link>
+
                           <h4>
                             {item.namePost}
-
                             <br />
                             <span style={{ color: "white" }}>
                               Giá: {item.price} đ/h
-                            </span>
+                            </span>{" "}
+                            <span style={{ color: "white" }}>
+                              Lượt xem: {item.view} lượt
+                            </span>{" "}
                           </h4>
                         </div>
                       </div>
@@ -104,7 +115,12 @@ export default function ListProvider() {
                     return (
                       <div className="col-lg-2 col-sm-6">
                         <div className="item">
-                          <Link to={"/user/showSellerProfile/" + item.idPost}>
+                          <Link
+                            to={"/user/showSellerProfile/" + item.idPost}
+                            onClick={() => {
+                              dispatch(countViewPost(item.idPost));
+                            }}
+                          >
                             <img
                               src={item.image}
                               height={200}
@@ -114,11 +130,13 @@ export default function ListProvider() {
                           </Link>
                           <h4>
                             {item.namePost}
-
                             <br />
                             <span style={{ color: "white" }}>
                               Giá: {item.price} đ/h
                             </span>
+                            <span style={{ color: "white" }}>
+                              Lượt xem: {item.view} lượt
+                            </span>{" "}
                           </h4>
                         </div>
                       </div>

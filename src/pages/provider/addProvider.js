@@ -1,9 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getProvision } from "../../service/provisionService";
 import { useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { storage } from "../../upload/firebaseConfig";
 import { addProvider } from "../../service/providerService";
+import { addPersonal } from "../../service/personalService";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import swal from "sweetalert";
@@ -17,6 +20,8 @@ const validateSchema = Yup.object().shape({
 });
 
 export default function AddProvider() {
+  const [checked, setChecked] = useState([]);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
@@ -25,7 +30,13 @@ export default function AddProvider() {
   const user1 = useSelector((state) => {
     return state.user.currentUser;
   });
-
+  const idUser1 = useSelector((state) => {
+    return state.user.currentUser;
+  });
+  const provisions = useSelector((state) => {
+    return state.provision.provisions;
+  });
+  let a = { checked, idUser1 };
   const handleChange = (e) => {
     for (let i = 0; i < e.target.files.length; i++) {
       const newImage = e.target.files[i];
@@ -33,7 +44,15 @@ export default function AddProvider() {
       setImages((prevState) => [...prevState, newImage]);
     }
   };
-
+  const handleCheck = (event) => {
+    var updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(event.target.value), 1);
+    }
+    setChecked(updatedList);
+  };
   const handleUpload = () => {
     const promises = [];
     if (images.length > 0) {
@@ -67,7 +86,11 @@ export default function AddProvider() {
       .then(() => swal({ title: "Tải ảnh lên thành công !", icon: "success" }))
       .catch((err) => console.log(err));
   };
+  const handleAddPersonal = (value) => {
+    let data1 = { idProvision: a.checked, idPost: idUser1 };
 
+    dispatch(addPersonal(data1));
+  };
   const handleAdd = (values) => {
     let data = { ...values, user: user1.idUser };
     dispatch(addProvider(data)).then(() => {
@@ -76,6 +99,9 @@ export default function AddProvider() {
       });
     });
   };
+  useEffect(() => {
+    dispatch(getProvision());
+  }, []);
   return (
     <>
       <Formik
@@ -289,8 +315,39 @@ export default function AddProvider() {
                             />
                           </div>
                         </div>
+                        {provisions.map((item) => {
+                          return (
+                            <label>
+                              <input
+                                type="checkbox"
+                                id="idProvision"
+                                name="idProvision"
+                                value={item.idProvision}
+                                onChange={handleCheck}
+                              />
+                              <label
+                                style={{
+                                  paddingRight: "20px",
+                                  fontSize: "large",
+                                  color: "pink",
+                                }}
+                              >
+                                {" "}
+                                {item.provisionName}
+                              </label>
+                            </label>
+                          );
+                        })}
                         <div class="col-12" style={{ textAlign: "center" }}>
                           <button
+                            onClick={() => {
+                              handleAddPersonal().then(() => {
+                                swal({
+                                  title: "Thêm thành công",
+                                  icon: "success",
+                                });
+                              });
+                            }}
                             style={{
                               width: "50%",
                               height: "50px",

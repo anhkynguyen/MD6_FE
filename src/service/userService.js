@@ -98,8 +98,8 @@ export const getAddVip = createAsyncThunk("admins/getAddVip", async () => {
   return res.data;
 });
 
-export const showVip = createAsyncThunk("user/showVip", async () => {
-  const res = await customAxios.get("users/showVip");
+export const showVip = createAsyncThunk("user/showSixVip", async () => {
+  const res = await customAxios.get("users/showSixVip");
   return res.data;
 });
 
@@ -111,9 +111,8 @@ export const userAskVip = createAsyncThunk("user/userAskVip", async (data) => {
 export const changeSellerToVip = createAsyncThunk(
   "admins/changeSellerToVip",
   async (data) => {
-    console.log(data, 123);
     await customAxios.get("admins/changeSellerToVip/" + data);
-    console.log(data, 456);
+
     return data;
   }
 );

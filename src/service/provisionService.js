@@ -5,7 +5,6 @@ export const getProvision = createAsyncThunk(
   "provision/getProvisions",
   async () => {
     const res = await customAxios.get("provision");
-
     return res.data;
   }
 );

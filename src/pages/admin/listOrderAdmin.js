@@ -6,7 +6,6 @@ export default function ListOrderAdmin() {
   const dispatch = useDispatch();
 
   const order = useSelector((state) => {
-    console.log(state, 45);
     return state.order.orders;
   });
 
